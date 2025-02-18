@@ -1,0 +1,106 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "Name": {
+            "type": "string",
+            "description": "Identifier used for the indicator, should not match any other identifier of an indicator used in the same catalog."
+        },
+        "Title": {
+            "type": "string",
+            "description": "Title used to describe the indicator"
+        },
+        "EodashIdentifier": {
+            "type": "string",
+            "description": "Identifier that will be used within the eodash client"
+        },
+        "Description": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "format": "markdown"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <b> assets_endpoint </b> configured for the catalog) to a markdown file (with .md extension)"
+        },
+        "Collections": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "List of collections that will be part of the indicator, have to match file names of collections configured in the <b>collections</b> folder (without the extension)"
+        },
+        "Disable": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Optional list of collections (as defined in Collections) which should load as initially disabled in the dashboard layer control"
+        },
+        "BaseLayers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/layerDefinition"
+            },
+            "description": "Optional overwrite of default base layer definition list"
+        },
+        "OverlayLayers": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/layerDefinition"
+            },
+            "description": "Optional overwrite of default overlay layer definition list"
+        },
+        "CollectionGroup": {
+            "type": "string",
+            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
+        }
+    },
+    "$defs": {
+        "layerDefinition": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": " Unique identifier on catalog level"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "recommended: Descriptive name to be shown on user interface"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of service endpoint of data"
+                },
+                "Attribution": {
+                    "type": "string",
+                    "description": "recommended: Text to be shown as attribution information for the layer, can include HTML elements",
+                    "format": "html"
+                },
+                "visible": {
+                    "type": "boolean",
+                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "protocol used for accessing the endpoint defined by url"
+                }
+            },
+            "required": [
+                "id",
+                "url",
+                "protocol"
+            ]
+        }
+    },
+    "required": [
+        "Name",
+        "Title",
+        "EodashIdentifier",
+        "Description",
+        "Collections"
+    ]
+}
