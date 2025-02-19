@@ -28,7 +28,7 @@
                     "type": "string"
                 }
             ],
-            "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the `assets_endpoint` configured for the catalog) to a markdown file (with .md extension)"
+            "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to a markdown file (with .md extension)"
         },
         "Themes": {
             "type": "array",
@@ -76,14 +76,14 @@
             "items": {
                 "$ref": "#/$defs/Locations"
             },
-            "description": "List of `locations` of the collection"
+            "description": "List of <i>locations</i> of the collection"
         },
         "Provider": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Provider"
             },
-            "description": "List of `providers` of the collection"
+            "description": "List of <i>providers</i> of the collection"
         },
         "Citation": {
             "$ref": "#/$defs/Citation",
@@ -91,11 +91,11 @@
         },
         "Image": {
             "type": "string",
-            "description": "Relative path (which root is taken from the `assets_endpoint` configured for the catalog) to a preview image file"
+            "description": "Relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to a preview image file"
         },
         "Legend": {
             "type": "string",
-            "description": "Relative path (which root is taken from the `assets_endpoint` configured for the catalog) to colormap legend image file"
+            "description": "Relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to colormap legend image file"
         },
         "Subcollections": {
             "type": "array",
@@ -109,21 +109,21 @@
             "items": {
                 "$ref": "#/$defs/Resource"
             },
-            "description": "(REQUIRED if no <b> Subcollections </b> are specified) List of `resources` provided by the collection (typically will only be one resource)"
+            "description": "(REQUIRED if no <b> Subcollections </b> are specified) List of <i>resources</i> provided by the collection (typically will only be one resource)"
         },
         "Services": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Service"
             },
-            "description": "List of `Service` objects provided by the collection (typically will only be one service)"
+            "description": "List of <i>Service</i> objects provided by the collection (typically will only be one service)"
         },
         "References": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Reference"
             },
-            "description": "List of `Reference` objects that further describe the collection"
+            "description": "List of <i>Reference</i> objects that further describe the collection"
         },
         "Colorlegend": {
             "$ref": "#/$defs/Colorlegend",
@@ -131,7 +131,7 @@
         },
         "CollectionGroup": {
             "type": "string",
-            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the `collection_group` property for grouping in the configuration"
+            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <i>collection_group</i> property for grouping in the configuration"
         }
     },
     "required": [
@@ -150,18 +150,6 @@
         "Image",
         "Legend"
     ],
-    "oneOf": [
-        {
-            "required": [
-                "Resources"
-            ]
-        },
-        {
-            "required": [
-                "Subcollections"
-            ]
-        }
-    ],
     "$defs": {
         "License": {
             "type": "object",
@@ -173,7 +161,7 @@
                 "Type": {
                     "type": "string",
                     "default": "text/html",
-                    "description": "[Media Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types) string, defaults to `text/html` (for websites), other typical cases would be `application/pdf` for pdf documents"
+                    "description": "<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\">  Media Type </a> string, defaults to <i>text/html</i> (for websites), other typical cases would be <i>application/pdf</i> for pdf documents"
                 },
                 "Title": {
                     "type": "string",
@@ -346,91 +334,95 @@
         },
         "Service": {
             "anyOf": [
-            {
-                "$ref": "#/$defs/StatisticalAPIService"
-            },
-            {
-                "$ref": "#/$defs/VEDAStatisticsService"
-            },
-            {
-                "$ref": "#/$defs/EOxHubNotebookService"
-            }
+                {
+                    "$ref": "#/$defs/StatisticalAPIService"
+                },
+                {
+                    "$ref": "#/$defs/VEDAStatisticsService"
+                },
+                {
+                    "$ref": "#/$defs/EOxHubNotebookService"
+                }
             ],
             "description": "Service provided by the collection"
         },
         "StatisticalAPIService": {
             "type": "object",
+            "title": "Statistical API Service",
             "properties": {
-            "Name": {
-                "type": "string",
-                "const": "Statistical API"
+                "Name": {
+                    "type": "string",
+                    "const": "Statistical API"
+                },
+                "EndPoint": {
+                    "type": "string",
+                    "default": "https://services.sentinel-hub.com/api/v1/statistics",
+                    "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
+                },
+                "Type": {
+                    "type": "string",
+                    "enum": [
+                        "byoc",
+                        "zarr"
+                    ]
+                },
+                "CollectionId": {
+                    "type": "string",
+                    "description": "Identifier of the data collection of SH"
+                },
+                "Script": {
+                    "type": "string",
+                    "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
+                }
             },
-            "EndPoint": {
-                "type": "string",
-                "description": "Url to endpoint, usually `https://services.sentinel-hub.com/api/v1/statistics`"
-            },
-            "Type": {
-                "type": "string",
-                "enum": [
-                "byoc",
-                "zarr"
-                ]
-            },
-            "CollectionId": {
-                "type": "string",
-                "description": "Identifier of the data collection of SH"
-            },
-            "Script": {
-                "type": "string",
-                "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
-            }
-            
-        },
             "required": [
-            "Name",
-            "EndPoint",
-            "Type",
-            "CollectionId",
-            "Script"
+                "Name",
+                "EndPoint",
+                "Type",
+                "CollectionId",
+                "Script"
             ]
         },
         "VEDAStatisticsService": {
             "type": "object",
+            "title": "VEDA Statistics Service",
             "properties": {
-            "Name": {
-                "type": "string",
-                "const": "VEDA Statistics"
-            },
-            "EndPoint": {
-                "type": "string",
-                "description": "Url to endpoint, usually `https://services.sentinel-hub.com/api/v1/statistics`"
-            }
+                "Name": {
+                    "type": "string",
+                    "const": "VEDA Statistics"
+                },
+                "EndPoint": {
+                    "type": "string",
+                    "default": "https://services.sentinel-hub.com/api/v1/statistics",
+                    "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
+                }
             },
             "required": [
-            "Name",
-            "EndPoint"
+                "Name",
+                "EndPoint"
             ]
         },
         "EOxHubNotebookService": {
             "type": "object",
+            "title": "EOxHub Notebook Service",
             "properties": {
-            "Name": {
-                "type": "string",
-                "const": "EOxHub Notebook"
-            },
-            "Title": {
-                "type": "string",
-                "description": "Descriptive title for the referenced algorithm"
-            },
-            "Url": {
-                "type": "string",
-                "description": "Url to notebook preview"
-            }
+                "Name": {
+                    "type": "string",
+                    "const": "EOxHub Notebook"
+                },
+                "Title": {
+                    "type": "string",
+                    "description": "Descriptive title for the referenced algorithm"
+                },
+                "Url": {
+                    "type": "string",
+                    "description": "Url to notebook preview"
+                }
             },
             "required": [
-            "Name",
-            "Title",
-            "Url"
+                "Name",
+                "Title",
+                "Url"
             ]
         },
         "Reference": {
@@ -458,7 +450,8 @@
                 "range": {
                     "type": "array",
                     "items": {
-                        "type": "string"
+                        "type": "string",
+                        "format": "color"
                     },
                     "description": "List of hex colors strings which will be interpolated or used for categories"
                 },
@@ -474,7 +467,7 @@
                             }
                         ]
                     },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using `categorical` `scaletype`"
+                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <i>categorical</i> <i>scaletype</i>"
                 },
                 "tickFormat": {
                     "type": "string",
@@ -495,7 +488,7 @@
                         "threshold",
                         "categorical"
                     ],
-                    "description": "Can be `continuous`, `discrete`, `threshold`, `categorical`"
+                    "description": "Can be <i>continuous</i>, <i>discrete</i>, <i>threshold</i>, <i>categorical</i>"
                 },
                 "marktype": {
                     "type": "string",
@@ -560,6 +553,7 @@
         },
         "SentinelHubResource": {
             "type": "object",
+            "title": "Sentinel Hub Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -582,7 +576,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -595,6 +592,7 @@
         },
         "SentinelHubWMSResource": {
             "type": "object",
+            "title": "Sentinel Hub WMS Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -610,7 +608,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -622,6 +623,7 @@
         },
         "GeoDBResource": {
             "type": "object",
+            "title": "GeoDB Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -643,7 +645,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -654,6 +659,7 @@
             ]
         },
         "GeoDBVectorTileResource": {
+            "title": "GeoDB Vector Tiles",
             "type": "object",
             "properties": {
                 "EndPoint": {
@@ -691,7 +697,10 @@
                     }
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -709,6 +718,7 @@
         },
         "WMSResource": {
             "type": "object",
+            "title": "WMS Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -743,7 +753,10 @@
                     "type": "number"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -754,6 +767,7 @@
         },
         "VEDAResource": {
             "type": "object",
+            "title": "VEDA Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -965,7 +979,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -1000,6 +1017,7 @@
                         {
                             "properties": {
                                 "Type": {
+                                    "type": "string",
                                     "const": "cog"
                                 },
                                 "Bidx": {
@@ -1016,6 +1034,7 @@
         },
         "XCubeServerResource": {
             "type": "object",
+            "title": "XCube Server Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -1049,7 +1068,10 @@
                     "maxItems": 2
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -1063,6 +1085,7 @@
         },
         "CopernicusMarineDataStoreWMTSResource": {
             "type": "object",
+            "title": "Copernicus Marine Data Store WMTS Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -1092,16 +1115,19 @@
                     "properties": {
                         "Start": {
                             "type": "string",
-                            "format": "date-time"
+                            "format": "datetime-local"
                         },
                         "End": {
                             "type": "string",
-                            "format": "date-time"
+                            "format": "datetime-local"
                         }
                     }
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -1115,6 +1141,7 @@
         },
         "RasdamanWCSResource": {
             "type": "object",
+            "title": "Rasdaman WCS Resource",
             "properties": {
                 "EndPoint": {
                     "type": "string"
@@ -1127,7 +1154,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -1138,6 +1168,7 @@
         },
         "RawSourceResource": {
             "type": "object",
+            "title": "Raw Source Resource",
             "properties": {
                 "Name": {
                     "type": "string",
@@ -1160,7 +1191,7 @@
                         "properties": {
                             "Time": {
                                 "type": "string",
-                                "format": "date-time"
+                                "format": "datetime-local"
                             },
                             "Assets": {
                                 "type": "array",
@@ -1181,7 +1212,11 @@
                                 }
                             },
                             "Attribution": {
-                                "type": "string"
+                                "type": "string",
+                                "format": "xhtml",
+                                "options": {
+                                    "wysiwyg": true
+                                }
                             }
                         },
                         "required": [
@@ -1191,7 +1226,10 @@
                     }
                 },
                 "Attribution": {
-                    "type": "string"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [

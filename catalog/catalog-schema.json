@@ -33,9 +33,9 @@
         "collections": {
             "type": "array",
             "items": {
-                "type": "string",
-                "description": "List of collections and indicators that will be part of the catalog, have to match file names of collections and indicators configured in the <b>collections</b> and <b>indicators</b> folders (without the extension)"
-            }
+                "type": "string"
+            },
+            "description": "List of collections and indicators that will be part of the catalog, have to match file names of collections and indicators configured in the <b>collections</b> and <b>indicators</b> folders (without the extension)"
         },
         "default_base_layers": {
             "type": "string",

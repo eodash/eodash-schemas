@@ -78,7 +78,9 @@
                 "Attribution": {
                     "type": "string",
                     "description": "recommended: Text to be shown as attribution information for the layer, can include HTML elements",
-                    "format": "html"
+                    "media": {
+                        "type": "html"
+                    }
                 },
                 "visible": {
                     "type": "boolean",
