@@ -1,6 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Collection",
+    "format": "categories",
     "type": "object",
     "properties": {
         "Name": {
@@ -544,8 +545,21 @@
             }
         },
         "Bbox": {
-            "type": "array",
-            "format": "bounding-box"
+            "anyOf": [
+                {
+                    "type": "array",
+                    "format": "bounding-box"
+                },
+                {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            ],
+            "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
         },
         "Point": {
             "type": "array",
