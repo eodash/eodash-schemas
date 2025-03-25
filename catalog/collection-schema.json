@@ -1195,7 +1195,7 @@
                 "Style": {
                     "type": "string"
                 },
-                "BBox": {
+                "Bbox": {
                     "$ref": "#/$defs/Bbox"
                 },
                 "TimeEntries": {
@@ -1249,7 +1249,7 @@
             "required": [
                 "Name",
                 "Style",
-                "BBox",
+                "Bbox",
                 "TimeEntries"
             ]
         }
