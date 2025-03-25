@@ -1129,11 +1129,11 @@
                     "properties": {
                         "Start": {
                             "type": "string",
-                            "format": "datetime-local"
+                            "format": "datetime"
                         },
                         "End": {
                             "type": "string",
-                            "format": "datetime-local"
+                            "format": "datetime"
                         }
                     }
                 },
@@ -1205,7 +1205,7 @@
                         "properties": {
                             "Time": {
                                 "type": "string",
-                                "format": "datetime-local"
+                                "format": "datetime"
                             },
                             "Assets": {
                                 "type": "array",
