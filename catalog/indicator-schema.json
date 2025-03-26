@@ -16,15 +16,8 @@
             "description": "Identifier that will be used within the eodash client"
         },
         "Description": {
-            "anyOf": [
-                {
-                    "type": "string",
-                    "format": "markdown"
-                },
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
+            "format": "markdown",
             "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <b> assets_endpoint </b> configured for the catalog) to a markdown file (with .md extension)"
         },
         "Collections": {

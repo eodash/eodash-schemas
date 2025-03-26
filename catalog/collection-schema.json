@@ -20,15 +20,8 @@
             "type": "string"
         },
         "Description": {
-            "anyOf": [
-                {
-                    "type": "string",
-                    "format": "markdown"
-                },
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
+            "format": "markdown",
             "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to a markdown file (with .md extension)"
         },
         "Themes": {

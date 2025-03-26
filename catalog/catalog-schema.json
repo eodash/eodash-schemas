@@ -12,15 +12,8 @@
             "description": "Title added to catalog file, shown by STAC clients"
         },
         "description": {
-            "anyOf": [
-                {
-                    "type": "string",
-                    "format": "markdown"
-                },
-                {
-                    "type": "string"
-                }
-            ],
+            "type": "string",
+            "format": "markdown",
             "description": "Description added to catalog file. Markdown may be used for rich text representation."
         },
         "endpoint": {
