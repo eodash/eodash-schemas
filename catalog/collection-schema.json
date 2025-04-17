@@ -192,6 +192,13 @@
                 },
                 "Type": {
                     "type": "string",
+                    "enum": [
+                        "application/geo+json",
+                        "application/json",
+                        "text/csv",
+                        "image/png",
+                        "image/tiff"
+                    ],
                     "description": "MIME type of the returned data"
                 },
                 "EndPoint": {
