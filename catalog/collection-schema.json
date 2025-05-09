@@ -409,7 +409,13 @@
                     "$ref": "#/$defs/RasdamanWCSResource"
                 },
                 {
-                    "$ref": "#/$defs/RawSourceResource"
+                    "$ref": "#/$defs/RawSourceResourceCOG"
+                },
+                {
+                    "$ref": "#/$defs/RawSourceResourceGeoJSON"
+                },
+                {
+                    "$ref": "#/$defs/RawSourceResourceFlatGeobuf"
                 }
             ]
         },
@@ -1135,11 +1141,11 @@
                 },
                 "Name": {
                     "type": "string",
-                    "const": "XCube Server"
+                    "const": "xcube"
                 },
                 "Type": {
                     "type": "string",
-                    "const": "zarr"
+                    "enum": ["zarr"]
                 },
                 "StacEndpoint": {
                     "type": "string"
@@ -1186,11 +1192,11 @@
                 },
                 "Name": {
                     "type": "string",
-                    "const": "Copernicus Marine Data Store WMTS"
+                    "const": "marinedatastore"
                 },
                 "Type": {
                     "type": "string",
-                    "const": "WMTSCapabilities"
+                    "enum": ["WMTSCapabilities"]
                 },
                 "LayerId": {
                     "type": "string"
@@ -1260,17 +1266,13 @@
                 "CoverageId"
             ]
         },
-        "RawSourceResource": {
+        "RawSourceResourceCOG": {
             "type": "object",
             "title": "Raw Source Resource",
             "properties": {
                 "Name": {
                     "type": "string",
-                    "enum": [
-                        "COG source",
-                        "GeoJSON source",
-                        "FlatGeobuf source"
-                    ]
+                    "const": "COG source"
                 },
                 "Style": {
                     "type": "string"
@@ -1279,45 +1281,7 @@
                     "$ref": "#/$defs/Bbox"
                 },
                 "TimeEntries": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "Time": {
-                                "type": "string",
-                                "format": "datetime"
-                            },
-                            "Assets": {
-                                "type": "array",
-                                "items": {
-                                    "type": "object",
-                                    "properties": {
-                                        "Identifier": {
-                                            "type": "string"
-                                        },
-                                        "File": {
-                                            "type": "string"
-                                        }
-                                    },
-                                    "required": [
-                                        "Identifier",
-                                        "File"
-                                    ]
-                                }
-                            },
-                            "Attribution": {
-                                "type": "string",
-                                "format": "xhtml",
-                                "options": {
-                                    "wysiwyg": true
-                                }
-                            }
-                        },
-                        "required": [
-                            "Time",
-                            "Assets"
-                        ]
-                    }
+                    "$ref": "#/$defs/TimeEntries"
                 },
                 "Attribution": {
                     "type": "string",
@@ -1332,6 +1296,108 @@
                 "Bbox",
                 "TimeEntries"
             ]
+        },
+        "RawSourceResourceGeoJSON": {
+            "type": "object",
+            "title": "Raw Source Resource",
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "const": "GeoJSON source"
+                },
+                "Style": {
+                    "type": "string"
+                },
+                "Bbox": {
+                    "$ref": "#/$defs/Bbox"
+                },
+                "TimeEntries": {
+                    "$ref": "#/$defs/TimeEntries"
+                },
+                "Attribution": {
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "Style",
+                "Bbox",
+                "TimeEntries"
+            ]
+        },
+        "RawSourceResourceFlatGeobuf": {
+            "type": "object",
+            "title": "Raw Source Resource",
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "const": "FlatGeobuf source"
+                },
+                "Style": {
+                    "type": "string"
+                },
+                "Bbox": {
+                    "$ref": "#/$defs/Bbox"
+                },
+                "TimeEntries": {
+                    "$ref": "#/$defs/TimeEntries"
+                },
+                "Attribution": {
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "Style",
+                "TimeEntries"
+            ]
+        },
+        "TimeEntries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Time": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "Assets": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Identifier": {
+                                    "type": "string"
+                                },
+                                "File": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "Identifier",
+                                "File"
+                            ]
+                        }
+                    },
+                    "Attribution": {
+                        "type": "string",
+                        "format": "xhtml",
+                        "options": {
+                            "wysiwyg": true
+                        }
+                    }
+                },
+                "required": [
+                    "Time",
+                    "Assets"
+                ]
+            }
         }
     }
 }
