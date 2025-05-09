@@ -1268,7 +1268,7 @@
         },
         "RawSourceResourceCOG": {
             "type": "object",
-            "title": "Raw Source Resource",
+            "title": "Cloud Optimized Geotiff (COG) Source",
             "properties": {
                 "Name": {
                     "type": "string",
@@ -1299,7 +1299,7 @@
         },
         "RawSourceResourceGeoJSON": {
             "type": "object",
-            "title": "Raw Source Resource",
+            "title": "GeoJSON Source",
             "properties": {
                 "Name": {
                     "type": "string",
@@ -1330,7 +1330,7 @@
         },
         "RawSourceResourceFlatGeobuf": {
             "type": "object",
-            "title": "Raw Source Resource",
+            "title": "FlatGeobuf Source",
             "properties": {
                 "Name": {
                     "type": "string",
