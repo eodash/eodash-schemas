@@ -554,7 +554,7 @@
                             }
                         ]
                     },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <i>categorical</i> <i>scaletype</i>"
+                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <i>categorical</i> <i>scaleType</i>"
                 },
                 "tickFormat": {
                     "type": "string",
@@ -567,7 +567,7 @@
                     },
                     "description": "List of numbers for which tick values should be shown"
                 },
-                "scaletype": {
+                "scaleType": {
                     "type": "string",
                     "enum": [
                         "continuous",
@@ -577,7 +577,7 @@
                     ],
                     "description": "Can be <i>continuous</i>, <i>discrete</i>, <i>threshold</i>, <i>categorical</i>"
                 },
-                "marktype": {
+                "markType": {
                     "type": "string",
                     "enum": [
                         "rect",
