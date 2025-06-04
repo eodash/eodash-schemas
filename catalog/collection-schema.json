@@ -1078,6 +1078,9 @@
                 "ColorFormula": {
                     "type": "string"
                 },
+                "Nodata": {
+                    "type": "number"
+                },
                 "Attribution": {
                     "type": "string",
                     "media": {
