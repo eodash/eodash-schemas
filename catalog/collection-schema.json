@@ -518,13 +518,13 @@
                 "Url": {
                     "type": "string"
                 },
-                "Title": {
+                "Name": {
                     "type": "string"
                 }
             },
             "required": [
                 "Url",
-                "Title"
+                "Name"
             ]
         },
         "Colorlegend": {
