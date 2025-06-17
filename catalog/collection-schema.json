@@ -222,8 +222,8 @@
                     "description": "URL to the body of the endpoint"
                 },
                 "Flatstyle": {
-                    "type": "string",
-                    "description": "URL to the flatstyle"
+                    "$ref": "#/$defs/Flatstyle",
+                    "description": "Flatstyle definition for a process."
                 }
             },
             "required": [
@@ -1401,6 +1401,21 @@
                     "Assets"
                 ]
             }
+        },
+        "Flatstyle": {
+            "anyOf": [
+                {
+                    "type": "string",
+                    "description": "Single URL of the flatstyle applied to all resources of the process."
+                },
+                {
+                    "type": "object",
+                    "description": "Mappings of output type to flatstyle url",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                }
+            ]
         }
     }
 }
