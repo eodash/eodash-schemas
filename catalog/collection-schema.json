@@ -1409,10 +1409,24 @@
                     "description": "Single URL of the flatstyle applied to all resources of the process."
                 },
                 {
-                    "type": "object",
+                    "type": "array",
                     "description": "Mappings of output type to flatstyle url",
-                    "additionalProperties": {
-                        "type": "string"
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "Identifier": {
+                                "type": "string",
+                                "description": "Identifier of output of the process to match with flatstyle."
+                            },
+                            "Url": {
+                                "type": "string",
+                                "description": "URL of the flatstyle."
+                            }
+                        },
+                        "required": [
+                            "Identifier",
+                            "Url"
+                        ]
                     }
                 }
             ]
