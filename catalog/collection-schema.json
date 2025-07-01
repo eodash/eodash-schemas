@@ -655,12 +655,14 @@
             "type": "object",
             "title": "Sentinel Hub Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "Sentinel Hub"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Type": {
                     "type": "string",
@@ -694,12 +696,14 @@
             "type": "object",
             "title": "Sentinel Hub WMS Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "Sentinel Hub WMS"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "CollectionId": {
                     "type": "string"
@@ -725,12 +729,14 @@
             "type": "object",
             "title": "GeoDB Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "GeoDB"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Database": {
                     "type": "string"
@@ -762,12 +768,14 @@
             "title": "GeoDB Vector Tiles",
             "type": "object",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "GeoDB Vector Tiles"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "DBEndpoint": {
                     "type": "string"
@@ -820,12 +828,14 @@
             "type": "object",
             "title": "WMS Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "WMS"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Type": {
                     "type": "string",
@@ -869,12 +879,14 @@
             "type": "object",
             "title": "VEDA Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "VEDA"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Type": {
                     "type": "string",
@@ -1139,12 +1151,14 @@
             "type": "object",
             "title": "XCube Server Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "xcube"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Type": {
                     "type": "string",
@@ -1190,12 +1204,14 @@
             "type": "object",
             "title": "Copernicus Marine Data Store WMTS Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "marinedatastore"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "Type": {
                     "type": "string",
@@ -1246,12 +1262,14 @@
             "type": "object",
             "title": "Rasdaman WCS Resource",
             "properties": {
-                "EndPoint": {
-                    "type": "string"
-                },
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "rasdaman"
+                },
+                "EndPoint": {
+                    "type": "string"
                 },
                 "CoverageId": {
                     "type": "string"
@@ -1274,6 +1292,8 @@
             "title": "Cloud Optimized Geotiff (COG) Source",
             "properties": {
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "COG source"
                 },
@@ -1305,6 +1325,8 @@
             "title": "GeoJSON Source",
             "properties": {
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "GeoJSON source"
                 },
@@ -1336,6 +1358,8 @@
             "title": "FlatGeobuf Source",
             "properties": {
                 "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
                     "type": "string",
                     "const": "FlatGeobuf source"
                 },
