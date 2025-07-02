@@ -2,6 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "title": "Collection",
     "format": "categories",
+    "basicCategoryTitle": "General",
     "type": "object",
     "properties": {
         "Name": {
@@ -12,17 +13,17 @@
             "type": "string",
             "description": "Title used to describe the collection"
         },
-        "EodashIdentifier": {
-            "type": "string",
-            "description": "Identifier that will be used within the eodash client"
-        },
-        "Subtitle": {
-            "type": "string"
-        },
         "Description": {
             "type": "string",
             "format": "markdown",
-            "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to a markdown file (with .md extension)"
+            "description": "Description of the collection written as markdown"
+        },
+        "Resources": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Resource"
+            },
+            "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
         },
         "Themes": {
             "type": "array",
@@ -70,14 +71,14 @@
             "items": {
                 "$ref": "#/$defs/Locations"
             },
-            "description": "List of <i>locations</i> of the collection"
+            "description": "List of <b>locations</b> of the collection"
         },
         "Provider": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Provider"
             },
-            "description": "List of <i>providers</i> of the collection"
+            "description": "List of <b>providers</b> of the collection"
         },
         "Citation": {
             "$ref": "#/$defs/Citation",
@@ -85,11 +86,11 @@
         },
         "Image": {
             "type": "string",
-            "description": "Relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to a preview image file"
+            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
         },
         "Legend": {
             "type": "string",
-            "description": "Relative path (which root is taken from the <i>assets_endpoint</i> configured for the catalog) to colormap legend image file"
+            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
         },
         "Subcollections": {
             "type": "array",
@@ -98,26 +99,19 @@
             },
             "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, thes Resources of the linked subcollections are used."
         },
-        "Resources": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/Resource"
-            },
-            "description": "(REQUIRED if no <b> Subcollections </b> are specified) List of <i>resources</i> provided by the collection (typically will only be one resource)"
-        },
         "Services": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Service"
             },
-            "description": "List of <i>Service</i> objects provided by the collection (typically will only be one service)"
+            "description": "List of Service objects provided by the collection (typically will only be one service)"
         },
         "References": {
             "type": "array",
             "items": {
                 "$ref": "#/$defs/Reference"
             },
-            "description": "List of <i>Reference</i> objects that further describe the collection"
+            "description": "List of Reference objects that further describe the collection"
         },
         "Colorlegend": {
             "$ref": "#/$defs/Colorlegend",
@@ -125,28 +119,26 @@
         },
         "CollectionGroup": {
             "type": "string",
-            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <i>collection_group</i> property for grouping in the configuration"
+            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
         },
         "Process": {
             "$ref": "#/$defs/Process",
             "description": "Configuration of the process of the collection"
+        },
+        "EodashIdentifier": {
+            "type": "string",
+            "description": "Identifier that will be used within the eodash client"
+        },
+        "Subtitle": {
+            "type": "string",
+            "description": "Optional short description"
         }
     },
     "required": [
         "Name",
         "Title",
-        "EodashIdentifier",
         "Description",
-        "Themes",
-        "Tags",
-        "DataSource",
-        "Agency",
-        "License",
-        "Locations",
-        "Provider",
-        "Citation",
-        "Image",
-        "Legend"
+        "Resources"
     ],
     "$defs": {
         "Process": {
@@ -242,7 +234,7 @@
                 "Type": {
                     "type": "string",
                     "default": "text/html",
-                    "description": "<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\">  Media Type </a> string, defaults to <i>text/html</i> (for websites), other typical cases would be <i>application/pdf</i> for pdf documents"
+                    "description": "<a href=\"https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types\">  Media Type </a> string, defaults to text/html (for websites), other typical cases would be application/pdf for pdf documents"
                 },
                 "Title": {
                     "type": "string",
@@ -554,7 +546,7 @@
                             }
                         ]
                     },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <i>categorical</i> <i>scaleType</i>"
+                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
                 },
                 "tickFormat": {
                     "type": "string",
@@ -575,7 +567,7 @@
                         "threshold",
                         "categorical"
                     ],
-                    "description": "Can be <i>continuous</i>, <i>discrete</i>, <i>threshold</i>, <i>categorical</i>"
+                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
                 },
                 "markType": {
                     "type": "string",
