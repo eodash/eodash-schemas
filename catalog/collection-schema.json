@@ -31,7 +31,7 @@
                 "type": "string"
             },
             "description": "List of theme strings that represent the collection",
-            "default": null
+            "default": false
         },
         "Tags": {
             "type": "array",
