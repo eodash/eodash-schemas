@@ -30,7 +30,8 @@
             "items": {
                 "type": "string"
             },
-            "description": "List of theme strings that represent the collection"
+            "description": "List of theme strings that represent the collection",
+            "default": null
         },
         "Tags": {
             "type": "array",
