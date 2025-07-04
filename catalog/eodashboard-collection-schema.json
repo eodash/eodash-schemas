@@ -12,6 +12,12 @@
             "pattern": "^[a-zA-Z0-9_-]+$",
             "description": "Must be unique to other collections in the catalog. Letters, numbers, hyphens, underscores only."
         },
+        "EodashIdentifier": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "description": "Identifier that will be used in eodashboard or RACE instance"
+        },
         "Title": {
             "type": "string",
             "minLength": 1,
@@ -129,10 +135,6 @@
             "$ref": "#/$defs/Process",
             "description": "Configuration of the process of the collection"
         },
-        "EodashIdentifier": {
-            "type": "string",
-            "description": "Identifier that will be used within the eodash client"
-        },
         "Subtitle": {
             "type": "string",
             "description": "Optional short description"
@@ -140,6 +142,7 @@
     },
     "required": [
         "Name",
+        "EodashIdentifier",
         "Title",
         "Description",
         "Resources"
