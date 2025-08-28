@@ -148,6 +148,28 @@
         "Resources"
     ],
     "$defs": {
+        "Projection": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                },
+                "def": {
+                    "type": "string",
+                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                },
+                "extent": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
         "Process": {
             "type": "object",
             "properties": {
@@ -379,44 +401,36 @@
             }
         },
         "Resource": {
-            "anyOf": [
+            "allOf": [
                 {
-                    "$ref": "#/$defs/SentinelHubResource"
+                    "anyOf": [
+                        { "$ref": "#/$defs/SentinelHubResource" },
+                        { "$ref": "#/$defs/SentinelHubWMSResource" },
+                        { "$ref": "#/$defs/GeoDBResource" },
+                        { "$ref": "#/$defs/GeoDBVectorTileResource" },
+                        { "$ref": "#/$defs/WMSResource" },
+                        { "$ref": "#/$defs/VEDAResource" },
+                        { "$ref": "#/$defs/XCubeServerResource" },
+                        { "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource" },
+                        { "$ref": "#/$defs/RawSourceResourceCOG" },
+                        { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
+                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" }
+                    ]
                 },
                 {
-                    "$ref": "#/$defs/SentinelHubWMSResource"
-                },
-                {
-                    "$ref": "#/$defs/GeoDBResource"
-                },
-                {
-                    "$ref": "#/$defs/GeoDBVectorTileResource"
-                },
-                {
-                    "$ref": "#/$defs/WMSResource"
-                },
-                {
-                    "$ref": "#/$defs/VEDAResource"
-                },
-                {
-                    "$ref": "#/$defs/XCubeServerResource"
-                },
-                {
-                    "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
-                },
-                {
-                    "$ref": "#/$defs/RasdamanWCSResource"
-                },
-                {
-                    "$ref": "#/$defs/RawSourceResourceCOG"
-                },
-                {
-                    "$ref": "#/$defs/RawSourceResourceGeoJSON"
-                },
-                {
-                    "$ref": "#/$defs/RawSourceResourceFlatGeobuf"
+                    "type": "object",
+                    "properties": {
+                        "DataProjection": {
+                            "$ref": "#/$defs/Projection",
+                            "description": "Projection in which the data is stored"
+                        }
+                    }
                 }
             ]
+        },
+        "MapProjection": {
+            "$ref": "#/$defs/Projection",
+            "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
         },
         "Service": {
             "anyOf": [
@@ -839,7 +853,8 @@
                 "Type": {
                     "type": "string",
                     "enum": [
-                        "Time"
+                        "Time",
+                        "OverwriteTimes"
                     ]
                 },
                 "LayerId": {
@@ -855,8 +870,48 @@
                     "type": "string",
                     "enum": [
                         "1.1.0",
+                        "1.1.1",
                         "1.3.0"
                     ]
+                },
+                "DateTimeInterval": {
+                    "type": "object",
+                    "properties": {
+                        "Start": {
+                            "type": "string",
+                            "format": "datetime"
+                        },
+                        "End": {
+                            "type": "string",
+                            "format": "datetime"
+                        },
+                        "Timedelta": {
+                            "type": "object",
+                            "properties": {
+                                "days": {
+                                    "type": "number"
+                                },
+                                "hours": {
+                                    "type": "number"
+                                },
+                                "minutes": {
+                                    "type": "number"
+                                },
+                                "seconds": {
+                                    "type": "number"
+                                }
+                            },
+                            "description": "Time delta to be applied to the start and end date"
+                        }
+                    },
+                    "required": [
+                        "Start",
+                        "End"
+                    ],
+                    "description": "Date time interval to be applied to the collection"
+                },
+                "OverwriteBBox": {
+                    "$ref": "#/$defs/Bbox"
                 },
                 "TileSize": {
                     "type": "number"
