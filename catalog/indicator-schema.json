@@ -55,9 +55,35 @@
         "Process": {
             "$ref": "#/$defs/Process",
             "description": "Configuration of the process of the collection"
+        },
+        "MapProjection": {
+            "$ref": "#/$defs/Projection",
+            "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
         }
     },
     "$defs": {
+        "Projection": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                },
+                "def": {
+                    "type": "string",
+                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                },
+                "extent": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                }
+            },
+            "required": [
+                "name"
+            ]
+        },
         "Process": {
             "type": "object",
             "properties": {
