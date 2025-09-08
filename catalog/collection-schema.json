@@ -404,6 +404,7 @@
                         { "$ref": "#/$defs/SentinelHubResource" },
                         { "$ref": "#/$defs/SentinelHubWMSResource" },
                         { "$ref": "#/$defs/GeoDBResource" },
+                        { "$ref": "#/$defs/GeoDBFeaturesResource" },
                         { "$ref": "#/$defs/GeoDBVectorTileResource" },
                         { "$ref": "#/$defs/WMSResource" },
                         { "$ref": "#/$defs/VEDAResource" },
@@ -754,6 +755,12 @@
                 "CollectionId": {
                     "type": "string"
                 },
+                "FeatureCollection": {
+                    "type": "string"
+                },
+                "Style": {
+                    "type": "string"
+                },
                 "AdditionalQueryString": {
                     "type": "string"
                 },
@@ -772,6 +779,50 @@
                 "EndPoint",
                 "Database",
                 "CollectionId"
+            ]
+        },
+        "GeoDBFeaturesResource": {
+            "type": "object",
+            "title": "GeoDB Features Resource",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "GeoDB Features"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Database": {
+                    "type": "string"
+                },
+                "TimeParameter": {
+                    "type": "string"
+                },
+                "CollectionId": {
+                    "type": "string"
+                },
+                "Query": {
+                    "type": "string"
+                },
+                "Aggregation": {
+                    "type": "string"
+                },
+                "Style": {
+                    "type": "string"
+                },
+                "OverwriteBBox": {
+                    "$ref": "#/$defs/Bbox"
+                }
+            },
+            "required": [
+                "Name",
+                "EndPoint",
+                "Database",
+                "TimeParameter",
+                "CollectionId",
+                "Query"
             ]
         },
         "GeoDBVectorTileResource": {
