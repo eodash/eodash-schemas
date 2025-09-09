@@ -1214,7 +1214,15 @@
             ],
             "oneOf": [
                 {
-                    "title": "Tiles resource",
+                    "title": "COG endpoint",
+                    "properties": {
+                        "Type": { "enum": ["cog"] },
+                        "Bidx": { "type": "integer" }
+                    },
+                    "required": ["Bidx"]
+                },
+                {
+                    "title": "Tiles endpoint",
                     "properties": {
                         "Type": { "enum": ["tiles"] },
                         "Assets": {
@@ -1224,14 +1232,6 @@
                         "ColorFormula": { "type": "string" }
                     },
                     "required": ["Assets", "ColorFormula"]
-                },
-                {
-                    "title": "COG resource",
-                    "properties": {
-                        "Type": { "enum": ["cog"] },
-                        "Bidx": { "type": "integer" }
-                    },
-                    "required": ["Bidx"]
                 }
             ]
         },
