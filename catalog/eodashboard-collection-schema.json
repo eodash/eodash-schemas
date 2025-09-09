@@ -996,8 +996,8 @@
                 "Type": {
                     "type": "string",
                     "enum": [
-                        "tiles",
-                        "cog"
+                        "cog",
+                        "tiles"
                     ]
                 },
                 "CollectionId": {
@@ -1184,7 +1184,8 @@
                     "maxItems": 2
                 },
                 "Bidx": {
-                    "type": "integer"
+                    "type": "integer",
+                    "default": 1
                 },
                 "Assets": {
                     "type": "array",
@@ -1211,46 +1212,24 @@
                 "Type",
                 "CollectionId"
             ],
-            "dependencies": {
-                "Type": {
-                    "oneOf": [
-                        {
-                            "properties": {
-                                "Type": {
-                                    "const": "tiles"
-                                },
-                                "Assets": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "string"
-                                    }
-                                },
-                                "ColorFormula": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": [
-                                "Assets",
-                                "ColorFormula"
-                            ]
-                        },
-                        {
-                            "properties": {
-                                "Type": {
-                                    "type": "string",
-                                    "const": "cog"
-                                },
-                                "Bidx": {
-                                    "type": "integer"
-                                }
-                            },
-                            "required": [
-                                "Bidx"
-                            ]
-                        }
-                    ]
+            "allOf": [
+                {
+                    "if": {
+                        "properties": { "Type": { "const": "tiles" } }
+                    },
+                    "then": {
+                        "required": ["Assets", "ColorFormula"]
+                    }
+                },
+                {
+                    "if": {
+                        "properties": { "Type": { "const": "cog" } }
+                    },
+                    "then": {
+                        "required": ["Bidx"]
+                    }
                 }
-            }
+            ]
         },
         "XCubeServerResource": {
             "type": "object",
