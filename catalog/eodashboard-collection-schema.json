@@ -1212,22 +1212,26 @@
                 "Type",
                 "CollectionId"
             ],
-            "allOf": [
+            "oneOf": [
                 {
-                    "if": {
-                        "properties": { "Type": { "const": "tiles" } }
+                    "title": "Tiles resource",
+                    "properties": {
+                        "Type": { "enum": ["tiles"] },
+                        "Assets": {
+                            "type": "array",
+                            "items": { "type": "string" }
+                        },
+                        "ColorFormula": { "type": "string" }
                     },
-                    "then": {
-                        "required": ["Assets", "ColorFormula"]
-                    }
+                    "required": ["Assets", "ColorFormula"]
                 },
                 {
-                    "if": {
-                        "properties": { "Type": { "const": "cog" } }
+                    "title": "COG resource",
+                    "properties": {
+                        "Type": { "enum": ["cog"] },
+                        "Bidx": { "type": "integer" }
                     },
-                    "then": {
-                        "required": ["Bidx"]
-                    }
+                    "required": ["Bidx"]
                 }
             ]
         },
