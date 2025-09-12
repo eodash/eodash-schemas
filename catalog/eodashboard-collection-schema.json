@@ -758,6 +758,9 @@
                 "CollectionId": {
                     "type": "string"
                 },
+                "MapTimesCollection": {
+                    "type": "string"
+                },
                 "FeatureCollection": {
                     "type": "string"
                 },
