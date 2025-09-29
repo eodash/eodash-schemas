@@ -1460,6 +1460,9 @@
                 "Bbox": {
                     "$ref": "#/$defs/Bbox"
                 },
+                "GeoParquetSource": {
+                    "type": "string"
+                },
                 "TimeEntries": {
                     "$ref": "#/$defs/TimeEntries"
                 },
