@@ -1394,6 +1394,9 @@
                 "Bbox": {
                     "$ref": "#/$defs/Bbox"
                 },
+                "ParquetSource": {
+                    "type": "string"
+                },
                 "TimeEntries": {
                     "$ref": "#/$defs/TimeEntries"
                 },
@@ -1426,6 +1429,9 @@
                 },
                 "Bbox": {
                     "$ref": "#/$defs/Bbox"
+                },
+                "ParquetSource": {
+                    "type": "string"
                 },
                 "TimeEntries": {
                     "$ref": "#/$defs/TimeEntries"
