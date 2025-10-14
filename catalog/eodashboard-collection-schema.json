@@ -1485,6 +1485,38 @@
                 "TimeEntries"
             ]
         },
+        "RawSourceResourceVectorTile": {
+            "type": "object",
+            "title": "Vector Tile Source",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "VectorTile source"
+                },
+                "Style": {
+                    "type": "string",
+                    "title": "URL to the EOxStyle definition"
+                },
+                "Bbox": {
+                    "$ref": "#/$defs/Bbox"
+                },
+                "TimeEntries": {
+                    "$ref": "#/$defs/TimeEntries"
+                },
+                "Attribution": {
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "TimeEntries"
+            ]
+        },
         "TimeEntries": {
             "type": "array",
             "items": {
