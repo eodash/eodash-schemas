@@ -1499,6 +1499,10 @@
                     "type": "string",
                     "title": "URL to the EOxStyle definition"
                 },
+                "idProperty": {
+                    "type": "string",
+                    "title": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                },
                 "Bbox": {
                     "$ref": "#/$defs/Bbox"
                 },
