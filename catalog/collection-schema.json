@@ -84,6 +84,13 @@
             },
             "description": "List of <b>providers</b> of the collection"
         },
+        "Stories": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Story"
+            },
+            "description": "List of stories where the collection is used."
+        },
         "Citation": {
             "$ref": "#/$defs/Citation",
             "description": "Citation object containing information on citation aspects of data"
@@ -129,13 +136,13 @@
             "$ref": "#/$defs/Process",
             "description": "Configuration of the process of the collection"
         },
-        "EodashIdentifier": {
-            "type": "string",
-            "description": "Identifier that will be used within the eodash client"
-        },
         "Subtitle": {
             "type": "string",
             "description": "Optional short description"
+        },
+        "ShortDescription": {
+            "type": "string",
+            "description": "Optional shorter description than description. Can not use markdown."
         }
     },
     "required": [
@@ -333,6 +340,22 @@
             },
             "required": [
                 "Name",
+                "Url"
+            ]
+        },
+        "Story": {
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "description": "The title of the Story. If not provided, filename is used as a fallback."
+                },
+                "Url": {
+                    "type": "string",
+                    "description": "URL to the story. Can be provided as relative path (which root is taken from the stories_endpoint configured for the catalog) to a story markdown file or an absolute URL to either the rendered story or to the raw markdown."
+                }
+            },
+            "required": [
                 "Url"
             ]
         },
