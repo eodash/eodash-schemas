@@ -1530,6 +1530,14 @@
                     "type": "string",
                     "title": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
                 },
+                "layers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "title": "layer name from the vector tile to include"
+                    },
+                    "title": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                },
                 "Bbox": {
                     "$ref": "#/$defs/Bbox"
                 },
