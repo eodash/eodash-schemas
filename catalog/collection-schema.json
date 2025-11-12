@@ -436,8 +436,7 @@
                         { "$ref": "#/$defs/RawSourceResourceCOG" },
                         { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
                         { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
-                        { "$ref": "#/$defs/RawSourceResourceVectorTile" },
-                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" }
+                        { "$ref": "#/$defs/RawSourceResourceVectorTile" }
 
                     ]
                 },
