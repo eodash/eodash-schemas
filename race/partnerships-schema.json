@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "properties": {
+      "Url": {
+        "type": "string",
+        "description": "URL of the partnership website"
+      },
+      "Description": {
+        "type": "string",
+        "description": "Shorter description about the partnership and their role in the dashboard"
+      },
+      "Logo": {
+        "type": "string",
+        "description": "URL to a small logo image"
+      }
+    },
+    "additionalProperties": false,
+    "required": ["Url", "Description"]
+  }
+}
