@@ -516,11 +516,11 @@
                     "items": {
                         "anyOf": [
                             {
-                                "type": "string",
-                                "format": "color"
+                                "type": "string"
                             },
                             {
-                                "type": "string"
+                                "type": "string",
+                                "format": "color"
                             }
                         ]
                     },
