@@ -145,12 +145,7 @@
             "description": "Optional shorter description than description. Can not use markdown."
         }
     },
-    "required": [
-        "Name",
-        "Title",
-        "Description",
-        "Resources"
-    ],
+    "required": ["Name", "Title", "Description", "Resources"],
     "$defs": {
         "Projection": {
             "type": "object",
@@ -170,9 +165,7 @@
                     "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
                 }
             },
-            "required": [
-                "name"
-            ]
+            "required": ["name"]
         },
         "Process": {
             "type": "object",
@@ -198,11 +191,7 @@
                     "description": "List of endpoints that are used in the process"
                 }
             },
-            "required": [
-                "Name",
-                "JsonForm",
-                "EndPoints"
-            ]
+            "required": ["Name", "JsonForm", "EndPoints"]
         },
         "ProcessEndpoint": {
             "type": "object",
@@ -233,14 +222,7 @@
                 "Method": {
                     "type": "string",
                     "description": "HTTP method of the endpoint",
-                    "enum": [
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "OPTIONS"
-                    ]
+                    "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
                 },
                 "Body": {
                     "type": "string",
@@ -251,11 +233,7 @@
                     "description": "Flatstyle definition for a process."
                 }
             },
-            "required": [
-                "Identifier",
-                "Url",
-                "Type"
-            ]
+            "required": ["Identifier", "Url", "Type"]
         },
         "License": {
             "type": "object",
@@ -274,9 +252,7 @@
                     "description": "Descriptive title for the license"
                 }
             },
-            "required": [
-                "Url"
-            ]
+            "required": ["Url"]
         },
         "Citation": {
             "type": "object",
@@ -303,17 +279,11 @@
                                 "description": "Citation of a publication referencing the data."
                             }
                         },
-                        "required": [
-                            "DOI",
-                            "Citation"
-                        ]
+                        "required": ["DOI", "Citation"]
                     }
                 }
             },
-            "required": [
-                "Citation",
-                "DOI"
-            ]
+            "required": ["Citation", "DOI"]
         },
         "Provider": {
             "type": "object",
@@ -338,10 +308,7 @@
                     "description": "Homepage on which the provider describes the dataset and publishes contact information."
                 }
             },
-            "required": [
-                "Name",
-                "Url"
-            ]
+            "required": ["Name", "Url"]
         },
         "Story": {
             "type": "object",
@@ -355,9 +322,7 @@
                     "description": "URL to the story. Can be provided as relative path (which root is taken from the stories_endpoint configured for the catalog) to a story markdown file or an absolute URL to either the rendered story or to the raw markdown."
                 }
             },
-            "required": [
-                "Url"
-            ]
+            "required": ["Url"]
         },
         "Locations": {
             "type": "object",
@@ -375,10 +340,7 @@
                     }
                 },
                 "Country": {
-                    "type": [
-                        "string",
-                        "array"
-                    ],
+                    "type": ["string", "array"],
                     "items": {
                         "type": "string"
                     }
@@ -404,10 +366,7 @@
                     "type": "string"
                 },
                 "Country": {
-                    "type": [
-                        "string",
-                        "array"
-                    ],
+                    "type": ["string", "array"],
                     "items": {
                         "type": "string"
                     }
@@ -432,12 +391,13 @@
                         { "$ref": "#/$defs/WMSResource" },
                         { "$ref": "#/$defs/VEDAResource" },
                         { "$ref": "#/$defs/XCubeServerResource" },
-                        { "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource" },
+                        {
+                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
+                        },
                         { "$ref": "#/$defs/RawSourceResourceCOG" },
                         { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
                         { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
                         { "$ref": "#/$defs/RawSourceResourceVectorTile" }
-
                     ]
                 },
                 {
@@ -484,10 +444,7 @@
                 },
                 "Type": {
                     "type": "string",
-                    "enum": [
-                        "byoc",
-                        "zarr"
-                    ]
+                    "enum": ["byoc", "zarr"]
                 },
                 "CollectionId": {
                     "type": "string",
@@ -498,13 +455,7 @@
                     "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Type",
-                "CollectionId",
-                "Script"
-            ]
+            "required": ["Name", "EndPoint", "Type", "CollectionId", "Script"]
         },
         "VEDAStatisticsService": {
             "type": "object",
@@ -520,10 +471,7 @@
                     "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint"
-            ]
+            "required": ["Name", "EndPoint"]
         },
         "EOxHubNotebookService": {
             "type": "object",
@@ -542,11 +490,7 @@
                     "description": "Url to notebook preview"
                 }
             },
-            "required": [
-                "Name",
-                "Title",
-                "Url"
-            ]
+            "required": ["Name", "Title", "Url"]
         },
         "Reference": {
             "type": "object",
@@ -558,10 +502,7 @@
                     "type": "string"
                 }
             },
-            "required": [
-                "Url",
-                "Name"
-            ]
+            "required": ["Url", "Name"]
         },
         "Colorlegend": {
             "type": "object",
@@ -573,8 +514,15 @@
                 "range": {
                     "type": "array",
                     "items": {
-                        "type": "string",
-                        "format": "color"
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "format": "color"
+                            },
+                            {
+                                "type": "string"
+                            }
+                        ]
                     },
                     "description": "List of hex colors strings which will be interpolated or used for categories"
                 },
@@ -615,11 +563,7 @@
                 },
                 "markType": {
                     "type": "string",
-                    "enum": [
-                        "rect",
-                        "circle",
-                        "line"
-                    ],
+                    "enum": ["rect", "circle", "line"],
                     "description": "When using \"categorical\" type allows to define symbol to be used"
                 }
             }
@@ -702,10 +646,7 @@
                 },
                 "Type": {
                     "type": "string",
-                    "enum": [
-                        "byoc",
-                        "zarr"
-                    ]
+                    "enum": ["byoc", "zarr"]
                 },
                 "CollectionId": {
                     "type": "string"
@@ -720,13 +661,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Type",
-                "CollectionId",
-                "LayerId"
-            ]
+            "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"]
         },
         "SentinelHubWMSResource": {
             "type": "object",
@@ -754,12 +689,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "CollectionId",
-                "LayerId"
-            ]
+            "required": ["Name", "EndPoint", "CollectionId", "LayerId"]
         },
         "GeoDBResource": {
             "type": "object",
@@ -799,12 +729,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Database",
-                "CollectionId"
-            ]
+            "required": ["Name", "EndPoint", "Database", "CollectionId"]
         },
         "GeoDBFeaturesResource": {
             "type": "object",
@@ -925,10 +850,7 @@
                 },
                 "Type": {
                     "type": "string",
-                    "enum": [
-                        "Time",
-                        "OverwriteTimes"
-                    ]
+                    "enum": ["Time", "OverwriteTimes"]
                 },
                 "LayerId": {
                     "type": "string"
@@ -941,11 +863,7 @@
                 },
                 "Version": {
                     "type": "string",
-                    "enum": [
-                        "1.1.0",
-                        "1.1.1",
-                        "1.3.0"
-                    ]
+                    "enum": ["1.1.0", "1.1.1", "1.3.0"]
                 },
                 "DateTimeInterval": {
                     "type": "object",
@@ -977,10 +895,7 @@
                             "description": "Time delta to be applied to the start and end date"
                         }
                     },
-                    "required": [
-                        "Start",
-                        "End"
-                    ],
+                    "required": ["Start", "End"],
                     "description": "Date time interval to be applied to the collection"
                 },
                 "OverwriteBBox": {
@@ -996,11 +911,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "LayerId"
-            ]
+            "required": ["Name", "EndPoint", "LayerId"]
         },
         "VEDAResource": {
             "type": "object",
@@ -1017,10 +928,7 @@
                 },
                 "Type": {
                     "type": "string",
-                    "enum": [
-                        "cog",
-                        "tiles"
-                    ]
+                    "enum": ["cog", "tiles"]
                 },
                 "CollectionId": {
                     "type": "string"
@@ -1228,12 +1136,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Type",
-                "CollectionId"
-            ],
+            "required": ["Name", "EndPoint", "Type", "CollectionId"],
             "oneOf": [
                 {
                     "title": "COG endpoint",
@@ -1336,7 +1239,15 @@
                 "Dimensions": {
                     "type": "object",
                     "additionalProperties": {
-                        "type": "string"
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "description": "Single URL of the flatstyle applied to all resources of the process."
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ]
                     }
                 },
                 "Query": {
@@ -1359,14 +1270,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Type",
-                "LayerId",
-                "Variable",
-                "Dimensions"
-            ]
+            "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"]
         },
         "RasdamanWCSResource": {
             "type": "object",
@@ -1391,11 +1295,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "EndPoint",
-                "CoverageId"
-            ]
+            "required": ["Name", "EndPoint", "CoverageId"]
         },
         "RawSourceResourceCOG": {
             "type": "object",
@@ -1426,12 +1326,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "Style",
-                "Bbox",
-                "TimeEntries"
-            ]
+            "required": ["Name", "Style", "Bbox", "TimeEntries"]
         },
         "RawSourceResourceGeoJSON": {
             "type": "object",
@@ -1462,12 +1357,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "Style",
-                "Bbox",
-                "TimeEntries"
-            ]
+            "required": ["Name", "Style", "Bbox", "TimeEntries"]
         },
         "RawSourceResourceFlatGeobuf": {
             "type": "object",
@@ -1498,11 +1388,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "Style",
-                "TimeEntries"
-            ]
+            "required": ["Name", "Style", "TimeEntries"]
         },
         "RawSourceResourceVectorTile": {
             "type": "object",
@@ -1543,10 +1429,7 @@
                     }
                 }
             },
-            "required": [
-                "Name",
-                "TimeEntries"
-            ]
+            "required": ["Name", "TimeEntries"]
         },
         "TimeEntriesVectorTile": {
             "type": "array",
@@ -1568,10 +1451,7 @@
                         }
                     }
                 },
-                "required": [
-                    "Time",
-                    "Url"
-                ]
+                "required": ["Time", "Url"]
             }
         },
         "TimeEntries": {
@@ -1595,10 +1475,7 @@
                                     "type": "string"
                                 }
                             },
-                            "required": [
-                                "Identifier",
-                                "File"
-                            ]
+                            "required": ["Identifier", "File"]
                         }
                     },
                     "Attribution": {
@@ -1609,10 +1486,7 @@
                         }
                     }
                 },
-                "required": [
-                    "Time",
-                    "Assets"
-                ]
+                "required": ["Time", "Assets"]
             }
         },
         "Flatstyle": {
@@ -1636,10 +1510,7 @@
                                 "description": "URL of the flatstyle."
                             }
                         },
-                        "required": [
-                            "Identifier",
-                            "Url"
-                        ]
+                        "required": ["Identifier", "Url"]
                     }
                 }
             ]
