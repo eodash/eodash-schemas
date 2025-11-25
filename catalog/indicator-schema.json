@@ -80,9 +80,7 @@
                     "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
                 }
             },
-            "required": [
-                "name"
-            ]
+            "required": ["name"]
         },
         "Process": {
             "type": "object",
@@ -108,11 +106,7 @@
                     "description": "List of endpoints that are used in the process"
                 }
             },
-            "required": [
-                "Name",
-                "JsonForm",
-                "EndPoints"
-            ]
+            "required": ["Name", "JsonForm", "EndPoints"]
         },
         "ProcessEndpoint": {
             "type": "object",
@@ -143,14 +137,7 @@
                 "Method": {
                     "type": "string",
                     "description": "HTTP method of the endpoint",
-                    "enum": [
-                        "GET",
-                        "POST",
-                        "PUT",
-                        "DELETE",
-                        "PATCH",
-                        "OPTIONS"
-                    ]
+                    "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
                 },
                 "Body": {
                     "type": "string",
@@ -161,11 +148,7 @@
                     "description": "Flatstyle definition for a process."
                 }
             },
-            "required": [
-                "Identifier",
-                "Url",
-                "Type"
-            ]
+            "required": ["Identifier", "Url", "Type"]
         },
         "layerDefinition": {
             "type": "object",
@@ -198,11 +181,7 @@
                     "description": "protocol used for accessing the endpoint defined by url"
                 }
             },
-            "required": [
-                "id",
-                "url",
-                "protocol"
-            ]
+            "required": ["id", "url", "protocol"]
         }
     },
     "required": [
