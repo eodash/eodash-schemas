@@ -514,15 +514,7 @@
                 "range": {
                     "type": "array",
                     "items": {
-                        "anyOf": [
-                            {
-                                "type": "string",
-                                "format": "color"
-                            },
-                            {
-                                "type": "string"
-                            }
-                        ]
+                        "type": "string"
                     },
                     "description": "List of hex colors strings which will be interpolated or used for categories"
                 },
