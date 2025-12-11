@@ -399,13 +399,10 @@
                         { "$ref": "#/$defs/SentinelHubWMSResource" },
                         { "$ref": "#/$defs/GeoDBResource" },
                         { "$ref": "#/$defs/GeoDBFeaturesResource" },
-                        { "$ref": "#/$defs/GeoDBVectorTileResource" },
                         { "$ref": "#/$defs/WMSResource" },
                         { "$ref": "#/$defs/VEDAResource" },
                         { "$ref": "#/$defs/XCubeServerResource" },
-                        {
-                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
-                        },
+                        { "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource" },
                         { "$ref": "#/$defs/RawSourceResourceCOG" },
                         { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
                         { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" }
@@ -430,9 +427,6 @@
             "anyOf": [
                 {
                     "$ref": "#/$defs/StatisticalAPIService"
-                },
-                {
-                    "$ref": "#/$defs/VEDAStatisticsService"
                 },
                 {
                     "$ref": "#/$defs/EOxHubNotebookService"
@@ -467,22 +461,6 @@
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId", "Script"]
-        },
-        "VEDAStatisticsService": {
-            "type": "object",
-            "title": "VEDA Statistics Service",
-            "properties": {
-                "Name": {
-                    "type": "string",
-                    "const": "VEDA Statistics"
-                },
-                "EndPoint": {
-                    "type": "string",
-                    "default": "https://services.sentinel-hub.com/api/v1/statistics",
-                    "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
-                }
-            },
-            "required": ["Name", "EndPoint"]
         },
         "EOxHubNotebookService": {
             "type": "object",
@@ -779,66 +757,6 @@
                 "TimeParameter",
                 "CollectionId",
                 "Query"
-            ]
-        },
-        "GeoDBVectorTileResource": {
-            "title": "GeoDB Vector Tiles",
-            "type": "object",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "GeoDB Vector Tiles"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "DBEndpoint": {
-                    "type": "string"
-                },
-                "Source": {
-                    "type": "string"
-                },
-                "Instance": {
-                    "type": "string"
-                },
-                "Database": {
-                    "type": "string"
-                },
-                "CollectionId": {
-                    "type": "string"
-                },
-                "TimeKey": {
-                    "type": "string"
-                },
-                "MatchKey": {
-                    "type": "string"
-                },
-                "Parameters": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "Attribution": {
-                    "type": "string",
-                    "media": {
-                        "type": "html"
-                    }
-                }
-            },
-            "required": [
-                "Name",
-                "EndPoint",
-                "DBEndpoint",
-                "Source",
-                "Instance",
-                "Database",
-                "CollectionId",
-                "TimeKey",
-                "MatchKey",
-                "Parameters"
             ]
         },
         "WMSResource": {
@@ -1330,6 +1248,11 @@
                     "media": {
                         "type": "html"
                     }
+                },
+                "MergeAssets": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If assets of the same type are merged into one layer"
                 }
             },
             "required": ["Name", "Style", "Bbox", "TimeEntries"]
@@ -1361,6 +1284,11 @@
                     "media": {
                         "type": "html"
                     }
+                },
+                "MergeAssets": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If assets of the same type are merged into one layer"
                 }
             },
             "required": ["Name", "Style", "Bbox", "TimeEntries"]
@@ -1392,6 +1320,11 @@
                     "media": {
                         "type": "html"
                     }
+                },
+                "MergeAssets": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If assets of the same type are merged into one layer"
                 }
             },
             "required": ["Name", "Style", "TimeEntries"]
