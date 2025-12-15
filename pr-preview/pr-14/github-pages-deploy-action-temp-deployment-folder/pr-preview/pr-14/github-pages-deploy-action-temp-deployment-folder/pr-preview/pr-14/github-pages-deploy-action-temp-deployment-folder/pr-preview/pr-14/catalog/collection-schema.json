@@ -12,13 +12,13 @@
             "type": "object",
             "properties": {
                 "Resources": {
-                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/$defs/Resources"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Resources"
                 },
                 "Locations": {
-                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/$defs/Locations"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Locations"
                 },
                 "Subcollections": {
-                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/$defs/Subcollections"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Subcollections"
                 }
             },
             "required": ["Resources"]
