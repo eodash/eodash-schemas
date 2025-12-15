@@ -1,0 +1,27 @@
+# Simple workflow for deploying static content to GitHub Pages
+name: Deploy static content to Pages
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pages: write
+      pull-requests: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: ./
+          branch: gh-pages
+          clean-exclude: pr-preview
+          force: false
