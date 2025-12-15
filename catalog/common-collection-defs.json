@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json",
+    "$id": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json",
     "title": "Common properties and definitions of the collection object",
     "format": "categories",
     "basicCategoryTitle": "General",
