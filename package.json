@@ -1,12 +1,14 @@
 {
+  "type": "module",
   "name": "json-schema-tools",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "validate:schemas": "ajv compile -s 'schemas/**/*.json'",
-    "check": "npm run validate:schemas && echo '✅ All JSON schemas are valid!'"
+    "build:schemas": "node build-schemas.js"
   },
   "devDependencies": {
-    "ajv-cli": "^5.0.0"
+    "@apidevtools/json-schema-ref-parser": "^15.1.3"
+  },
+  "dependencies": {
   }
 }
