@@ -17,14 +17,8 @@
                 "Locations": {
                     "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Locations"
                 },
-                "Legend": {
-                    "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Legend"
-                },
                 "Subcollections": {
                     "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Subcollections"
-                },
-                "Colorlegend": {
-                    "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Colorlegend"
                 }
             },
             "required": ["Resources"]

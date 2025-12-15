@@ -132,6 +132,12 @@
         },
         "MapProjection": {
             "$ref": "#/$defs/MapProjection"
+        },
+        "Colorlegend": {
+            "$ref": "#/$defs/Colorlegend"
+        },
+        "Legend": {
+            "$ref": "#/$defs/Legend"
         }
     },
     "required": ["Name", "Title", "Description"],
@@ -439,11 +445,19 @@
             ]
         },
         "Locations": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/Location"
-            },
-            "description": "List of <b>locations</b> of the collection"
+            "anyOf": [
+                { "type": "array",
+                    "items": {
+                        "$ref": "#/$defs/Location"
+                    },
+                    "description": "List of <b>locations</b> of the collection"
+                },
+                {
+                    "type": "boolean",
+                    "description": "If set to 'true', the collection is handled as geodb locations with a chart and map"
+                }
+            ]
+            
         },
         "defaultLayerParameters": {
             "type": "object",
