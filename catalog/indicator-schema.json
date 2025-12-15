@@ -1,392 +1,41 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://eodash.github.io/eodash-schemas/catalog/indicator-schema.json",
-    "type": "object",
+    "title": "Indicator schema",
     "format": "categories",
-    "properties": {
-        "Name": {
-            "type": "string",
-            "description": "Identifier used for the indicator, should not match any other identifier of an indicator used in the same catalog."
+    "basicCategoryTitle": "General",
+    "allOf": [
+        {
+            "$ref": "https://eodash.github.io/eodash-schemas/catalog/collection-schema.json"
         },
-        "Title": {
-            "type": "string",
-            "description": "Title used to describe the indicator"
-        },
-        "Description": {
-            "type": "string",
-            "format": "markdown",
-            "description": "Can be either a text string (allowing markdown) or relative path (which root is taken from the <b> assets_endpoint </b> configured for the catalog) to a markdown file (with .md extension)"
-        },
-        "Collections": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "List of collections that will be part of the indicator, have to match file names of collections configured in the <b>collections</b> folder (without the extension)"
-        },
-        "Disable": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "Optional list of collections (as defined in Collections) which should load as initially disabled in the dashboard layer control"
-        },
-        "BaseLayers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/auxiliaryLayerDefinition"
-            },
-            "description": "Optional overwrite of default base layer definition list"
-        },
-        "OverlayLayers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/auxiliaryLayerDefinition"
-            },
-            "description": "Optional overwrite of default overlay layer definition list"
-        },
-        "CollectionGroup": {
-            "type": "string",
-            "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
-        },
-        "Process": {
-            "$ref": "#/$defs/Process",
-            "description": "Configuration of the process of the collection"
-        },
-        "MapProjection": {
-            "$ref": "#/$defs/Projection",
-            "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
-        }
-    },
-    "$defs": {
-        "Projection": {
+        {
             "type": "object",
             "properties": {
-                "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
-                },
-                "def": {
-                    "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
-                },
-                "extent": {
+                "Disable": {
                     "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
-                }
-            },
-            "required": ["name"]
-        },
-        "Attribution": {
-            "type": "string",
-            "description": "recommended: Text to be shown as attribution information for the layer, can include HTML elements",
-            "media": {
-                "type": "html"
-            }
-        },
-        "Process": {
-            "type": "object",
-            "properties": {
-                "Name": {
-                    "type": "string",
-                    "description": "Name of the process"
-                },
-                "JsonForm": {
-                    "type": "string",
-                    "description": "URL to the JSONform of the process"
-                },
-                "VegaDefinition": {
-                    "type": "string",
-                    "description": "URL to the Vega definition of the process"
-                },
-                "EndPoints": {
-                    "type": "array",
-                    "minItems": 1,
                     "items": {
-                        "$ref": "#/$defs/ProcessEndpoint"
-                    },
-                    "description": "List of endpoints that are used in the process"
-                }
-            },
-            "required": ["Name", "JsonForm", "EndPoints"]
-        },
-        "ProcessEndpoint": {
-            "type": "object",
-            "properties": {
-                "Identifier": {
-                    "type": "string",
-                    "description": "Identifier of the endpoint"
-                },
-                "Url": {
-                    "type": "string",
-                    "description": "Processing endpoint"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": [
-                        "application/geo+json",
-                        "application/json",
-                        "text/csv",
-                        "image/png",
-                        "image/tiff"
-                    ],
-                    "description": "MIME type of the returned data"
-                },
-                "EndPoint": {
-                    "type": "string",
-                    "description": "The type of custom endpoint e.g `eoxhub_workspaces`, `sentinelhub`, `veda` ..."
-                },
-                "Method": {
-                    "type": "string",
-                    "description": "HTTP method of the endpoint",
-                    "enum": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
-                },
-                "Body": {
-                    "type": "string",
-                    "description": "URL to the body of the endpoint"
-                },
-                "Flatstyle": {
-                    "$ref": "#/$defs/Flatstyle",
-                    "description": "Flatstyle definition for a process."
-                }
-            },
-            "required": ["Identifier", "Url", "Type"]
-        },
-        "Dimensions": {
-            "description": "key/value pairs of parameters to add to the WMS request",
-            "type": "object",
-            "additionalProperties": {
-                "anyOf": [
-                    {
                         "type": "string"
                     },
-                    {
-                        "type": "number"
-                    }
-                ]
-            }
-        },
-        "XYZLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "XYZ layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "xyz"
-                        },
-                        "media_type": {
-                            "type": "string",
-                            "description": "media type of resource, for example image/png"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "WMSLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "WMS Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "wms"
-                        },
-                        "layers": {
-                            "description": "comma separated names of layers to fetch",
-                            "type": "string"
-                        },
-                        "dimensions": {
-                            "$ref": "#/$defs/Dimensions"
-                        },
-                        "version": {
-                            "description": "WMS version",
-                            "type": "string"
-                        },
-                        "styles": {
-                            "description": "comma separated WMS styles",
-                            "type": "string"
-                        },
-                        "tilesize": {
-                            "description": "WMS Tile size to request",
-                            "type": "number"
-                        }
-                    },
-                    "required": ["protocol", "layers"]
-                }
-            ]
-        },
-        "WMTSLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "WMTS Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "wmts"
-                        },
-                        "layer": {
-                            "description": "layer to fetch",
-                            "type": "string"
-                        },
-                        "dimensions": { "$ref": "#/$defs/Dimensions" }
-                    },
-                    "required": ["protocol", "layer"]
-                }
-            ]
-        },
-        "VectorTileLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "Vector Tile Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "vector-tile"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        },
-                        "idProperty": {
-                            "type": "string",
-                            "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                        },
-                        "layers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "description": "layer name from the vector tile to include"
-                            },
-                            "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawCOGLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "COG Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "COG Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawFlatGeobufLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "FlatGeobuf Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "FlatGeobuf Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawGeoJSONLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "GeoJSON Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "GeoJSON Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "defaultLayerParameters": {
-            "type": "object",
-            "properties": {
-                "Attribution": {
-                    "$ref": "#/$defs/Attribution",
-                    "description": "Attribution information about a layer"
+                    "description": "Optional list of collections (as defined in Collections) which should load as initially disabled in the dashboard layer control"
                 },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+                "Hidden": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Optional list of collections (as defined in Collections) which should be hidden from the layer control"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "DataProjection": {
-                    "$ref": "#/$defs/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/$defs/Colorlegend"
+                "Collections": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of collections that will be part of the indicator, have to match file names of collections configured in the <b>collections</b> folder (without the extension)"
                 }
             },
-            "required": ["id", "url"]
-        },
-        "auxiliaryLayerDefinition": {
-            "anyOf": [
-                { "$ref": "#/$defs/XYZLayer" },
-                { "$ref": "#/$defs/WMSLayer" },
-                { "$ref": "#/$defs/WMTSLayer" },
-                { "$ref": "#/$defs/VectorTileLayer" },
-                { "$ref": "#/$defs/RawCOGLayer" },
-                { "$ref": "#/$defs/RawGeoJSONLayer" },
-                { "$ref": "#/$defs/RawFlatGeobufLayer" }
+            "required": [
+                "Collections"
             ]
         }
-    },
-    "required": ["Name", "Title", "Description", "Collections"]
+    ]
 }
