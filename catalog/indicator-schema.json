@@ -1,5 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://eodash.github.io/eodash-schemas/catalog/indicator-schema.json",
     "type": "object",
     "format": "categories",
     "properties": {
@@ -10,10 +11,6 @@
         "Title": {
             "type": "string",
             "description": "Title used to describe the indicator"
-        },
-        "EodashIdentifier": {
-            "type": "string",
-            "description": "Identifier that will be used within the eodash client"
         },
         "Description": {
             "type": "string",
@@ -37,14 +34,14 @@
         "BaseLayers": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/layerDefinition"
+                "$ref": "#/$defs/auxiliaryLayerDefinition"
             },
             "description": "Optional overwrite of default base layer definition list"
         },
         "OverlayLayers": {
             "type": "array",
             "items": {
-                "$ref": "#/$defs/layerDefinition"
+                "$ref": "#/$defs/auxiliaryLayerDefinition"
             },
             "description": "Optional overwrite of default overlay layer definition list"
         },
@@ -81,6 +78,13 @@
                 }
             },
             "required": ["name"]
+        },
+        "Attribution": {
+            "type": "string",
+            "description": "recommended: Text to be shown as attribution information for the layer, can include HTML elements",
+            "media": {
+                "type": "html"
+            }
         },
         "Process": {
             "type": "object",
@@ -150,12 +154,205 @@
             },
             "required": ["Identifier", "Url", "Type"]
         },
-        "layerDefinition": {
+        "Dimensions": {
+            "description": "key/value pairs of parameters to add to the WMS request",
+            "type": "object",
+            "additionalProperties": {
+                "anyOf": [
+                    {
+                        "type": "string"
+                    },
+                    {
+                        "type": "number"
+                    }
+                ]
+            }
+        },
+        "XYZLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "XYZ layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "xyz"
+                        },
+                        "media_type": {
+                            "type": "string",
+                            "description": "media type of resource, for example image/png"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
+        "WMSLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "WMS Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "wms"
+                        },
+                        "layers": {
+                            "description": "comma separated names of layers to fetch",
+                            "type": "string"
+                        },
+                        "dimensions": {
+                            "$ref": "#/$defs/Dimensions"
+                        },
+                        "version": {
+                            "description": "WMS version",
+                            "type": "string"
+                        },
+                        "styles": {
+                            "description": "comma separated WMS styles",
+                            "type": "string"
+                        },
+                        "tilesize": {
+                            "description": "WMS Tile size to request",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["protocol", "layers"]
+                }
+            ]
+        },
+        "WMTSLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "WMTS Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "wmts"
+                        },
+                        "layer": {
+                            "description": "layer to fetch",
+                            "type": "string"
+                        },
+                        "dimensions": { "$ref": "#/$defs/Dimensions" }
+                    },
+                    "required": ["protocol", "layer"]
+                }
+            ]
+        },
+        "VectorTileLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "Vector Tile Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "vector-tile"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        },
+                        "idProperty": {
+                            "type": "string",
+                            "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        },
+                        "layers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "description": "layer name from the vector tile to include"
+                            },
+                            "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
+        "RawCOGLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "COG Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "COG Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
+        "RawFlatGeobufLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "FlatGeobuf Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "FlatGeobuf Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
+        "RawGeoJSONLayer": {
+            "allOf": [
+                { "$ref": "#/$defs/defaultLayerParameters" },
+                {
+                    "type": "object",
+                    "title": "GeoJSON Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "GeoJSON Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
+        "defaultLayerParameters": {
             "type": "object",
             "properties": {
+                "Attribution": {
+                    "$ref": "#/$defs/Attribution",
+                    "description": "Attribution information about a layer"
+                },
                 "id": {
                     "type": "string",
-                    "description": " Unique identifier on catalog level"
+                    "description": "Unique identifier of layer"
                 },
                 "name": {
                     "type": "string",
@@ -163,32 +360,33 @@
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL of service endpoint of data"
-                },
-                "Attribution": {
-                    "type": "string",
-                    "description": "recommended: Text to be shown as attribution information for the layer, can include HTML elements",
-                    "media": {
-                        "type": "html"
-                    }
+                    "description": "URL of service endpoint of data or URL to a data file"
                 },
                 "visible": {
                     "type": "boolean",
                     "description": "defaults to true: for baselayers only one should be set to true, rest to false"
                 },
-                "protocol": {
-                    "type": "string",
-                    "description": "protocol used for accessing the endpoint defined by url"
+                "DataProjection": {
+                    "$ref": "#/$defs/Projection",
+                    "description": "Projection in which the data is stored"
+                },
+                "Colorlegend": {
+                    "$ref": "#/$defs/Colorlegend"
                 }
             },
-            "required": ["id", "url", "protocol"]
+            "required": ["id", "url"]
+        },
+        "auxiliaryLayerDefinition": {
+            "anyOf": [
+                { "$ref": "#/$defs/XYZLayer" },
+                { "$ref": "#/$defs/WMSLayer" },
+                { "$ref": "#/$defs/WMTSLayer" },
+                { "$ref": "#/$defs/VectorTileLayer" },
+                { "$ref": "#/$defs/RawCOGLayer" },
+                { "$ref": "#/$defs/RawGeoJSONLayer" },
+                { "$ref": "#/$defs/RawFlatGeobufLayer" }
+            ]
         }
     },
-    "required": [
-        "Name",
-        "Title",
-        "EodashIdentifier",
-        "Description",
-        "Collections"
-    ]
+    "required": ["Name", "Title", "Description", "Collections"]
 }
