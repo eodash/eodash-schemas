@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://eodash.github.io/eodash-schemas/catalog/collection-schema.json",
+    "title": "Collection schema",
+    "format": "categories",
+    "basicCategoryTitle": "General",
+    "allOf": [
+        {
+            "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json"
+        },
+        {
+            "type": "object",
+            "properties": {
+                "Resources": {
+                    "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Resources"
+                },
+                "Locations": {
+                    "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Locations"
+                },
+                "Subcollections": {
+                    "$ref": "https://eodash.github.io/eodash-schemas/catalog/common-collection-defs.json#/$defs/Subcollections"
+                }
+            },
+            "required": ["Resources"]
+        }
+    ]
+}
