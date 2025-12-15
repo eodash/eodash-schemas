@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/auxiliary-layers-schema.json",
+    "$id": "https://eodash.github.io/eodash-schemas/catalog/auxiliary-layers-schema.json",
     "title": "Auxiliary layers schema",
     "format": "categories",
     "basicCategoryTitle": "General",
@@ -9,7 +9,7 @@
         "layers": {
             "type": "array",
             "items": {
-                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
+                "$ref": "./common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
             },
             "description": "auxiliary layer definition list"
         }

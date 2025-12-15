@@ -38,7 +38,7 @@
             "description": "List of tag strings that represent the collection"
         },
         "DataSource": {
-            "$ref": "#/definitions/DataSource",
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/DataSource",
             "description": "defining sources of data"
         },
         "Agency": {
@@ -57,7 +57,7 @@
                 {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/License"
+                        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/License"
                     },
                     "description": "A list of custom License objects"
                 }
@@ -67,19 +67,19 @@
         "Provider": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Provider"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Provider"
             },
             "description": "List of <b>providers</b> of the collection"
         },
         "Stories": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Story"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Story"
             },
             "description": "List of stories where the collection is used."
         },
         "Citation": {
-            "$ref": "#/definitions/Citation",
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Citation",
             "description": "Citation object containing information on citation aspects of data"
         },
         "Image": {
@@ -89,14 +89,14 @@
         "Services": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Service"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Service"
             },
             "description": "List of Service objects provided by the collection (typically will only be one service)"
         },
         "References": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Reference"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Reference"
             },
             "description": "List of Reference objects that further describe the collection"
         },
@@ -105,7 +105,7 @@
             "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
         },
         "Process": {
-            "$ref": "#/definitions/Process",
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Process",
             "description": "Configuration of the process of the collection"
         },
         "Subtitle": {
@@ -119,25 +119,25 @@
         "BaseLayers": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/auxiliaryLayerDefinition"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
             },
             "description": "Optional overwrite of default base layer definition list"
         },
         "OverlayLayers": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/auxiliaryLayerDefinition"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
             },
             "description": "Optional overwrite of default overlay layer definition list"
         },
         "MapProjection": {
-            "$ref": "#/definitions/MapProjection"
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/MapProjection"
         },
         "Colorlegend": {
-            "$ref": "#/definitions/Colorlegend"
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Colorlegend"
         },
         "Legend": {
-            "$ref": "#/definitions/Legend"
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Legend"
         }
     },
     "required": ["Name", "Title", "Description"],
@@ -145,7 +145,7 @@
         "Resources": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Resource"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Resource"
             },
             "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
         },
@@ -156,7 +156,7 @@
         "Subcollections": {
             "type": "array",
             "items": {
-                "$ref": "#/definitions/Subcollection"
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Subcollection"
             },
             "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, thes Resources of the linked subcollections are used."
         },
@@ -206,7 +206,7 @@
                     "type": "array",
                     "minItems": 1,
                     "items": {
-                        "$ref": "#/definitions/ProcessEndpoint"
+                        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/ProcessEndpoint"
                     },
                     "description": "List of endpoints that are used in the process"
                 }
@@ -249,7 +249,7 @@
                     "description": "URL to the body of the endpoint"
                 },
                 "Flatstyle": {
-                    "$ref": "#/definitions/Flatstyle",
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Flatstyle",
                     "description": "Flatstyle definition for a process."
                 }
             },
@@ -271,7 +271,7 @@
         },
         "XYZLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "XYZ layer",
@@ -292,7 +292,7 @@
         },
         "WMSLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "WMS Layer",
@@ -307,7 +307,7 @@
                             "type": "string"
                         },
                         "dimensions": {
-                            "$ref": "#/definitions/Dimensions"
+                            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Dimensions"
                         },
                         "version": {
                             "description": "WMS version",
@@ -328,7 +328,7 @@
         },
         "WMTSLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "WMTS Layer",
@@ -342,7 +342,7 @@
                             "description": "layer to fetch",
                             "type": "string"
                         },
-                        "dimensions": { "$ref": "#/definitions/Dimensions" }
+                        "dimensions": { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Dimensions" }
                     },
                     "required": ["protocol", "layer"]
                 }
@@ -350,7 +350,7 @@
         },
         "VectorTileLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "Vector Tile Layer",
@@ -383,7 +383,7 @@
         },
         "RawCOGLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "COG Layer",
@@ -404,7 +404,7 @@
         },
         "RawFlatGeobufLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "FlatGeobuf Layer",
@@ -425,7 +425,7 @@
         },
         "RawGeoJSONLayer": {
             "allOf": [
-                { "$ref": "#/definitions/defaultLayerParameters" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/defaultLayerParameters" },
                 {
                     "type": "object",
                     "title": "GeoJSON Layer",
@@ -448,7 +448,7 @@
             "anyOf": [
                 { "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Location"
+                        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Location"
                     },
                     "description": "List of <b>locations</b> of the collection"
                 },
@@ -463,7 +463,7 @@
             "type": "object",
             "properties": {
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 },
                 "id": {
                     "type": "string",
@@ -482,24 +482,24 @@
                     "description": "defaults to true: for baselayers only one should be set to true, rest to false"
                 },
                 "DataProjection": {
-                    "$ref": "#/definitions/Projection",
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
                     "description": "Projection in which the data is stored"
                 },
                 "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Colorlegend"
                 }
             },
             "required": ["id", "url"]
         },
         "auxiliaryLayerDefinition": {
             "anyOf": [
-                { "$ref": "#/definitions/XYZLayer" },
-                { "$ref": "#/definitions/WMSLayer" },
-                { "$ref": "#/definitions/WMTSLayer" },
-                { "$ref": "#/definitions/VectorTileLayer" },
-                { "$ref": "#/definitions/RawCOGLayer" },
-                { "$ref": "#/definitions/RawGeoJSONLayer" },
-                { "$ref": "#/definitions/RawFlatGeobufLayer" }
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/XYZLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/WMSLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/WMTSLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/VectorTileLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawCOGLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawGeoJSONLayer" },
+                { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawFlatGeobufLayer" }
             ]
         },
         "License": {
@@ -613,10 +613,10 @@
                     }
                 },
                 "Point": {
-                    "$ref": "#/definitions/Point"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Point"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 }
             }
         },
@@ -639,24 +639,24 @@
                     }
                 },
                 "Point": {
-                    "$ref": "#/definitions/Point"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Point"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 }
             }
         },
         "MapProjection": {
-            "$ref": "#/definitions/Projection",
+            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
             "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
         },
         "Service": {
             "anyOf": [
                 {
-                    "$ref": "#/definitions/StatisticalAPIService"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/StatisticalAPIService"
                 },
                 {
-                    "$ref": "#/definitions/EOxHubNotebookService"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/EOxHubNotebookService"
                 }
             ],
             "description": "Service provided by the collection"
@@ -780,7 +780,7 @@
             "type": "object",
             "properties": {
                 "Spaceborne": {
-                    "$ref": "#/definitions/Spaceborne",
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Spaceborne",
                     "description": "Information if the source is spaceborn."
                 },
                 "InSitu": {
@@ -863,7 +863,7 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"]
@@ -888,7 +888,7 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "CollectionId", "LayerId"]
@@ -957,13 +957,13 @@
                     "description": "Date time interval to be applied to the collection"
                 },
                 "OverwriteBBox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 },
                 "TileSize": {
                     "type": "number"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "LayerId"]
@@ -1161,7 +1161,7 @@
                     "type": "string"
                 },
                 "ColormapName": {
-                    "$ref": "#/definitions/VedaColormapName"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/VedaColormapName"
                 },
                 "Rescale": {
                     "type": "array",
@@ -1188,7 +1188,7 @@
                     "type": "number"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId"],
@@ -1252,7 +1252,7 @@
                     "maxItems": 2
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": [
@@ -1288,7 +1288,7 @@
                     "type": "string"
                 },
                 "Dimensions": {
-                    "$ref": "#/definitions/Dimensions"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Dimensions"
                 },
                 "Query": {
                     "type": "object",
@@ -1304,7 +1304,7 @@
                     }
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"]
@@ -1326,7 +1326,7 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "EndPoint", "CoverageId"]
@@ -1345,16 +1345,16 @@
                     "type": "string"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 },
                 "ParquetSource": {
                     "type": "string"
                 },
                 "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 },
                 "MergeAssets": {
                     "type": "boolean",
@@ -1378,16 +1378,16 @@
                     "type": "string"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 },
                 "ParquetSource": {
                     "type": "string"
                 },
                 "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 },
                 "MergeAssets": {
                     "type": "boolean",
@@ -1411,16 +1411,16 @@
                     "type": "string"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 },
                 "ParquetSource": {
                     "type": "string"
                 },
                 "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 },
                 "MergeAssets": {
                     "type": "boolean",
@@ -1457,13 +1457,13 @@
                     "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
                 },
                 "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 },
                 "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntriesVectorTile"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/TimeEntriesVectorTile"
                 },
                 "Attribution": {
-                    "$ref": "#/definitions/Attribution"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
             "required": ["Name", "TimeEntries"]
@@ -1481,7 +1481,7 @@
                         "type": "string"
                     },
                     "Attribution": {
-                        "$ref": "#/definitions/Attribution"
+                        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                     }
                 },
                 "required": ["Time", "Url"]
@@ -1512,7 +1512,7 @@
                         }
                     },
                     "Attribution": {
-                        "$ref": "#/definitions/Attribution"
+                        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                     }
                 },
                 "required": ["Time", "Assets"]
@@ -1641,7 +1641,7 @@
                     "description": "URL to the EOxStyle definition"
                 },
                 "OverwriteBBox": {
-                    "$ref": "#/definitions/Bbox"
+                    "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Bbox"
                 }
             },
             "required": [
@@ -1683,27 +1683,27 @@
             "allOf": [
                 {
                     "anyOf": [
-                        { "$ref": "#/definitions/SentinelHubResource" },
-                        { "$ref": "#/definitions/SentinelHubWMSResource" },
-                        { "$ref": "#/definitions/WMSResource" },
-                        { "$ref": "#/definitions/VEDAResource" },
-                        { "$ref": "#/definitions/XCubeServerResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/SentinelHubResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/SentinelHubWMSResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/WMSResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/VEDAResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/XCubeServerResource" },
                         {
-                            "$ref": "#/definitions/CopernicusMarineDataStoreWMTSResource"
+                            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/CopernicusMarineDataStoreWMTSResource"
                         },
-                        { "$ref": "#/definitions/RawSourceResourceCOG" },
-                        { "$ref": "#/definitions/RawSourceResourceGeoJSON" },
-                        { "$ref": "#/definitions/RawSourceResourceFlatGeobuf" },
-                        { "$ref": "#/definitions/RawSourceResourceVectorTile" },
-                        { "$ref": "#/definitions/GeoDBResource" },
-                        { "$ref": "#/definitions/GeoDBFeaturesResource" }
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawSourceResourceCOG" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawSourceResourceGeoJSON" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawSourceResourceFlatGeobuf" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/RawSourceResourceVectorTile" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/GeoDBResource" },
+                        { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/GeoDBFeaturesResource" }
                     ]
                 },
                 {
                     "type": "object",
                     "properties": {
                         "DataProjection": {
-                            "$ref": "#/definitions/Projection",
+                            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
                             "description": "Projection in which the data is stored"
                         }
                     }
