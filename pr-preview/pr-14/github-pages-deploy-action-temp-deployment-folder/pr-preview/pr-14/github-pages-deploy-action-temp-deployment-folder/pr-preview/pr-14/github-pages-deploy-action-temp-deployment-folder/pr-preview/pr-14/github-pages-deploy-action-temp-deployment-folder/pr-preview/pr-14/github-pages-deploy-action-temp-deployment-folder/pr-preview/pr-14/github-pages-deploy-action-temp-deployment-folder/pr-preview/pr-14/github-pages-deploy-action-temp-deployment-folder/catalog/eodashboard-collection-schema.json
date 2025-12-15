@@ -1,7 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json",
-    "title": "Common properties and definitions of the collection object",
+    "title": "Collection",
     "format": "categories",
     "basicCategoryTitle": "General",
     "type": "object",
@@ -13,6 +12,12 @@
             "pattern": "^[a-zA-Z0-9_-]+$",
             "description": "Must be unique to other collections in the catalog. Letters, numbers, hyphens, underscores only."
         },
+        "EodashIdentifier": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9_-]+$",
+            "description": "Identifier that will be used in eodashboard or RACE instance"
+        },
         "Title": {
             "type": "string",
             "minLength": 1,
@@ -22,6 +27,13 @@
             "type": "string",
             "format": "markdown",
             "description": "Description of the collection written as markdown"
+        },
+        "Resources": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Resource"
+            },
+            "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
         },
         "Themes": {
             "type": "array",
@@ -64,6 +76,13 @@
             ],
             "description": "Either a string for the Collection's SPDX License identifier or if none apply a list of custom License objects"
         },
+        "Locations": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Locations"
+            },
+            "description": "List of <b>locations</b> of the collection"
+        },
         "Provider": {
             "type": "array",
             "items": {
@@ -76,7 +95,7 @@
             "items": {
                 "$ref": "#/$defs/Story"
             },
-            "description": "List of stories where the collection is used."
+            "description": "List of <b>stories</b> where the collection is used."
         },
         "Citation": {
             "$ref": "#/$defs/Citation",
@@ -85,6 +104,17 @@
         "Image": {
             "type": "string",
             "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
+        },
+        "Legend": {
+            "type": "string",
+            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
+        },
+        "Subcollections": {
+            "type": "array",
+            "items": {
+                "$ref": "#/$defs/Subcollections"
+            },
+            "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, thes Resources of the linked subcollections are used."
         },
         "Services": {
             "type": "array",
@@ -100,6 +130,10 @@
             },
             "description": "List of Reference objects that further describe the collection"
         },
+        "Colorlegend": {
+            "$ref": "#/$defs/Colorlegend",
+            "description": "Colorlegend object that describes how the colorlegend should be displayed"
+        },
         "CollectionGroup": {
             "type": "string",
             "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
@@ -114,52 +148,17 @@
         },
         "ShortDescription": {
             "type": "string",
-            "description": "Optional shorter description than description. Can not use markdown."
-        },
-        "BaseLayers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/auxiliaryLayerDefinition"
-            },
-            "description": "Optional overwrite of default base layer definition list"
-        },
-        "OverlayLayers": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/auxiliaryLayerDefinition"
-            },
-            "description": "Optional overwrite of default overlay layer definition list"
-        },
-        "MapProjection": {
-            "$ref": "#/$defs/MapProjection"
-        },
-        "Colorlegend": {
-            "$ref": "#/$defs/Colorlegend"
-        },
-        "Legend": {
-            "$ref": "#/$defs/Legend"
+            "description": "Optional short description"
         }
     },
-    "required": ["Name", "Title", "Description"],
+    "required": [
+        "Name",
+        "EodashIdentifier",
+        "Title",
+        "Description",
+        "Resources"
+    ],
     "$defs": {
-        "Resources": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/Resource"
-            },
-            "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
-        },
-        "Legend": {
-            "type": "string",
-            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
-        },
-        "Subcollections": {
-            "type": "array",
-            "items": {
-                "$ref": "#/$defs/Subcollection"
-            },
-            "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, thes Resources of the linked subcollections are used."
-        },
         "Projection": {
             "type": "object",
             "properties": {
@@ -179,13 +178,6 @@
                 }
             },
             "required": ["name"]
-        },
-        "Attribution": {
-            "type": "string",
-            "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-            "media": {
-                "type": "html"
-            }
         },
         "Process": {
             "type": "object",
@@ -254,253 +246,6 @@
                 }
             },
             "required": ["Identifier", "Url", "Type"]
-        },
-        "Dimensions": {
-            "description": "key/value pairs of parameters to add to the WMS request",
-            "type": "object",
-            "additionalProperties": {
-                "anyOf": [
-                    {
-                        "type": "string"
-                    },
-                    {
-                        "type": "number"
-                    }
-                ]
-            }
-        },
-        "XYZLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "XYZ layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "xyz"
-                        },
-                        "media_type": {
-                            "type": "string",
-                            "description": "media type of resource, for example image/png"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "WMSLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "WMS Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "wms"
-                        },
-                        "layers": {
-                            "description": "comma separated names of layers to fetch",
-                            "type": "string"
-                        },
-                        "dimensions": {
-                            "$ref": "#/$defs/Dimensions"
-                        },
-                        "version": {
-                            "description": "WMS version",
-                            "type": "string"
-                        },
-                        "styles": {
-                            "description": "comma separated WMS styles",
-                            "type": "string"
-                        },
-                        "tilesize": {
-                            "description": "WMS Tile size to request",
-                            "type": "number"
-                        }
-                    },
-                    "required": ["protocol", "layers"]
-                }
-            ]
-        },
-        "WMTSLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "WMTS Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "wmts"
-                        },
-                        "layer": {
-                            "description": "layer to fetch",
-                            "type": "string"
-                        },
-                        "dimensions": { "$ref": "#/$defs/Dimensions" }
-                    },
-                    "required": ["protocol", "layer"]
-                }
-            ]
-        },
-        "VectorTileLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "Vector Tile Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "vector-tile"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        },
-                        "idProperty": {
-                            "type": "string",
-                            "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                        },
-                        "layers": {
-                            "type": "array",
-                            "items": {
-                                "type": "string",
-                                "description": "layer name from the vector tile to include"
-                            },
-                            "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawCOGLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "COG Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "COG Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawFlatGeobufLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "FlatGeobuf Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "FlatGeobuf Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "RawGeoJSONLayer": {
-            "allOf": [
-                { "$ref": "#/$defs/defaultLayerParameters" },
-                {
-                    "type": "object",
-                    "title": "GeoJSON Layer",
-                    "properties": {
-                        "protocol": {
-                            "readOnly": true,
-                            "type": "string",
-                            "const": "GeoJSON Source"
-                        },
-                        "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
-                        }
-                    },
-                    "required": ["protocol"]
-                }
-            ]
-        },
-        "Locations": {
-            "anyOf": [
-                { "type": "array",
-                    "items": {
-                        "$ref": "#/$defs/Location"
-                    },
-                    "description": "List of <b>locations</b> of the collection"
-                },
-                {
-                    "type": "boolean",
-                    "description": "If set to 'true', the collection is handled as geodb locations with a chart and map"
-                }
-            ]
-            
-        },
-        "defaultLayerParameters": {
-            "type": "object",
-            "properties": {
-                "Attribution": {
-                    "$ref": "#/$defs/Attribution"
-                },
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "DataProjection": {
-                    "$ref": "#/$defs/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/$defs/Colorlegend"
-                }
-            },
-            "required": ["id", "url"]
-        },
-        "auxiliaryLayerDefinition": {
-            "anyOf": [
-                { "$ref": "#/$defs/XYZLayer" },
-                { "$ref": "#/$defs/WMSLayer" },
-                { "$ref": "#/$defs/WMTSLayer" },
-                { "$ref": "#/$defs/VectorTileLayer" },
-                { "$ref": "#/$defs/RawCOGLayer" },
-                { "$ref": "#/$defs/RawGeoJSONLayer" },
-                { "$ref": "#/$defs/RawFlatGeobufLayer" }
-            ]
         },
         "License": {
             "type": "object",
@@ -591,7 +336,7 @@
             },
             "required": ["Url"]
         },
-        "Location": {
+        "Locations": {
             "type": "object",
             "properties": {
                 "Identifier": {
@@ -620,7 +365,7 @@
                 }
             }
         },
-        "Subcollection": {
+        "Subcollections": {
             "type": "object",
             "properties": {
                 "Identifier": {
@@ -646,6 +391,37 @@
                 }
             }
         },
+        "Resource": {
+            "allOf": [
+                {
+                    "anyOf": [
+                        { "$ref": "#/$defs/SentinelHubResource" },
+                        { "$ref": "#/$defs/SentinelHubWMSResource" },
+                        { "$ref": "#/$defs/GeoDBResource" },
+                        { "$ref": "#/$defs/GeoDBFeaturesResource" },
+                        { "$ref": "#/$defs/GeoDBVectorTileResource" },
+                        { "$ref": "#/$defs/WMSResource" },
+                        { "$ref": "#/$defs/VEDAResource" },
+                        { "$ref": "#/$defs/XCubeServerResource" },
+                        {
+                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
+                        },
+                        { "$ref": "#/$defs/RawSourceResourceCOG" },
+                        { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
+                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" }
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "DataProjection": {
+                            "$ref": "#/$defs/Projection",
+                            "description": "Projection in which the data is stored"
+                        }
+                    }
+                }
+            ]
+        },
         "MapProjection": {
             "$ref": "#/$defs/Projection",
             "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
@@ -654,6 +430,9 @@
             "anyOf": [
                 {
                     "$ref": "#/$defs/StatisticalAPIService"
+                },
+                {
+                    "$ref": "#/$defs/VEDAStatisticsService"
                 },
                 {
                     "$ref": "#/$defs/EOxHubNotebookService"
@@ -688,6 +467,22 @@
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId", "Script"]
+        },
+        "VEDAStatisticsService": {
+            "type": "object",
+            "title": "VEDA Statistics Service",
+            "properties": {
+                "Name": {
+                    "type": "string",
+                    "const": "VEDA Statistics"
+                },
+                "EndPoint": {
+                    "type": "string",
+                    "default": "https://services.sentinel-hub.com/api/v1/statistics",
+                    "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
+                }
+            },
+            "required": ["Name", "EndPoint"]
         },
         "EOxHubNotebookService": {
             "type": "object",
@@ -863,7 +658,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"]
@@ -888,10 +686,160 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "CollectionId", "LayerId"]
+        },
+        "GeoDBResource": {
+            "type": "object",
+            "title": "GeoDB Resource",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "GeoDB"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Database": {
+                    "type": "string"
+                },
+                "CollectionId": {
+                    "type": "string"
+                },
+                "MapTimesCollection": {
+                    "type": "string"
+                },
+                "FeatureCollection": {
+                    "type": "string"
+                },
+                "Style": {
+                    "type": "string"
+                },
+                "AdditionalQueryString": {
+                    "type": "string"
+                },
+                "IdKey": {
+                    "type": "string"
+                },
+                "Attribution": {
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
+                }
+            },
+            "required": ["Name", "EndPoint", "Database", "CollectionId"]
+        },
+        "GeoDBFeaturesResource": {
+            "type": "object",
+            "title": "GeoDB Features Resource",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "GeoDB Features"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "Database": {
+                    "type": "string"
+                },
+                "TimeParameter": {
+                    "type": "string"
+                },
+                "CollectionId": {
+                    "type": "string"
+                },
+                "Query": {
+                    "type": "string"
+                },
+                "Aggregation": {
+                    "type": "string"
+                },
+                "Style": {
+                    "type": "string"
+                },
+                "OverwriteBBox": {
+                    "$ref": "#/$defs/Bbox"
+                }
+            },
+            "required": [
+                "Name",
+                "EndPoint",
+                "Database",
+                "TimeParameter",
+                "CollectionId",
+                "Query"
+            ]
+        },
+        "GeoDBVectorTileResource": {
+            "title": "GeoDB Vector Tiles",
+            "type": "object",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "GeoDB Vector Tiles"
+                },
+                "EndPoint": {
+                    "type": "string"
+                },
+                "DBEndpoint": {
+                    "type": "string"
+                },
+                "Source": {
+                    "type": "string"
+                },
+                "Instance": {
+                    "type": "string"
+                },
+                "Database": {
+                    "type": "string"
+                },
+                "CollectionId": {
+                    "type": "string"
+                },
+                "TimeKey": {
+                    "type": "string"
+                },
+                "MatchKey": {
+                    "type": "string"
+                },
+                "Parameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "Attribution": {
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
+                }
+            },
+            "required": [
+                "Name",
+                "EndPoint",
+                "DBEndpoint",
+                "Source",
+                "Instance",
+                "Database",
+                "CollectionId",
+                "TimeKey",
+                "MatchKey",
+                "Parameters"
+            ]
         },
         "WMSResource": {
             "type": "object",
@@ -963,182 +911,13 @@
                     "type": "number"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "LayerId"]
-        },
-        "VedaColormapName": {
-            "type": "string",
-            "enum": [
-                "accent",
-                "accent_r",
-                "afmhot",
-                "afmhot_r",
-                "autumn",
-                "autumn_r",
-                "binary",
-                "binary_r",
-                "blues",
-                "blues_r",
-                "bone",
-                "bone_r",
-                "brbg",
-                "brbg_r",
-                "brg",
-                "brg_r",
-                "bugn",
-                "bugn_r",
-                "bupu",
-                "bupu_r",
-                "bwr",
-                "bwr_r",
-                "cfastie",
-                "cividis",
-                "cividis_r",
-                "cmrmap",
-                "cmrmap_r",
-                "cool",
-                "cool_r",
-                "coolwarm",
-                "coolwarm_r",
-                "copper",
-                "copper_r",
-                "cubehelix",
-                "cubehelix_r",
-                "dark2",
-                "dark2_r",
-                "flag",
-                "flag_r",
-                "gist_earth",
-                "gist_earth_r",
-                "gist_gray",
-                "gist_gray_r",
-                "gist_heat",
-                "gist_heat_r",
-                "gist_ncar",
-                "gist_ncar_r",
-                "gist_rainbow",
-                "gist_rainbow_r",
-                "gist_stern",
-                "gist_stern_r",
-                "gist_yarg",
-                "gist_yarg_r",
-                "gnbu",
-                "gnbu_r",
-                "gnuplot",
-                "gnuplot2",
-                "gnuplot2_r",
-                "gnuplot_r",
-                "gray",
-                "gray_r",
-                "greens",
-                "greens_r",
-                "greys",
-                "greys_r",
-                "hot",
-                "hot_r",
-                "hsv",
-                "hsv_r",
-                "inferno",
-                "inferno_r",
-                "jet",
-                "jet_r",
-                "magma",
-                "magma_r",
-                "nipy_spectral",
-                "nipy_spectral_r",
-                "ocean",
-                "ocean_r",
-                "oranges",
-                "oranges_r",
-                "orrd",
-                "orrd_r",
-                "paired",
-                "paired_r",
-                "pastel1",
-                "pastel1_r",
-                "pastel2",
-                "pastel2_r",
-                "pink",
-                "pink_r",
-                "piyg",
-                "piyg_r",
-                "plasma",
-                "plasma_r",
-                "prgn",
-                "prgn_r",
-                "prism",
-                "prism_r",
-                "pubu",
-                "pubu_r",
-                "pubugn",
-                "pubugn_r",
-                "puor",
-                "puor_r",
-                "purd",
-                "purd_r",
-                "purples",
-                "purples_r",
-                "rainbow",
-                "rainbow_r",
-                "rdbu",
-                "rdbu_r",
-                "rdgy",
-                "rdgy_r",
-                "rdpu",
-                "rdpu_r",
-                "rdylbu",
-                "rdylbu_r",
-                "rdylgn",
-                "rdylgn_r",
-                "reds",
-                "reds_r",
-                "rplumbo",
-                "schwarzwald",
-                "seismic",
-                "seismic_r",
-                "set1",
-                "set1_r",
-                "set2",
-                "set2_r",
-                "set3",
-                "set3_r",
-                "spectral",
-                "spectral_r",
-                "spring",
-                "spring_r",
-                "summer",
-                "summer_r",
-                "tab10",
-                "tab10_r",
-                "tab20",
-                "tab20_r",
-                "tab20b",
-                "tab20b_r",
-                "tab20c",
-                "tab20c_r",
-                "terrain",
-                "terrain_r",
-                "twilight",
-                "twilight_r",
-                "twilight_shifted",
-                "twilight_shifted_r",
-                "viridis",
-                "viridis_r",
-                "winter",
-                "winter_r",
-                "wistia",
-                "wistia_r",
-                "ylgn",
-                "ylgn_r",
-                "ylgnbu",
-                "ylgnbu_r",
-                "ylorbr",
-                "ylorbr_r",
-                "ylorrd",
-                "ylorrd_r"
-            ]
         },
         "VEDAResource": {
             "type": "object",
@@ -1161,7 +940,176 @@
                     "type": "string"
                 },
                 "ColormapName": {
-                    "$ref": "#/$defs/VedaColormapName"
+                    "type": "string",
+                    "enum": [
+                        "accent",
+                        "accent_r",
+                        "afmhot",
+                        "afmhot_r",
+                        "autumn",
+                        "autumn_r",
+                        "binary",
+                        "binary_r",
+                        "blues",
+                        "blues_r",
+                        "bone",
+                        "bone_r",
+                        "brbg",
+                        "brbg_r",
+                        "brg",
+                        "brg_r",
+                        "bugn",
+                        "bugn_r",
+                        "bupu",
+                        "bupu_r",
+                        "bwr",
+                        "bwr_r",
+                        "cfastie",
+                        "cividis",
+                        "cividis_r",
+                        "cmrmap",
+                        "cmrmap_r",
+                        "cool",
+                        "cool_r",
+                        "coolwarm",
+                        "coolwarm_r",
+                        "copper",
+                        "copper_r",
+                        "cubehelix",
+                        "cubehelix_r",
+                        "dark2",
+                        "dark2_r",
+                        "flag",
+                        "flag_r",
+                        "gist_earth",
+                        "gist_earth_r",
+                        "gist_gray",
+                        "gist_gray_r",
+                        "gist_heat",
+                        "gist_heat_r",
+                        "gist_ncar",
+                        "gist_ncar_r",
+                        "gist_rainbow",
+                        "gist_rainbow_r",
+                        "gist_stern",
+                        "gist_stern_r",
+                        "gist_yarg",
+                        "gist_yarg_r",
+                        "gnbu",
+                        "gnbu_r",
+                        "gnuplot",
+                        "gnuplot2",
+                        "gnuplot2_r",
+                        "gnuplot_r",
+                        "gray",
+                        "gray_r",
+                        "greens",
+                        "greens_r",
+                        "greys",
+                        "greys_r",
+                        "hot",
+                        "hot_r",
+                        "hsv",
+                        "hsv_r",
+                        "inferno",
+                        "inferno_r",
+                        "jet",
+                        "jet_r",
+                        "magma",
+                        "magma_r",
+                        "nipy_spectral",
+                        "nipy_spectral_r",
+                        "ocean",
+                        "ocean_r",
+                        "oranges",
+                        "oranges_r",
+                        "orrd",
+                        "orrd_r",
+                        "paired",
+                        "paired_r",
+                        "pastel1",
+                        "pastel1_r",
+                        "pastel2",
+                        "pastel2_r",
+                        "pink",
+                        "pink_r",
+                        "piyg",
+                        "piyg_r",
+                        "plasma",
+                        "plasma_r",
+                        "prgn",
+                        "prgn_r",
+                        "prism",
+                        "prism_r",
+                        "pubu",
+                        "pubu_r",
+                        "pubugn",
+                        "pubugn_r",
+                        "puor",
+                        "puor_r",
+                        "purd",
+                        "purd_r",
+                        "purples",
+                        "purples_r",
+                        "rainbow",
+                        "rainbow_r",
+                        "rdbu",
+                        "rdbu_r",
+                        "rdgy",
+                        "rdgy_r",
+                        "rdpu",
+                        "rdpu_r",
+                        "rdylbu",
+                        "rdylbu_r",
+                        "rdylgn",
+                        "rdylgn_r",
+                        "reds",
+                        "reds_r",
+                        "rplumbo",
+                        "schwarzwald",
+                        "seismic",
+                        "seismic_r",
+                        "set1",
+                        "set1_r",
+                        "set2",
+                        "set2_r",
+                        "set3",
+                        "set3_r",
+                        "spectral",
+                        "spectral_r",
+                        "spring",
+                        "spring_r",
+                        "summer",
+                        "summer_r",
+                        "tab10",
+                        "tab10_r",
+                        "tab20",
+                        "tab20_r",
+                        "tab20b",
+                        "tab20b_r",
+                        "tab20c",
+                        "tab20c_r",
+                        "terrain",
+                        "terrain_r",
+                        "twilight",
+                        "twilight_r",
+                        "twilight_shifted",
+                        "twilight_shifted_r",
+                        "viridis",
+                        "viridis_r",
+                        "winter",
+                        "winter_r",
+                        "wistia",
+                        "wistia_r",
+                        "ylgn",
+                        "ylgn_r",
+                        "ylgnbu",
+                        "ylgnbu_r",
+                        "ylorbr",
+                        "ylorbr_r",
+                        "ylorrd",
+                        "ylorrd_r"
+                    ]
                 },
                 "Rescale": {
                     "type": "array",
@@ -1188,7 +1136,10 @@
                     "type": "number"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "Type", "CollectionId"],
@@ -1208,9 +1159,10 @@
                         "Assets": {
                             "type": "array",
                             "items": { "type": "string" }
-                        }
+                        },
+                        "ColorFormula": { "type": "string" }
                     },
-                    "required": ["Assets"]
+                    "required": ["Assets", "ColorFormula"]
                 }
             ]
         },
@@ -1252,7 +1204,10 @@
                     "maxItems": 2
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": [
@@ -1288,7 +1243,18 @@
                     "type": "string"
                 },
                 "Dimensions": {
-                    "$ref": "#/$defs/Dimensions"
+                    "type": "object",
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "type": "string",
+                                "description": "Single URL of the flatstyle applied to all resources of the process."
+                            },
+                            {
+                                "type": "number"
+                            }
+                        ]
+                    }
                 },
                 "Query": {
                     "type": "object",
@@ -1304,7 +1270,10 @@
                     }
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"]
@@ -1326,7 +1295,10 @@
                     "type": "string"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "EndPoint", "CoverageId"]
@@ -1354,12 +1326,10 @@
                     "$ref": "#/$defs/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
-                },
-                "MergeAssets": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If assets of the same type are merged into one layer"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "Style", "Bbox", "TimeEntries"]
@@ -1387,12 +1357,10 @@
                     "$ref": "#/$defs/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
-                },
-                "MergeAssets": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If assets of the same type are merged into one layer"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "Style", "Bbox", "TimeEntries"]
@@ -1420,12 +1388,10 @@
                     "$ref": "#/$defs/TimeEntries"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
-                },
-                "MergeAssets": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "If assets of the same type are merged into one layer"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "Style", "TimeEntries"]
@@ -1463,7 +1429,10 @@
                     "$ref": "#/$defs/TimeEntriesVectorTile"
                 },
                 "Attribution": {
-                    "$ref": "#/$defs/Attribution"
+                    "type": "string",
+                    "media": {
+                        "type": "html"
+                    }
                 }
             },
             "required": ["Name", "TimeEntries"]
@@ -1481,7 +1450,11 @@
                         "type": "string"
                     },
                     "Attribution": {
-                        "$ref": "#/$defs/Attribution"
+                        "type": "string",
+                        "format": "xhtml",
+                        "options": {
+                            "wysiwyg": true
+                        }
                     }
                 },
                 "required": ["Time", "Url"]
@@ -1512,146 +1485,15 @@
                         }
                     },
                     "Attribution": {
-                        "$ref": "#/$defs/Attribution"
+                        "type": "string",
+                        "format": "xhtml",
+                        "options": {
+                            "wysiwyg": true
+                        }
                     }
                 },
                 "required": ["Time", "Assets"]
             }
-        },
-        "GeoDBResource": {
-            "type": "object",
-            "title": "GeoDB Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "GeoDB"
-                },
-                "EndPoint": {
-                    "type": "string",
-                    "description": "GeoDB endpoint for the features"
-                },
-                "Database": {
-                    "type": "string",
-                    "description": "GeoDB database for the features"
-                },
-                "CollectionId": {
-                    "type": "string",
-                    "description": "GeoDB Collection for the features"
-                },
-                "MapTimesCollection": {
-                    "type": "string",
-                    "description": "optional GeoDB collection where times for items should be taken from"
-                },
-                "FeatureCollection": {
-                    "type": "string",
-                    "description": "GeoDB Collection for the features"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "URL to the EOxStyle definition"
-                },
-                "AdditionalQueryString": {
-                    "type": "string",
-                    "description": "additional query part of the url, added to the default eodash flavor of geodb collections"
-                },
-                "IdKey": {
-                    "type": "string",
-                    "description": "column name for optionally retrieving unique IDs for Items, default is city"
-                },
-                "Attribution": {
-                    "type": "string",
-                    "media": {
-                        "type": "html"
-                    }
-                },
-                "InputData": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "Identifier": {
-                                "type": "string",
-                                "description": "Value matched against for input_data column from GeoDB table for each row"
-                            },
-                            "Url": {
-                                "type": "string",
-                                "description": "URL of the endpoint"
-                            },
-                            "Type": {
-                                "type": "string",
-                                "enum": ["XYZ", "WMS"]
-                            },
-                            "Layers": {
-                                "type": "string",
-                                "description": "WMS layer name"
-                            },
-                            "SiteMapping": {
-                                "description": "key/value replacements for {site} placeholder in the XYZ URL matched with the aoi_id field from geodb, example NorthAdriaticTSM: spm_anomaly/anomaly-spm-nas",
-                                "type": "object",
-                                "additionalProperties": {
-                                    "type": "string"
-                                }
-                            }
-                        },
-                        "required": ["Identifier", "Url", "Type"]
-                    }
-                }
-            },
-            "required": ["Name", "EndPoint", "Database", "CollectionId"]
-        },
-        "GeoDBFeaturesResource": {
-            "type": "object",
-            "title": "GeoDB Features Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "GeoDB Features"
-                },
-                "EndPoint": {
-                    "type": "string",
-                    "description": "GeoDB endpoint for the features"
-                },
-                "Database": {
-                    "type": "string",
-                    "description": "GeoDB database for the features"
-                },
-                "TimeParameter": {
-                    "type": "string",
-                    "description": "GeoDB column name for the time parameter"
-                },
-                "CollectionId": {
-                    "type": "string",
-                    "description": "GeoDB Collection for the features"
-                },
-                "Query": {
-                    "type": "string",
-                    "description": "query part of the url, can contain {{date_time}} template for filling in the computed datetime"
-                },
-                "Aggregation": {
-                    "type": "string",
-                    "description": "If features are to be aggregated from original source by time unit.",
-                    "enum": ["day", "hour", "month", "year"]
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "URL to the EOxStyle definition"
-                },
-                "OverwriteBBox": {
-                    "$ref": "#/$defs/Bbox"
-                }
-            },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Database",
-                "TimeParameter",
-                "CollectionId",
-                "Query"
-            ]
         },
         "Flatstyle": {
             "anyOf": [
@@ -1675,37 +1517,6 @@
                             }
                         },
                         "required": ["Identifier", "Url"]
-                    }
-                }
-            ]
-        },
-        "Resource": {
-            "allOf": [
-                {
-                    "anyOf": [
-                        { "$ref": "#/$defs/SentinelHubResource" },
-                        { "$ref": "#/$defs/SentinelHubWMSResource" },
-                        { "$ref": "#/$defs/WMSResource" },
-                        { "$ref": "#/$defs/VEDAResource" },
-                        { "$ref": "#/$defs/XCubeServerResource" },
-                        {
-                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
-                        },
-                        { "$ref": "#/$defs/RawSourceResourceCOG" },
-                        { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
-                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
-                        { "$ref": "#/$defs/RawSourceResourceVectorTile" },
-                        { "$ref": "#/$defs/GeoDBResource" },
-                        { "$ref": "#/$defs/GeoDBFeaturesResource" }
-                    ]
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "DataProjection": {
-                            "$ref": "#/$defs/Projection",
-                            "description": "Projection in which the data is stored"
-                        }
                     }
                 }
             ]
