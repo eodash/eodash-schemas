@@ -21,8 +21,7 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Subcollections"
                 }
             },
-            "required": ["Resources"],
-            "additionalProperties": false
+            "required": ["Resources"]
         }
     ]
 }
