@@ -646,37 +646,6 @@
                 }
             }
         },
-        "Resource": {
-            "allOf": [
-                {
-                    "anyOf": [
-                        { "$ref": "#/$defs/SentinelHubResource" },
-                        { "$ref": "#/$defs/SentinelHubWMSResource" },
-                        { "$ref": "#/$defs/WMSResource" },
-                        { "$ref": "#/$defs/VEDAResource" },
-                        { "$ref": "#/$defs/XCubeServerResource" },
-                        {
-                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
-                        },
-                        { "$ref": "#/$defs/RawSourceResourceCOG" },
-                        { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
-                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
-                        { "$ref": "#/$defs/RawSourceResourceVectorTile" },
-                        { "$ref": "#/$defs/GeoDBResource" },
-                        { "$ref": "#/$defs/GeoDBFeaturesResource" }
-                    ]
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "DataProjection": {
-                            "$ref": "#/$defs/Projection",
-                            "description": "Projection in which the data is stored"
-                        }
-                    }
-                }
-            ]
-        },
         "MapProjection": {
             "$ref": "#/$defs/Projection",
             "description": "Projection in which the data is visualized, defaults to projection configured in eodash"
@@ -1706,6 +1675,37 @@
                             }
                         },
                         "required": ["Identifier", "Url"]
+                    }
+                }
+            ]
+        },
+        "Resource": {
+            "allOf": [
+                {
+                    "anyOf": [
+                        { "$ref": "#/$defs/SentinelHubResource" },
+                        { "$ref": "#/$defs/SentinelHubWMSResource" },
+                        { "$ref": "#/$defs/WMSResource" },
+                        { "$ref": "#/$defs/VEDAResource" },
+                        { "$ref": "#/$defs/XCubeServerResource" },
+                        {
+                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
+                        },
+                        { "$ref": "#/$defs/RawSourceResourceCOG" },
+                        { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
+                        { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
+                        { "$ref": "#/$defs/RawSourceResourceVectorTile" },
+                        { "$ref": "#/$defs/GeoDBResource" },
+                        { "$ref": "#/$defs/GeoDBFeaturesResource" }
+                    ]
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "DataProjection": {
+                            "$ref": "#/$defs/Projection",
+                            "description": "Projection in which the data is stored"
+                        }
                     }
                 }
             ]
