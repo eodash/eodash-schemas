@@ -641,7 +641,9 @@
                         { "$ref": "#/$defs/WMSResource" },
                         { "$ref": "#/$defs/VEDAResource" },
                         { "$ref": "#/$defs/XCubeServerResource" },
-                        { "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource" },
+                        {
+                            "$ref": "#/$defs/CopernicusMarineDataStoreWMTSResource"
+                        },
                         { "$ref": "#/$defs/RawSourceResourceCOG" },
                         { "$ref": "#/$defs/RawSourceResourceGeoJSON" },
                         { "$ref": "#/$defs/RawSourceResourceFlatGeobuf" },
@@ -1583,7 +1585,7 @@
                 },
                 "InputData": {
                     "type": "array",
-                    "items":{
+                    "items": {
                         "type": "object",
                         "properties": {
                             "Identifier": {
