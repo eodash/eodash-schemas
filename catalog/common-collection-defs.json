@@ -140,6 +140,7 @@
             "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Legend"
         }
     },
+    "additionalProperties": true,
     "required": ["Name", "Title", "Description"],
     "definitions": {
         "Resources": {
