@@ -140,7 +140,6 @@
             "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Legend"
         }
     },
-    "additionalProperties": true,
     "required": ["Name", "Title", "Description"],
     "definitions": {
         "Resources": {
@@ -867,7 +866,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"]
+            "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "SentinelHubWMSResource": {
             "type": "object",
@@ -892,7 +896,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "EndPoint", "CollectionId", "LayerId"]
+            "required": ["Name", "EndPoint", "CollectionId", "LayerId"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "WMSResource": {
             "type": "object",
@@ -967,7 +976,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "EndPoint", "LayerId"]
+            "required": ["Name", "EndPoint", "LayerId"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "VedaColormapName": {
             "type": "string",
@@ -1213,7 +1227,12 @@
                     },
                     "required": ["Assets"]
                 }
-            ]
+            ],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "XCubeServerResource": {
             "type": "object",
@@ -1263,7 +1282,12 @@
                 "StacEndpoint",
                 "DatacubeId",
                 "Variable"
-            ]
+            ],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "CopernicusMarineDataStoreWMTSResource": {
             "type": "object",
@@ -1308,7 +1332,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"]
+            "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "RasdamanWCSResource": {
             "type": "object",
@@ -1330,7 +1359,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "EndPoint", "CoverageId"]
+            "required": ["Name", "EndPoint", "CoverageId"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "RawSourceResourceCOG": {
             "type": "object",
@@ -1363,7 +1397,12 @@
                     "description": "If assets of the same type are merged into one layer"
                 }
             },
-            "required": ["Name", "Style", "Bbox", "TimeEntries"]
+            "required": ["Name", "Style", "Bbox", "TimeEntries"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "RawSourceResourceGeoJSON": {
             "type": "object",
@@ -1396,7 +1435,12 @@
                     "description": "If assets of the same type are merged into one layer"
                 }
             },
-            "required": ["Name", "Style", "Bbox", "TimeEntries"]
+            "required": ["Name", "Style", "Bbox", "TimeEntries"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "RawSourceResourceFlatGeobuf": {
             "type": "object",
@@ -1429,7 +1473,12 @@
                     "description": "If assets of the same type are merged into one layer"
                 }
             },
-            "required": ["Name", "Style", "TimeEntries"]
+            "required": ["Name", "Style", "TimeEntries"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "RawSourceResourceVectorTile": {
             "type": "object",
@@ -1467,7 +1516,12 @@
                     "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Attribution"
                 }
             },
-            "required": ["Name", "TimeEntries"]
+            "required": ["Name", "TimeEntries"],
+            "additionalProperties": false,
+            "DataProjection": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
+                "description": "Projection in which the data is stored"
+            }
         },
         "TimeEntriesVectorTile": {
             "type": "array",
@@ -1600,7 +1654,8 @@
                     }
                 }
             },
-            "required": ["Name", "EndPoint", "Database", "CollectionId"]
+            "required": ["Name", "EndPoint", "Database", "CollectionId"],
+            "additionalProperties": false
         },
         "GeoDBFeaturesResource": {
             "type": "object",
@@ -1652,7 +1707,8 @@
                 "TimeParameter",
                 "CollectionId",
                 "Query"
-            ]
+            ],
+            "additionalProperties": false
         },
         "Flatstyle": {
             "anyOf": [
@@ -1699,15 +1755,6 @@
                         { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/GeoDBResource" },
                         { "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/GeoDBFeaturesResource" }
                     ]
-                },
-                {
-                    "type": "object",
-                    "properties": {
-                        "DataProjection": {
-                            "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/Projection",
-                            "description": "Projection in which the data is stored"
-                        }
-                    }
                 }
             ]
         }
