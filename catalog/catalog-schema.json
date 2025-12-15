@@ -3,6 +3,7 @@
     "$id": "https://eodash.github.io/eodash-schemas/catalog/catalog-schema.json",
     "type": "object",
     "format": "categories",
+    "basicCategoryTitle": "General",
     "properties": {
         "id": {
             "type": "string",
