@@ -4,9 +4,14 @@
     "title": "Auxiliary layers schema",
     "format": "categories",
     "basicCategoryTitle": "General",
-    "type": "array",
-    "items": {
-        "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
-    },
-    "description": "auxiliary layer definition list"
+    "type": "object",
+    "properties": {
+        "layers": {
+            "type": "array",
+            "items": {
+                "$ref": "https://eodash.github.io/eodash-schemas/pr-preview/pr-14/catalog/common-collection-defs.json#/definitions/auxiliaryLayerDefinition"
+            },
+            "description": "auxiliary layer definition list"
+        }
+    }
 }

@@ -1,0 +1,27 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "additionalProperties": {
+        "type": "object",
+        "properties": {
+            "Url": {
+                "type": "string",
+                "description": "URL of the provider website"
+            },
+            "Description": {
+                "type": "string",
+                "description": "Shorter description about the provider and their role in the dashboard"
+            },
+            "NoR Offering": {
+                "type": "string",
+                "description": "URL to NoR offering of a provider"
+            },
+            "Logo": {
+                "type": "string",
+                "description": "URL to a small logo image"
+            }
+        },
+        "additionalProperties": false,
+        "required": ["Url", "Description"]
+    }
+}
