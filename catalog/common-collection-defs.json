@@ -1400,7 +1400,7 @@
                     "description": "Projection in which the data is stored"
             }
             },
-            "required": ["Name", "Style", "Bbox", "TimeEntries"],
+            "required": ["Name", "Style", "TimeEntries"],
             "additionalProperties": false
             
         },
@@ -1438,7 +1438,7 @@
                     "description": "Projection in which the data is stored"
                 }
             },
-            "required": ["Name", "Style", "Bbox", "TimeEntries"],
+            "required": ["Name", "Style", "TimeEntries"],
             "additionalProperties": false
         },
         "RawSourceResourceFlatGeobuf": {
