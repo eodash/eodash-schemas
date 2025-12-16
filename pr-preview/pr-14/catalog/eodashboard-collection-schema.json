@@ -1721,8 +1721,9 @@
       "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
     },
     "Resources": {
-      "type": "array",
       "maxItems": 1,
+      "type": "array",
+      "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)",
       "items": {
         "anyOf": [
           {
@@ -3179,75 +3180,9 @@
               "CollectionId",
               "Query"
             ]
-          },
-          {
-            "title": "Rasdaman WCS Resource",
-            "properties": {
-              "Attribution": {
-                "type": "string",
-                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                "media": {
-                  "type": "html"
-                }
-              },
-              "DataProjection": {
-                "description": "Projection in which the data is stored",
-                "anyOf": [
-                  {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
-                      },
-                      "def": {
-                        "type": "string",
-                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
-                      },
-                      "extent": {
-                        "type": "array",
-                        "minItems": 4,
-                        "maxItems": 4,
-                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
-                      }
-                    },
-                    "required": [
-                      "name"
-                    ],
-                    "description": "Full proj4js definition of projection with optional extent"
-                  },
-                  {
-                    "type": "string",
-                    "description": "String input in format EPSG:4326"
-                  },
-                  {
-                    "type": "number",
-                    "description": "Numerical input, such as 4326"
-                  }
-                ]
-              },
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "rasdaman"
-              },
-              "EndPoint": {
-                "type": "string"
-              },
-              "CoverageId": {
-                "type": "string"
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "CoverageId"
-            ]
           }
         ]
-      },
-      "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
+      }
     },
     "Locations": {
       "anyOf": [

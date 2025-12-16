@@ -3029,166 +3029,6 @@
             ]
           },
           {
-            "type": "object",
-            "title": "GeoDB Resource",
-            "properties": {
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "GeoDB"
-              },
-              "EndPoint": {
-                "type": "string",
-                "description": "GeoDB endpoint for the features"
-              },
-              "Database": {
-                "type": "string",
-                "description": "GeoDB database for the features"
-              },
-              "CollectionId": {
-                "type": "string",
-                "description": "GeoDB Collection for the features"
-              },
-              "MapTimesCollection": {
-                "type": "string",
-                "description": "optional GeoDB collection where times for items should be taken from"
-              },
-              "FeatureCollection": {
-                "type": "string",
-                "description": "GeoDB Collection for the features"
-              },
-              "Style": {
-                "type": "string",
-                "description": "URL to the EOxStyle definition"
-              },
-              "AdditionalQueryString": {
-                "type": "string",
-                "description": "additional query part of the url, added to the default eodash flavor of geodb collections"
-              },
-              "IdKey": {
-                "type": "string",
-                "description": "column name for optionally retrieving unique IDs for Items, default is city"
-              },
-              "InputData": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "Identifier": {
-                      "type": "string",
-                      "description": "Value matched against for input_data column from GeoDB table for each row"
-                    },
-                    "Url": {
-                      "type": "string",
-                      "description": "URL of the endpoint"
-                    },
-                    "Type": {
-                      "type": "string",
-                      "enum": [
-                        "XYZ",
-                        "WMS"
-                      ]
-                    },
-                    "Layers": {
-                      "type": "string",
-                      "description": "WMS layer name"
-                    },
-                    "SiteMapping": {
-                      "description": "key/value replacements for {site} placeholder in the XYZ URL matched with the aoi_id field from geodb, example NorthAdriaticTSM: spm_anomaly/anomaly-spm-nas",
-                      "type": "object",
-                      "additionalProperties": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "required": [
-                    "Identifier",
-                    "Url",
-                    "Type"
-                  ]
-                }
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Database",
-              "CollectionId"
-            ]
-          },
-          {
-            "type": "object",
-            "title": "GeoDB Features Resource",
-            "properties": {
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "GeoDB Features"
-              },
-              "EndPoint": {
-                "type": "string",
-                "description": "GeoDB endpoint for the features"
-              },
-              "Database": {
-                "type": "string",
-                "description": "GeoDB database for the features"
-              },
-              "TimeParameter": {
-                "type": "string",
-                "description": "GeoDB column name for the time parameter"
-              },
-              "CollectionId": {
-                "type": "string",
-                "description": "GeoDB Collection for the features"
-              },
-              "Query": {
-                "type": "string",
-                "description": "query part of the url, can contain {{date_time}} template for filling in the computed datetime"
-              },
-              "Aggregation": {
-                "type": "string",
-                "description": "If features are to be aggregated from original source by time unit.",
-                "enum": [
-                  "day",
-                  "hour",
-                  "month",
-                  "year"
-                ]
-              },
-              "Style": {
-                "type": "string",
-                "description": "URL to the EOxStyle definition"
-              },
-              "OverwriteBBox": {
-                "anyOf": [
-                  {
-                    "type": "array",
-                    "format": "bounding-box"
-                  },
-                  {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "items": {
-                      "type": "number"
-                    }
-                  }
-                ],
-                "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Database",
-              "TimeParameter",
-              "CollectionId",
-              "Query"
-            ]
-          },
-          {
             "title": "Rasdaman WCS Resource",
             "properties": {
               "Attribution": {
@@ -3251,6 +3091,79 @@
               "Name",
               "EndPoint",
               "CoverageId"
+            ]
+          },
+          {
+            "type": "object",
+            "title": "GeoDB Features Resource",
+            "properties": {
+              "Name": {
+                "title": "Resource Identifier",
+                "readOnly": true,
+                "type": "string",
+                "const": "Collection-only"
+              },
+              "OverwriteBBox": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "format": "bounding-box"
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                ],
+                "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
+              },
+              "DateTimeInterval": {
+                "type": "object",
+                "properties": {
+                  "Start": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "End": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "Timedelta": {
+                    "type": "object",
+                    "properties": {
+                      "days": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "minutes": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      }
+                    },
+                    "description": "Time delta to be applied to the start and end date"
+                  }
+                },
+                "required": [
+                  "Start",
+                  "End"
+                ],
+                "description": "Date time interval to be applied to the collection"
+              },
+              "Times": {
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "Name"
             ]
           }
         ]
@@ -7215,6 +7128,79 @@
         "Query"
       ]
     },
+    "CollectionOnly": {
+      "type": "object",
+      "title": "GeoDB Features Resource",
+      "properties": {
+        "Name": {
+          "title": "Resource Identifier",
+          "readOnly": true,
+          "type": "string",
+          "const": "Collection-only"
+        },
+        "OverwriteBBox": {
+          "anyOf": [
+            {
+              "type": "array",
+              "format": "bounding-box"
+            },
+            {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number"
+              }
+            }
+          ],
+          "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
+        },
+        "DateTimeInterval": {
+          "type": "object",
+          "properties": {
+            "Start": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "End": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "Timedelta": {
+              "type": "object",
+              "properties": {
+                "days": {
+                  "type": "number"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "minutes": {
+                  "type": "number"
+                },
+                "seconds": {
+                  "type": "number"
+                }
+              },
+              "description": "Time delta to be applied to the start and end date"
+            }
+          },
+          "required": [
+            "Start",
+            "End"
+          ],
+          "description": "Date time interval to be applied to the collection"
+        },
+        "Times": {
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "Name"
+      ]
+    },
     "TimeEntriesVectorTile": {
       "type": "array",
       "items": {
@@ -8595,166 +8581,6 @@
           ]
         },
         {
-          "type": "object",
-          "title": "GeoDB Resource",
-          "properties": {
-            "Name": {
-              "title": "Resource Identifier",
-              "readOnly": true,
-              "type": "string",
-              "const": "GeoDB"
-            },
-            "EndPoint": {
-              "type": "string",
-              "description": "GeoDB endpoint for the features"
-            },
-            "Database": {
-              "type": "string",
-              "description": "GeoDB database for the features"
-            },
-            "CollectionId": {
-              "type": "string",
-              "description": "GeoDB Collection for the features"
-            },
-            "MapTimesCollection": {
-              "type": "string",
-              "description": "optional GeoDB collection where times for items should be taken from"
-            },
-            "FeatureCollection": {
-              "type": "string",
-              "description": "GeoDB Collection for the features"
-            },
-            "Style": {
-              "type": "string",
-              "description": "URL to the EOxStyle definition"
-            },
-            "AdditionalQueryString": {
-              "type": "string",
-              "description": "additional query part of the url, added to the default eodash flavor of geodb collections"
-            },
-            "IdKey": {
-              "type": "string",
-              "description": "column name for optionally retrieving unique IDs for Items, default is city"
-            },
-            "InputData": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "Identifier": {
-                    "type": "string",
-                    "description": "Value matched against for input_data column from GeoDB table for each row"
-                  },
-                  "Url": {
-                    "type": "string",
-                    "description": "URL of the endpoint"
-                  },
-                  "Type": {
-                    "type": "string",
-                    "enum": [
-                      "XYZ",
-                      "WMS"
-                    ]
-                  },
-                  "Layers": {
-                    "type": "string",
-                    "description": "WMS layer name"
-                  },
-                  "SiteMapping": {
-                    "description": "key/value replacements for {site} placeholder in the XYZ URL matched with the aoi_id field from geodb, example NorthAdriaticTSM: spm_anomaly/anomaly-spm-nas",
-                    "type": "object",
-                    "additionalProperties": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "required": [
-                  "Identifier",
-                  "Url",
-                  "Type"
-                ]
-              }
-            }
-          },
-          "required": [
-            "Name",
-            "EndPoint",
-            "Database",
-            "CollectionId"
-          ]
-        },
-        {
-          "type": "object",
-          "title": "GeoDB Features Resource",
-          "properties": {
-            "Name": {
-              "title": "Resource Identifier",
-              "readOnly": true,
-              "type": "string",
-              "const": "GeoDB Features"
-            },
-            "EndPoint": {
-              "type": "string",
-              "description": "GeoDB endpoint for the features"
-            },
-            "Database": {
-              "type": "string",
-              "description": "GeoDB database for the features"
-            },
-            "TimeParameter": {
-              "type": "string",
-              "description": "GeoDB column name for the time parameter"
-            },
-            "CollectionId": {
-              "type": "string",
-              "description": "GeoDB Collection for the features"
-            },
-            "Query": {
-              "type": "string",
-              "description": "query part of the url, can contain {{date_time}} template for filling in the computed datetime"
-            },
-            "Aggregation": {
-              "type": "string",
-              "description": "If features are to be aggregated from original source by time unit.",
-              "enum": [
-                "day",
-                "hour",
-                "month",
-                "year"
-              ]
-            },
-            "Style": {
-              "type": "string",
-              "description": "URL to the EOxStyle definition"
-            },
-            "OverwriteBBox": {
-              "anyOf": [
-                {
-                  "type": "array",
-                  "format": "bounding-box"
-                },
-                {
-                  "type": "array",
-                  "minItems": 4,
-                  "maxItems": 4,
-                  "items": {
-                    "type": "number"
-                  }
-                }
-              ],
-              "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
-            }
-          },
-          "required": [
-            "Name",
-            "EndPoint",
-            "Database",
-            "TimeParameter",
-            "CollectionId",
-            "Query"
-          ]
-        },
-        {
           "title": "Rasdaman WCS Resource",
           "properties": {
             "Attribution": {
@@ -8817,6 +8643,79 @@
             "Name",
             "EndPoint",
             "CoverageId"
+          ]
+        },
+        {
+          "type": "object",
+          "title": "GeoDB Features Resource",
+          "properties": {
+            "Name": {
+              "title": "Resource Identifier",
+              "readOnly": true,
+              "type": "string",
+              "const": "Collection-only"
+            },
+            "OverwriteBBox": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "format": "bounding-box"
+                },
+                {
+                  "type": "array",
+                  "minItems": 4,
+                  "maxItems": 4,
+                  "items": {
+                    "type": "number"
+                  }
+                }
+              ],
+              "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
+            },
+            "DateTimeInterval": {
+              "type": "object",
+              "properties": {
+                "Start": {
+                  "type": "string",
+                  "format": "datetime"
+                },
+                "End": {
+                  "type": "string",
+                  "format": "datetime"
+                },
+                "Timedelta": {
+                  "type": "object",
+                  "properties": {
+                    "days": {
+                      "type": "number"
+                    },
+                    "hours": {
+                      "type": "number"
+                    },
+                    "minutes": {
+                      "type": "number"
+                    },
+                    "seconds": {
+                      "type": "number"
+                    }
+                  },
+                  "description": "Time delta to be applied to the start and end date"
+                }
+              },
+              "required": [
+                "Start",
+                "End"
+              ],
+              "description": "Date time interval to be applied to the collection"
+            },
+            "Times": {
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "Name"
           ]
         }
       ]
