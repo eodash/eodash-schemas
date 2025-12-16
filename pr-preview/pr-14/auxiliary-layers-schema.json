@@ -519,5 +519,8 @@
       "description": "auxiliary layer definition list"
     }
   },
+  "required": [
+    "layers"
+  ],
   "additionalProperties": false
 }

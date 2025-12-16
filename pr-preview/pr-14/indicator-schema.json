@@ -1535,9 +1535,37 @@
       "items": {
         "anyOf": [
           {
-            "type": "object",
-            "title": "Sentinel Hub Resource",
             "properties": {
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                  },
+                  "def": {
+                    "type": "string",
+                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                  },
+                  "extent": {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -1559,7 +1587,18 @@
               },
               "LayerId": {
                 "type": "string"
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "Type",
+              "CollectionId",
+              "LayerId"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -1589,21 +1628,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Type",
-              "CollectionId",
-              "LayerId"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "Sentinel Hub WMS Resource",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -1618,7 +1643,17 @@
               },
               "LayerId": {
                 "type": "string"
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "CollectionId",
+              "LayerId"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -1648,20 +1683,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "CollectionId",
-              "LayerId"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "WMS Resource",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -1750,7 +1772,16 @@
               },
               "TileSize": {
                 "type": "number"
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "LayerId"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -1780,19 +1811,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "LayerId"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "VEDA Resource",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2007,7 +2026,17 @@
               },
               "Nodata": {
                 "type": "number"
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "Type",
+              "CollectionId"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -2037,57 +2066,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Type",
-              "CollectionId"
-            ],
-            "oneOf": [
-              {
-                "title": "COG endpoint",
-                "properties": {
-                  "Type": {
-                    "enum": [
-                      "cog"
-                    ]
-                  },
-                  "Bidx": {
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "Bidx"
-                ]
               },
-              {
-                "title": "Tiles endpoint",
-                "properties": {
-                  "Type": {
-                    "enum": [
-                      "tiles"
-                    ]
-                  },
-                  "Assets": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "required": [
-                  "Assets"
-                ]
-              }
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "XCube Server Resource",
-            "properties": {
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2122,7 +2101,19 @@
                 },
                 "minItems": 2,
                 "maxItems": 2
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "Type",
+              "StacEndpoint",
+              "DatacubeId",
+              "Variable"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -2152,22 +2143,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Type",
-              "StacEndpoint",
-              "DatacubeId",
-              "Variable"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "Copernicus Marine Data Store WMTS Resource",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2215,7 +2191,18 @@
                     "format": "datetime"
                   }
                 }
-              },
+              }
+            },
+            "required": [
+              "Name",
+              "EndPoint",
+              "Type",
+              "LayerId",
+              "Dimensions"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -2245,21 +2232,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "EndPoint",
-              "Type",
-              "LayerId",
-              "Dimensions"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "Cloud Optimized Geotiff (COG) Source",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2315,13 +2288,6 @@
                           "File"
                         ]
                       }
-                    },
-                    "Attribution": {
-                      "type": "string",
-                      "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                      "media": {
-                        "type": "html"
-                      }
                     }
                   },
                   "required": [
@@ -2330,16 +2296,25 @@
                   ]
                 }
               },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
+              }
+            },
+            "required": [
+              "Name",
+              "Style",
+              "TimeEntries"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
                 "media": {
                   "type": "html"
                 }
-              },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
@@ -2363,19 +2338,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "Style",
-              "TimeEntries"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "GeoJSON Source",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2431,13 +2394,6 @@
                           "File"
                         ]
                       }
-                    },
-                    "Attribution": {
-                      "type": "string",
-                      "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                      "media": {
-                        "type": "html"
-                      }
                     }
                   },
                   "required": [
@@ -2446,16 +2402,25 @@
                   ]
                 }
               },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
+              }
+            },
+            "required": [
+              "Name",
+              "Style",
+              "TimeEntries"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
                 "media": {
                   "type": "html"
                 }
-              },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
@@ -2479,19 +2444,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "Style",
-              "TimeEntries"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "FlatGeobuf Source",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2547,13 +2500,6 @@
                           "File"
                         ]
                       }
-                    },
-                    "Attribution": {
-                      "type": "string",
-                      "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                      "media": {
-                        "type": "html"
-                      }
                     }
                   },
                   "required": [
@@ -2562,16 +2508,25 @@
                   ]
                 }
               },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
+              }
+            },
+            "required": [
+              "Name",
+              "Style",
+              "TimeEntries"
+            ]
+          },
+          {
+            "properties": {
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
                 "media": {
                   "type": "html"
                 }
-              },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
@@ -2595,19 +2550,7 @@
                 "required": [
                   "name"
                 ]
-              }
-            },
-            "required": [
-              "Name",
-              "Style",
-              "TimeEntries"
-            ],
-            "additionalProperties": false
-          },
-          {
-            "type": "object",
-            "title": "Vector Tile Source",
-            "properties": {
+              },
               "Name": {
                 "title": "Resource Identifier",
                 "readOnly": true,
@@ -2658,13 +2601,6 @@
                     },
                     "Url": {
                       "type": "string"
-                    },
-                    "Attribution": {
-                      "type": "string",
-                      "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                      "media": {
-                        "type": "html"
-                      }
                     }
                   },
                   "required": [
@@ -2672,43 +2608,12 @@
                     "Url"
                   ]
                 }
-              },
-              "Attribution": {
-                "type": "string",
-                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
-                "media": {
-                  "type": "html"
-                }
-              },
-              "DataProjection": {
-                "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
-                  },
-                  "def": {
-                    "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
-                  },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
-                  }
-                },
-                "required": [
-                  "name"
-                ]
               }
             },
             "required": [
               "Name",
               "TimeEntries"
-            ],
-            "additionalProperties": false
+            ]
           },
           {
             "type": "object",
@@ -2751,12 +2656,6 @@
               "IdKey": {
                 "type": "string",
                 "description": "column name for optionally retrieving unique IDs for Items, default is city"
-              },
-              "Attribution": {
-                "type": "string",
-                "media": {
-                  "type": "html"
-                }
               },
               "InputData": {
                 "type": "array",
@@ -2879,21 +2778,7 @@
             "additionalProperties": false
           },
           {
-            "type": "object",
-            "title": "Rasdaman WCS Resource",
             "properties": {
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "rasdaman"
-              },
-              "EndPoint": {
-                "type": "string"
-              },
-              "CoverageId": {
-                "type": "string"
-              },
               "Attribution": {
                 "type": "string",
                 "description": "Text to be shown as attribution information for the layer, can include HTML elements",
@@ -2923,14 +2808,25 @@
                 "required": [
                   "name"
                 ]
+              },
+              "Name": {
+                "title": "Resource Identifier",
+                "readOnly": true,
+                "type": "string",
+                "const": "rasdaman"
+              },
+              "EndPoint": {
+                "type": "string"
+              },
+              "CoverageId": {
+                "type": "string"
               }
             },
             "required": [
               "Name",
               "EndPoint",
               "CoverageId"
-            ],
-            "additionalProperties": false
+            ]
           }
         ]
       },
