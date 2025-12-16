@@ -572,12 +572,7 @@
                         }
                     }
                 }
-            },
-            "anyOf": [
-                { "required": ["Citation"] },
-                { "required": ["DOI"] },
-                { "required": ["Publication"] }
-            ]
+            }
         },
         "Provider": {
             "type": "object",
