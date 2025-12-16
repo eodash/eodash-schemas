@@ -871,7 +871,7 @@
         },
         "SentinelHubResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "Sentinel Hub Resource",
@@ -909,7 +909,7 @@
         },
         "SentinelHubWMSResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "Sentinel Hub WMS Resource",
@@ -937,7 +937,7 @@
         },
         "WMSResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "WMS Resource",
@@ -1187,7 +1187,7 @@
         },
         "VEDAResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "VEDA Resource",
@@ -1264,7 +1264,7 @@
         },
         "XCubeServerResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "XCube Server Resource",
@@ -1317,7 +1317,7 @@
         },
         "CopernicusMarineDataStoreWMTSResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "Copernicus Marine Data Store WMTS Resource",
@@ -1371,7 +1371,7 @@
         },
         "RasdamanWCSResource": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
                     "title": "Rasdaman WCS Resource",
@@ -1396,143 +1396,150 @@
         },
         "RawSourceResourceCOG": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
-            "type": "object",
-            "title": "Cloud Optimized Geotiff (COG) Source",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "COG source"
-                },
-                "Style": {
-                    "type": "string"
-                },
-                "Bbox": {
-                    "$ref": "#/definitions/Bbox"
-                },
-                "ParquetSource": {
-                    "type": "string"
-                },
-                "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
-                },
-                "MergeAssets": {
-                    "type": "boolean",
-                    "description": "If assets of the same type are merged into one layer"
+                    "type": "object",
+                    "title": "Cloud Optimized Geotiff (COG) Source",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "COG source"
+                        },
+                        "Style": {
+                            "type": "string"
+                        },
+                        "Bbox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "ParquetSource": {
+                            "type": "string"
+                        },
+                        "TimeEntries": {
+                            "$ref": "#/definitions/TimeEntries"
+                        },
+                        "MergeAssets": {
+                            "type": "boolean",
+                            "description": "If assets of the same type are merged into one layer"
+                        }
+                    },
+                    "required": ["Name", "Style", "TimeEntries"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false}]
+            ]
         },
         "RawSourceResourceGeoJSON": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
-            "type": "object",
-            "title": "GeoJSON Source",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "GeoJSON source"
-                },
-                "Style": {
-                    "type": "string"
-                },
-                "Bbox": {
-                    "$ref": "#/definitions/Bbox"
-                },
-                "ParquetSource": {
-                    "type": "string"
-                },
-                "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
-                },
-                "MergeAssets": {
-                    "type": "boolean",
-                    "description": "If assets of the same type are merged into one layer"
+                    "type": "object",
+                    "title": "GeoJSON Source",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "GeoJSON source"
+                        },
+                        "Style": {
+                            "type": "string"
+                        },
+                        "Bbox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "ParquetSource": {
+                            "type": "string"
+                        },
+                        "TimeEntries": {
+                            "$ref": "#/definitions/TimeEntries"
+                        },
+                        "MergeAssets": {
+                            "type": "boolean",
+                            "description": "If assets of the same type are merged into one layer"
+                        }
+                    },
+                    "required": ["Name", "Style", "TimeEntries"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false}]
+            ]
         },
         "RawSourceResourceFlatGeobuf": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
-            "type": "object",
-            "title": "FlatGeobuf Source",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "FlatGeobuf source"
-                },
-                "Style": {
-                    "type": "string"
-                },
-                "Bbox": {
-                    "$ref": "#/definitions/Bbox"
-                },
-                "ParquetSource": {
-                    "type": "string"
-                },
-                "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntries"
-                },
+                    "type": "object",
+                    "title": "FlatGeobuf Source",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "FlatGeobuf source"
+                        },
+                        "Style": {
+                            "type": "string"
+                        },
+                        "Bbox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "ParquetSource": {
+                            "type": "string"
+                        },
+                        "TimeEntries": {
+                            "$ref": "#/definitions/TimeEntries"
+                        },
 
-                "MergeAssets": {
-                    "type": "boolean",
-                    "description": "If assets of the same type are merged into one layer"
+                        "MergeAssets": {
+                            "type": "boolean",
+                            "description": "If assets of the same type are merged into one layer"
+                        }
+                    },
+                    "required": ["Name", "Style", "TimeEntries"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false}]
+            ]
         },
         "RawSourceResourceVectorTile": {
             "allOf": [
-                { "$ref": "/#definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultResourceParameters" },
                 {
-            "type": "object",
-            "title": "Vector Tile Source",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "VectorTile source"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "URL to the EOxStyle definition"
-                },
-                "idProperty": {
-                    "type": "string",
-                    "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                },
-                "layers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "description": "layer name from the vector tile to include"
+                    "type": "object",
+                    "title": "Vector Tile Source",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "VectorTile source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "URL to the EOxStyle definition"
+                        },
+                        "idProperty": {
+                            "type": "string",
+                            "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        },
+                        "layers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "description": "layer name from the vector tile to include"
+                            },
+                            "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        },
+                        "Bbox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "TimeEntries": {
+                            "$ref": "#/definitions/TimeEntriesVectorTile"
+                        }
                     },
-                    "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                },
-                "Bbox": {
-                    "$ref": "#/definitions/Bbox"
-                },
-                "TimeEntries": {
-                    "$ref": "#/definitions/TimeEntriesVectorTile"
+                    "required": ["Name", "TimeEntries"],
+                    "additionalProperties": false
                 }
-                
-            },
-            "required": ["Name", "TimeEntries"],
-            "additionalProperties": false}]
+            ]
         },
         "TimeEntriesVectorTile": {
             "type": "array",
