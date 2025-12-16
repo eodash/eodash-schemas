@@ -9,7 +9,7 @@
     "layers": {
       "type": "array",
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "XYZ layer",
             "properties": {

@@ -422,7 +422,7 @@
     "BaseLayers": {
       "type": "array",
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "XYZ layer",
             "properties": {
@@ -1030,7 +1030,7 @@
     "OverlayLayers": {
       "type": "array",
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "XYZ layer",
             "properties": {
@@ -1746,7 +1746,7 @@
       "type": "array",
       "maxItems": 1,
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "Sentinel Hub Resource",
             "properties": {
@@ -4238,7 +4238,7 @@
       ]
     },
     "auxiliaryLayerDefinition": {
-      "oneOf": [
+      "anyOf": [
         {
           "title": "XYZ layer",
           "properties": {
@@ -7188,7 +7188,7 @@
       ]
     },
     "Resource": {
-      "oneOf": [
+      "anyOf": [
         {
           "title": "Sentinel Hub Resource",
           "properties": {

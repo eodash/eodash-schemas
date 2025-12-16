@@ -421,7 +421,7 @@
     "BaseLayers": {
       "type": "array",
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "XYZ layer",
             "properties": {
@@ -1029,7 +1029,7 @@
     "OverlayLayers": {
       "type": "array",
       "items": {
-        "oneOf": [
+        "anyOf": [
           {
             "title": "XYZ layer",
             "properties": {
