@@ -1193,7 +1193,8 @@
                         },
                         "Type": {
                             "type": "string",
-                            "enum": ["cog", "tiles"]
+                            "enum": ["cog", "tiles"],
+                            "description": "'cog' type of integration requires configured 'bidx', 'tiles' requires configured 'Assets'"
                         },
                         "CollectionId": {
                             "type": "string"
@@ -1226,28 +1227,7 @@
                             "type": "number"
                         }
                     },
-                    "required": ["Name", "EndPoint", "Type", "CollectionId"],
-                    "oneOf": [
-                        {
-                            "title": "COG endpoint",
-                            "properties": {
-                                "Type": { "enum": ["cog"] },
-                                "Bidx": { "type": "integer" }
-                            },
-                            "required": ["Bidx"]
-                        },
-                        {
-                            "title": "Tiles endpoint",
-                            "properties": {
-                                "Type": { "enum": ["tiles"] },
-                                "Assets": {
-                                    "type": "array",
-                                    "items": { "type": "string" }
-                                }
-                            },
-                            "required": ["Assets"]
-                        }
-                    ]
+                    "required": ["Name", "EndPoint", "Type", "CollectionId"]
                 }
             ]
         },
