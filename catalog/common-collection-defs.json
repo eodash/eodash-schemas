@@ -289,8 +289,7 @@
                             "description": "media type of resource, for example image/png"
                         }
                     },
-                    "required": ["protocol"],
-                    "additionalProperties": false
+                    "required": ["protocol"]
                 }
             ]
         },
@@ -328,8 +327,7 @@
                             "type": "number"
                         }
                     },
-                    "required": ["protocol", "layers"],
-                    "additionalProperties": false
+                    "required": ["protocol", "layers"]
                 }
             ]
         },
@@ -353,8 +351,7 @@
                         },
                         "dimensions": { "$ref": "#/definitions/Dimensions" }
                     },
-                    "required": ["protocol", "layer"],
-                    "additionalProperties": false
+                    "required": ["protocol", "layer"]
                 }
             ]
         },
@@ -389,8 +386,7 @@
                             "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
                         }
                     },
-                    "required": ["protocol"],
-                    "additionalProperties": false
+                    "required": ["protocol"]
                 }
             ]
         },
@@ -413,8 +409,7 @@
                             "description": "Url to style open layer flat style file used for rendering resource"
                         }
                     },
-                    "required": ["protocol"],
-                    "additionalProperties": false
+                    "required": ["protocol"]
                 }
             ]
         },
@@ -437,8 +432,7 @@
                             "description": "Url to style open layer flat style file used for rendering resource"
                         }
                     },
-                    "required": ["protocol"],
-                    "additionalProperties": false
+                    "required": ["protocol"]
                 }
             ]
         },
@@ -460,8 +454,7 @@
                             "description": "Url to style open layer flat style file used for rendering resource"
                         }
                     },
-                    "required": ["protocol"],
-                    "additionalProperties": false
+                    "required": ["protocol"]
                 }
             ]
         },
@@ -902,8 +895,7 @@
                         "Type",
                         "CollectionId",
                         "LayerId"
-                    ],
-                    "additionalProperties": false
+                    ]
                 }
             ]
         },
@@ -930,8 +922,7 @@
                             "type": "string"
                         }
                     },
-                    "required": ["Name", "EndPoint", "CollectionId", "LayerId"],
-                    "additionalProperties": false
+                    "required": ["Name", "EndPoint", "CollectionId", "LayerId"]
                 }
             ]
         },
@@ -1008,8 +999,7 @@
                             "type": "number"
                         }
                     },
-                    "required": ["Name", "EndPoint", "LayerId"],
-                    "additionalProperties": false
+                    "required": ["Name", "EndPoint", "LayerId"]
                 }
             ]
         },
@@ -1257,8 +1247,7 @@
                             },
                             "required": ["Assets"]
                         }
-                    ],
-                    "additionalProperties": false
+                    ]
                 }
             ]
         },
@@ -1310,8 +1299,7 @@
                         "StacEndpoint",
                         "DatacubeId",
                         "Variable"
-                    ],
-                    "additionalProperties": false
+                    ]
                 }
             ]
         },
@@ -1364,8 +1352,7 @@
                         "Type",
                         "LayerId",
                         "Dimensions"
-                    ],
-                    "additionalProperties": false
+                    ]
                 }
             ]
         },
@@ -1389,8 +1376,7 @@
                             "type": "string"
                         }
                     },
-                    "required": ["Name", "EndPoint", "CoverageId"],
-                    "additionalProperties": false
+                    "required": ["Name", "EndPoint", "CoverageId"]
                 }
             ]
         },
@@ -1424,8 +1410,7 @@
                             "description": "If assets of the same type are merged into one layer"
                         }
                     },
-                    "required": ["Name", "Style", "TimeEntries"],
-                    "additionalProperties": false
+                    "required": ["Name", "Style", "TimeEntries"]
                 }
             ]
         },
@@ -1459,8 +1444,7 @@
                             "description": "If assets of the same type are merged into one layer"
                         }
                     },
-                    "required": ["Name", "Style", "TimeEntries"],
-                    "additionalProperties": false
+                    "required": ["Name", "Style", "TimeEntries"]
                 }
             ]
         },
@@ -1495,8 +1479,7 @@
                             "description": "If assets of the same type are merged into one layer"
                         }
                     },
-                    "required": ["Name", "Style", "TimeEntries"],
-                    "additionalProperties": false
+                    "required": ["Name", "Style", "TimeEntries"]
                 }
             ]
         },
@@ -1536,8 +1519,7 @@
                             "$ref": "#/definitions/TimeEntriesVectorTile"
                         }
                     },
-                    "required": ["Name", "TimeEntries"],
-                    "additionalProperties": false
+                    "required": ["Name", "TimeEntries"]
                 }
             ]
         },
@@ -1616,8 +1598,7 @@
                     }
                 }
             },
-            "required": ["Name", "EndPoint", "Database", "CollectionId"],
-            "additionalProperties": false
+            "required": ["Name", "EndPoint", "Database", "CollectionId"]
         },
         "GeoDBFeaturesResource": {
             "type": "object",
@@ -1669,8 +1650,7 @@
                 "TimeParameter",
                 "CollectionId",
                 "Query"
-            ],
-            "additionalProperties": false
+            ]
         },
         "TimeEntriesVectorTile": {
             "type": "array",
