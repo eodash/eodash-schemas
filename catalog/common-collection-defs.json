@@ -1249,7 +1249,8 @@
                         },
                         "Type": {
                             "type": "string",
-                            "enum": ["zarr"]
+                            "readOnly": true,
+                            "const": "zarr"
                         },
                         "StacEndpoint": {
                             "type": "string"
@@ -1270,6 +1271,19 @@
                             },
                             "minItems": 2,
                             "maxItems": 2
+                        },
+                        "Query": {
+                            "type": "object",
+                            "properties": {
+                                "Start": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                },
+                                "End": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                }
+                            }
                         }
                     },
                     "required": [
@@ -1360,10 +1374,33 @@
                 }
             ]
         },
+        "defaultRawResourceParameters": {
+            "type": "object",
+            "properties": {
+                "Style": {
+                    "type": "string"
+                },
+                "Bbox": {
+                    "$ref": "#/definitions/Bbox"
+                },
+                "ParquetSource": {
+                    "type": "string"
+                },
+                "MergeAssets": {
+                    "type": "boolean",
+                    "description": "If assets of the same type are merged into one layer"
+                },
+                "TimeEntries": {
+                    "$ref": "#/definitions/TimeEntries"
+                }
+            },
+            "required": ["Style", "TimeEntries"]
+        },
         "RawSourceResourceCOG": {
             "title": "Cloud Optimized Geotiff (COG) Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultRawResourceParameters" },
                 {
                     "type": "object",
                     "properties": {
@@ -1372,25 +1409,10 @@
                             "readOnly": true,
                             "type": "string",
                             "const": "COG source"
-                        },
-                        "Style": {
-                            "type": "string"
-                        },
-                        "Bbox": {
-                            "$ref": "#/definitions/Bbox"
-                        },
-                        "ParquetSource": {
-                            "type": "string"
-                        },
-                        "TimeEntries": {
-                            "$ref": "#/definitions/TimeEntries"
-                        },
-                        "MergeAssets": {
-                            "type": "boolean",
-                            "description": "If assets of the same type are merged into one layer"
                         }
+                        
                     },
-                    "required": ["Name", "Style", "TimeEntries"]
+                    "required": ["Name"]
                 }
             ]
         },
@@ -1398,6 +1420,7 @@
             "title": "GeoJSON Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultRawResourceParameters" },
                 {
                     "type": "object",
                     "properties": {
@@ -1406,25 +1429,9 @@
                             "readOnly": true,
                             "type": "string",
                             "const": "GeoJSON source"
-                        },
-                        "Style": {
-                            "type": "string"
-                        },
-                        "Bbox": {
-                            "$ref": "#/definitions/Bbox"
-                        },
-                        "ParquetSource": {
-                            "type": "string"
-                        },
-                        "TimeEntries": {
-                            "$ref": "#/definitions/TimeEntries"
-                        },
-                        "MergeAssets": {
-                            "type": "boolean",
-                            "description": "If assets of the same type are merged into one layer"
                         }
                     },
-                    "required": ["Name", "Style", "TimeEntries"]
+                    "required": ["Name"]
                 }
             ]
         },
@@ -1432,6 +1439,7 @@
             "title": "FlatGeobuf Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultRawResourceParameters" },
                 {
                     "type": "object",
                     "properties": {
@@ -1440,26 +1448,9 @@
                             "readOnly": true,
                             "type": "string",
                             "const": "FlatGeobuf source"
-                        },
-                        "Style": {
-                            "type": "string"
-                        },
-                        "Bbox": {
-                            "$ref": "#/definitions/Bbox"
-                        },
-                        "ParquetSource": {
-                            "type": "string"
-                        },
-                        "TimeEntries": {
-                            "$ref": "#/definitions/TimeEntries"
-                        },
-
-                        "MergeAssets": {
-                            "type": "boolean",
-                            "description": "If assets of the same type are merged into one layer"
                         }
                     },
-                    "required": ["Name", "Style", "TimeEntries"]
+                    "required": ["Name"]
                 }
             ]
         },
