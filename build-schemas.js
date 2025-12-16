@@ -10,9 +10,6 @@ async function buildSchema(inputPath, outputPath) {
   const dereferenced = await $RefParser.dereference(inputPath);
   const normalized = normalizeSchema(dereferenced);
 
-  // Close the schema only at the final leaf
-  normalized.additionalProperties = false;
-
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, JSON.stringify(normalized, null, 2));
 }

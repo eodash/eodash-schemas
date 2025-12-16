@@ -271,13 +271,13 @@
             }
         },
         "XYZLayer": {
+            "title": "XYZ layer",
             "allOf": [
                 {
                     "$ref": "#/definitions/defaultLayerProperties"
                 },
                 {
                     "type": "object",
-                    "title": "XYZ layer",
                     "properties": {
                         "protocol": {
                             "readOnly": true,
@@ -295,13 +295,13 @@
             ]
         },
         "WMSLayer": {
+            "title": "WMS Layer",
             "allOf": [
                 {
                     "$ref": "#/definitions/defaultLayerProperties"
                 },
                 {
                     "type": "object",
-                    "title": "WMS Layer",
                     "properties": {
                         "protocol": {
                             "readOnly": true,
@@ -334,12 +334,12 @@
             ]
         },
         "WMTSLayer": {
+            "title": "WMTS Layer",
             "allOf": [
                 {
                     "$ref": "#/definitions/defaultLayerProperties"
                 },
                 {
-                    "title": "WMTS Layer",
                     "type": "object",
                     "properties": {
                         "protocol": {
@@ -359,12 +359,12 @@
             ]
         },
         "VectorTileLayer": {
+            "title": "Vector Tile Layer",
             "allOf": [
                 {
                     "$ref": "#/definitions/defaultLayerProperties"
                 },
                 {
-                    "title": "Vector Tile Layer",
                     "type": "object",
                     "properties": {
                         "protocol": {
@@ -395,13 +395,13 @@
             ]
         },
         "RawCOGLayer": {
+            "title": "COG Layer",
             "allOf": [
                 {
                     "$ref": "#/definitions/defaultLayerProperties"
                 },
                 {
                     "type": "object",
-                    "title": "COG Layer",
                     "properties": {
                         "protocol": {
                             "readOnly": true,
@@ -870,11 +870,11 @@
             }
         },
         "SentinelHubResource": {
+            "title": "Sentinel Hub Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Sentinel Hub Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -908,11 +908,11 @@
             ]
         },
         "SentinelHubWMSResource": {
+            "title": "Sentinel Hub WMS Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Sentinel Hub WMS Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -936,11 +936,11 @@
             ]
         },
         "WMSResource": {
+            "title": "WMS Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "WMS Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1186,11 +1186,11 @@
             ]
         },
         "VEDAResource": {
+            "title": "VEDA Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "VEDA Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1263,11 +1263,11 @@
             ]
         },
         "XCubeServerResource": {
+            "title": "XCube Server Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "XCube Server Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1316,11 +1316,11 @@
             ]
         },
         "CopernicusMarineDataStoreWMTSResource": {
+            "title": "Copernicus Marine Data Store WMTS Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Copernicus Marine Data Store WMTS Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1370,11 +1370,11 @@
             ]
         },
         "RasdamanWCSResource": {
+            "title": "Rasdaman WCS Resource",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Rasdaman WCS Resource",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1395,11 +1395,11 @@
             ]
         },
         "RawSourceResourceCOG": {
+            "title": "Cloud Optimized Geotiff (COG) Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Cloud Optimized Geotiff (COG) Source",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1430,11 +1430,11 @@
             ]
         },
         "RawSourceResourceGeoJSON": {
+            "title": "GeoJSON Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "GeoJSON Source",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1465,11 +1465,11 @@
             ]
         },
         "RawSourceResourceFlatGeobuf": {
+            "title": "FlatGeobuf Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "FlatGeobuf Source",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1501,11 +1501,11 @@
             ]
         },
         "RawSourceResourceVectorTile": {
+            "title": "Vector Tile Source",
             "allOf": [
                 { "$ref": "#/definitions/defaultResourceParameters" },
                 {
                     "type": "object",
-                    "title": "Vector Tile Source",
                     "properties": {
                         "Name": {
                             "title": "Resource Identifier",
@@ -1540,50 +1540,6 @@
                     "additionalProperties": false
                 }
             ]
-        },
-        "TimeEntriesVectorTile": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "Time": {
-                        "type": "string",
-                        "format": "datetime"
-                    },
-                    "Url": {
-                        "type": "string"
-                    }
-                },
-                "required": ["Time", "Url"]
-            }
-        },
-        "TimeEntries": {
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "Time": {
-                        "type": "string",
-                        "format": "datetime"
-                    },
-                    "Assets": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "Identifier": {
-                                    "type": "string"
-                                },
-                                "File": {
-                                    "type": "string"
-                                }
-                            },
-                            "required": ["Identifier", "File"]
-                        }
-                    }
-                },
-                "required": ["Time", "Assets"]
-            }
         },
         "GeoDBResource": {
             "type": "object",
@@ -1715,6 +1671,50 @@
                 "Query"
             ],
             "additionalProperties": false
+        },
+        "TimeEntriesVectorTile": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Time": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "Url": {
+                        "type": "string"
+                    }
+                },
+                "required": ["Time", "Url"]
+            }
+        },
+        "TimeEntries": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "Time": {
+                        "type": "string",
+                        "format": "datetime"
+                    },
+                    "Assets": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "Identifier": {
+                                    "type": "string"
+                                },
+                                "File": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": ["Identifier", "File"]
+                        }
+                    }
+                },
+                "required": ["Time", "Assets"]
+            }
         },
         "Flatstyle": {
             "anyOf": [
