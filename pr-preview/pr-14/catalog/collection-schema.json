@@ -2021,7 +2021,14 @@
               "Rescale": {
                 "type": "array",
                 "items": {
-                  "type": "number"
+                  "anyOf": [
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
                 },
                 "minItems": 2,
                 "maxItems": 2
