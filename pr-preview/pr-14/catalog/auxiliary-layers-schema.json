@@ -38,25 +38,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -103,25 +115,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -195,25 +219,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -275,25 +311,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -352,25 +400,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -417,25 +477,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
@@ -482,25 +554,37 @@
               },
               "DataProjection": {
                 "description": "Projection in which the data is stored",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "Name of the projection, e.g. \"EPSG\"4326"
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ]
                   },
-                  "def": {
+                  {
                     "type": "string",
-                    "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                    "description": "in format EPSG:4326"
                   },
-                  "extent": {
-                    "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
-                    "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                  {
+                    "type": "number",
+                    "description": "4326"
                   }
-                },
-                "required": [
-                  "name"
                 ]
               },
               "protocol": {
