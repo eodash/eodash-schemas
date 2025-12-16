@@ -33,6 +33,11 @@ function normalizeSchema(schema) {
     schema.anyOf = schema.anyOf.map(sub => normalizeSchema(sub));
   }
 
+  // Normalize oneOf branches
+  if (schema.oneOf) {
+    schema.oneOf = schema.oneOf.map(sub => normalizeSchema(sub));
+  }
+
   //  Recurse into object structure
   if (schema.properties) {
     for (const key of Object.keys(schema.properties)) {
