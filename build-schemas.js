@@ -23,22 +23,17 @@ async function buildSchema(inputPath, outputPath) {
 function normalizeSchema(schema) {
   if (!schema || typeof schema !== "object") return schema;
 
-  // 1️⃣ Flatten allOf at this level
+  // Flatten allOf at this level
   if (schema.allOf) {
     schema = flattenAllOf(schema);
   }
 
-  // 2️⃣ Normalize anyOf branches
+  // Normalize anyOf branches
   if (schema.anyOf) {
     schema.anyOf = schema.anyOf.map(sub => normalizeSchema(sub));
   }
 
-  // 3️⃣ Normalize oneOf branches
-  if (schema.oneOf) {
-    schema.oneOf = schema.oneOf.map(sub => normalizeSchema(sub));
-  }
-
-  // 4️⃣ Recurse into object structure
+  //  Recurse into object structure
   if (schema.properties) {
     for (const key of Object.keys(schema.properties)) {
       schema.properties[key] = normalizeSchema(schema.properties[key]);
@@ -52,12 +47,6 @@ function normalizeSchema(schema) {
   if (schema.definitions) {
     for (const key of Object.keys(schema.definitions)) {
       schema.definitions[key] = normalizeSchema(schema.definitions[key]);
-    }
-  }
-
-  if (schema.$defs) {
-    for (const key of Object.keys(schema.$defs)) {
-      schema.$defs[key] = normalizeSchema(schema.$defs[key]);
     }
   }
 
