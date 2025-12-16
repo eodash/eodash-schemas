@@ -376,7 +376,7 @@
               "protocol": {
                 "readOnly": true,
                 "type": "string",
-                "const": "COG Source"
+                "const": "COG source"
               },
               "Style": {
                 "type": "string",
@@ -441,7 +441,7 @@
               "protocol": {
                 "readOnly": true,
                 "type": "string",
-                "const": "GeoJSON Source"
+                "const": "GeoJSON source"
               },
               "Style": {
                 "type": "string",
@@ -506,7 +506,7 @@
               "protocol": {
                 "readOnly": true,
                 "type": "string",
-                "const": "FlatGeobuf Source"
+                "const": "FlatGeobuf source"
               },
               "Style": {
                 "type": "string",
