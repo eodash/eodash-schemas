@@ -59,15 +59,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -136,15 +137,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -240,15 +242,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -332,15 +335,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -421,15 +425,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -498,15 +503,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
@@ -575,15 +581,16 @@
                     },
                     "required": [
                       "name"
-                    ]
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
                   },
                   {
                     "type": "string",
-                    "description": "in format EPSG:4326"
+                    "description": "String input in format EPSG:4326"
                   },
                   {
                     "type": "number",
-                    "description": "4326"
+                    "description": "Numerical input, such as 4326"
                   }
                 ]
               },
