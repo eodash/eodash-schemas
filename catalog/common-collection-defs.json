@@ -1766,8 +1766,6 @@
                 { "$ref": "#/definitions/RawSourceResourceGeoJSON" },
                 { "$ref": "#/definitions/RawSourceResourceFlatGeobuf" },
                 { "$ref": "#/definitions/RawSourceResourceVectorTile" },
-                { "$ref": "#/definitions/GeoDBResource" },
-                { "$ref": "#/definitions/GeoDBFeaturesResource" },
                 { "$ref": "#/definitions/RasdamanWCSResource" },
                 {"$ref": "#/definitions/CollectionOnly" }
             ]

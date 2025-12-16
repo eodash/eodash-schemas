@@ -16,6 +16,51 @@
                     "minLength": 1,
                     "pattern": "^[a-zA-Z0-9_-]+$",
                     "description": "Identifier that will be used in eodashboard or RACE instance"
+                },
+                "Resources": {
+                    "maxItems": 1,
+                    "type": "array",
+                    "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/SentinelHubResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/SentinelHubWMSResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/WMSResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/VEDAResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/XCubeServerResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/CopernicusMarineDataStoreWMTSResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceCOG"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceGeoJSON"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceFlatGeobuf"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceVectorTile"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/GeoDBResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/GeoDBFeaturesResource"
+                            }
+                        ]
+                    }
                 }
             },
             "required": ["EodashIdentifier"]
