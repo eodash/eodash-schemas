@@ -423,8 +423,6 @@
       "items": {
         "anyOf": [
           {
-            "type": "object",
-            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -471,66 +469,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -543,15 +481,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
-            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -598,66 +533,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -696,16 +571,13 @@
               }
             },
             "required": [
-              "protocol",
-              "layers",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol",
+              "layers"
+            ]
           },
           {
-            "type": "object",
-            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -752,66 +624,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -838,16 +650,13 @@
               }
             },
             "required": [
-              "protocol",
-              "layer",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol",
+              "layer"
+            ]
           },
           {
-            "type": "object",
-            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -894,66 +703,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -978,15 +727,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
-            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1034,66 +780,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -1105,14 +791,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
             "title": "GeoJSON Layer",
             "properties": {
               "id": {
@@ -1161,66 +845,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -1232,14 +856,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
             "title": "FlatGeobuf Layer",
             "properties": {
               "id": {
@@ -1288,66 +910,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -1359,11 +921,10 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           }
         ]
       },
@@ -1374,8 +935,6 @@
       "items": {
         "anyOf": [
           {
-            "type": "object",
-            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1422,66 +981,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -1494,15 +993,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
-            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1549,66 +1045,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -1647,16 +1083,13 @@
               }
             },
             "required": [
-              "protocol",
-              "layers",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol",
+              "layers"
+            ]
           },
           {
-            "type": "object",
-            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1703,66 +1136,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -1789,16 +1162,13 @@
               }
             },
             "required": [
-              "protocol",
-              "layer",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol",
+              "layer"
+            ]
           },
           {
-            "type": "object",
-            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1845,66 +1215,6 @@
                 "required": [
                   "name"
                 ]
-              },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
               },
               "protocol": {
                 "readOnly": true,
@@ -1929,15 +1239,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
-            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1985,66 +1292,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -2056,14 +1303,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
             "title": "GeoJSON Layer",
             "properties": {
               "id": {
@@ -2112,66 +1357,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -2183,14 +1368,12 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           },
           {
-            "type": "object",
             "title": "FlatGeobuf Layer",
             "properties": {
               "id": {
@@ -2239,66 +1422,6 @@
                   "name"
                 ]
               },
-              "Colorlegend": {
-                "type": "object",
-                "properties": {
-                  "title": {
-                    "type": "string",
-                    "description": "Text added to legend as title"
-                  },
-                  "range": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    },
-                    "description": "List of hex colors strings which will be interpolated or used for categories"
-                  },
-                  "domain": {
-                    "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "number"
-                        },
-                        {
-                          "type": "string"
-                        }
-                      ]
-                    },
-                    "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
-                  },
-                  "tickFormat": {
-                    "type": "string",
-                    "description": "Expression of how numbers should be formatted, e.g. \".0f\""
-                  },
-                  "tickValues": {
-                    "type": "array",
-                    "items": {
-                      "type": "number"
-                    },
-                    "description": "List of numbers for which tick values should be shown"
-                  },
-                  "scaleType": {
-                    "type": "string",
-                    "enum": [
-                      "continuous",
-                      "discrete",
-                      "threshold",
-                      "categorical"
-                    ],
-                    "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
-                  },
-                  "markType": {
-                    "type": "string",
-                    "enum": [
-                      "rect",
-                      "circle",
-                      "line"
-                    ],
-                    "description": "When using \"categorical\" type allows to define symbol to be used"
-                  }
-                }
-              },
               "protocol": {
                 "readOnly": true,
                 "type": "string",
@@ -2310,11 +1433,10 @@
               }
             },
             "required": [
-              "protocol",
               "id",
-              "url"
-            ],
-            "additionalProperties": false
+              "url",
+              "protocol"
+            ]
           }
         ]
       },
