@@ -1656,6 +1656,32 @@
                 "Query"
             ]
         },
+        "CollectionOnly": {
+            "type": "object",
+            "title": "GeoDB Features Resource",
+            "properties": {
+                "Name": {
+                    "title": "Resource Identifier",
+                    "readOnly": true,
+                    "type": "string",
+                    "const": "Collection-only"
+                },
+                "OverwriteBBox": {
+                    "$ref": "#/definitions/Bbox"
+                },
+                "DateTimeInterval": {
+                    "$ref": "#/definitions/DateTimeInterval"
+                },
+                "Times": {
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "Name"
+            ]
+        },
         "TimeEntriesVectorTile": {
             "type": "array",
             "items": {
@@ -1742,7 +1768,8 @@
                 { "$ref": "#/definitions/RawSourceResourceVectorTile" },
                 { "$ref": "#/definitions/GeoDBResource" },
                 { "$ref": "#/definitions/GeoDBFeaturesResource" },
-                { "$ref": "#/definitions/RasdamanWCSResource" }
+                { "$ref": "#/definitions/RasdamanWCSResource" },
+                {"$ref": "#/definitions/CollectionOnly" }
             ]
         }
     }
