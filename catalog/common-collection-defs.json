@@ -516,7 +516,7 @@
             ]
         },
         "auxiliaryLayerDefinition": {
-            "oneOf": [
+            "anyOf": [
                 { "$ref": "#/definitions/XYZLayer" },
                 { "$ref": "#/definitions/WMSLayer" },
                 { "$ref": "#/definitions/WMTSLayer" },
@@ -1709,7 +1709,7 @@
             ]
         },
         "Resource": {
-            "oneOf": [
+            "anyOf": [
                 { "$ref": "#/definitions/SentinelHubResource" },
                 { "$ref": "#/definitions/SentinelHubWMSResource" },
                 { "$ref": "#/definitions/WMSResource" },
