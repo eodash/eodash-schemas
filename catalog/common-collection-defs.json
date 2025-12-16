@@ -857,149 +857,161 @@
             "type": "array",
             "format": "point"
         },
+        "defaultResourceParameters": {
+            "type": "object",
+            "properties": {
+                "Attribution": {
+                    "$ref": "#/definitions/Attribution"
+                },
+                "DataProjection": {
+                    "$ref": "#/definitions/Projection",
+                    "description": "Projection in which the data is stored"
+                }
+            }
+        },
         "SentinelHubResource": {
-            "type": "object",
-            "title": "Sentinel Hub Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "Sentinel Hub"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": ["byoc", "zarr"]
-                },
-                "CollectionId": {
-                    "type": "string"
-                },
-                "LayerId": {
-                    "type": "string"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                }
-            },
-            "required": ["Name", "EndPoint", "Type", "CollectionId", "LayerId"],
-            "additionalProperties": false
-        },
-        "SentinelHubWMSResource": {
-            "type": "object",
-            "title": "Sentinel Hub WMS Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "Sentinel Hub WMS"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "CollectionId": {
-                    "type": "string"
-                },
-                "LayerId": {
-                    "type": "string"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                }
-            },
-            "required": ["Name", "EndPoint", "CollectionId", "LayerId"],
-            "additionalProperties": false
-        },
-        "WMSResource": {
-            "type": "object",
-            "title": "WMS Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "WMS"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": ["Time", "OverwriteTimes"]
-                },
-                "LayerId": {
-                    "type": "string"
-                },
-                "Styles": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "Version": {
-                    "type": "string",
-                    "enum": ["1.1.0", "1.1.1", "1.3.0"]
-                },
-                "DateTimeInterval": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
                     "type": "object",
+                    "title": "Sentinel Hub Resource",
                     "properties": {
-                        "Start": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
                             "type": "string",
-                            "format": "datetime"
+                            "const": "Sentinel Hub"
                         },
-                        "End": {
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "Type": {
                             "type": "string",
-                            "format": "datetime"
+                            "enum": ["byoc", "zarr"]
                         },
-                        "Timedelta": {
-                            "type": "object",
-                            "properties": {
-                                "days": {
-                                    "type": "number"
-                                },
-                                "hours": {
-                                    "type": "number"
-                                },
-                                "minutes": {
-                                    "type": "number"
-                                },
-                                "seconds": {
-                                    "type": "number"
-                                }
-                            },
-                            "description": "Time delta to be applied to the start and end date"
+                        "CollectionId": {
+                            "type": "string"
+                        },
+                        "LayerId": {
+                            "type": "string"
                         }
                     },
-                    "required": ["Start", "End"],
-                    "description": "Date time interval to be applied to the collection"
-                },
-                "OverwriteBBox": {
-                    "$ref": "#/definitions/Bbox"
-                },
-                "TileSize": {
-                    "type": "number"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
+                    "required": [
+                        "Name",
+                        "EndPoint",
+                        "Type",
+                        "CollectionId",
+                        "LayerId"
+                    ],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "EndPoint", "LayerId"],
-            "additionalProperties": false
+            ]
+        },
+        "SentinelHubWMSResource": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
+                    "type": "object",
+                    "title": "Sentinel Hub WMS Resource",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "Sentinel Hub WMS"
+                        },
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "CollectionId": {
+                            "type": "string"
+                        },
+                        "LayerId": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Name", "EndPoint", "CollectionId", "LayerId"],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "WMSResource": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
+                    "type": "object",
+                    "title": "WMS Resource",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "WMS"
+                        },
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "Type": {
+                            "type": "string",
+                            "enum": ["Time", "OverwriteTimes"]
+                        },
+                        "LayerId": {
+                            "type": "string"
+                        },
+                        "Styles": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "Version": {
+                            "type": "string",
+                            "enum": ["1.1.0", "1.1.1", "1.3.0"]
+                        },
+                        "DateTimeInterval": {
+                            "type": "object",
+                            "properties": {
+                                "Start": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                },
+                                "End": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                },
+                                "Timedelta": {
+                                    "type": "object",
+                                    "properties": {
+                                        "days": {
+                                            "type": "number"
+                                        },
+                                        "hours": {
+                                            "type": "number"
+                                        },
+                                        "minutes": {
+                                            "type": "number"
+                                        },
+                                        "seconds": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "description": "Time delta to be applied to the start and end date"
+                                }
+                            },
+                            "required": ["Start", "End"],
+                            "description": "Date time interval to be applied to the collection"
+                        },
+                        "OverwriteBBox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "TileSize": {
+                            "type": "number"
+                        }
+                    },
+                    "required": ["Name", "EndPoint", "LayerId"],
+                    "additionalProperties": false
+                }
+            ]
         },
         "VedaColormapName": {
             "type": "string",
@@ -1174,217 +1186,218 @@
             ]
         },
         "VEDAResource": {
-            "type": "object",
-            "title": "VEDA Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "VEDA"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": ["cog", "tiles"]
-                },
-                "CollectionId": {
-                    "type": "string"
-                },
-                "ColormapName": {
-                    "$ref": "#/definitions/VedaColormapName"
-                },
-                "Rescale": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
-                    },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "Bidx": {
-                    "type": "integer",
-                    "default": 1
-                },
-                "Assets": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "ColorFormula": {
-                    "type": "string"
-                },
-                "Nodata": {
-                    "type": "number"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                }
-            },
-            "required": ["Name", "EndPoint", "Type", "CollectionId"],
-            "oneOf": [
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
                 {
-                    "title": "COG endpoint",
+                    "type": "object",
+                    "title": "VEDA Resource",
                     "properties": {
-                        "Type": { "enum": ["cog"] },
-                        "Bidx": { "type": "integer" }
-                    },
-                    "required": ["Bidx"]
-                },
-                {
-                    "title": "Tiles endpoint",
-                    "properties": {
-                        "Type": { "enum": ["tiles"] },
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "VEDA"
+                        },
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "Type": {
+                            "type": "string",
+                            "enum": ["cog", "tiles"]
+                        },
+                        "CollectionId": {
+                            "type": "string"
+                        },
+                        "ColormapName": {
+                            "$ref": "#/definitions/VedaColormapName"
+                        },
+                        "Rescale": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        },
+                        "Bidx": {
+                            "type": "integer",
+                            "default": 1
+                        },
                         "Assets": {
                             "type": "array",
-                            "items": { "type": "string" }
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "ColorFormula": {
+                            "type": "string"
+                        },
+                        "Nodata": {
+                            "type": "number"
                         }
                     },
-                    "required": ["Assets"]
+                    "required": ["Name", "EndPoint", "Type", "CollectionId"],
+                    "oneOf": [
+                        {
+                            "title": "COG endpoint",
+                            "properties": {
+                                "Type": { "enum": ["cog"] },
+                                "Bidx": { "type": "integer" }
+                            },
+                            "required": ["Bidx"]
+                        },
+                        {
+                            "title": "Tiles endpoint",
+                            "properties": {
+                                "Type": { "enum": ["tiles"] },
+                                "Assets": {
+                                    "type": "array",
+                                    "items": { "type": "string" }
+                                }
+                            },
+                            "required": ["Assets"]
+                        }
+                    ],
+                    "additionalProperties": false
                 }
-            ],
-            "additionalProperties": false
+            ]
         },
         "XCubeServerResource": {
-            "type": "object",
-            "title": "XCube Server Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "xcube"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": ["zarr"]
-                },
-                "StacEndpoint": {
-                    "type": "string"
-                },
-                "DatacubeId": {
-                    "type": "string"
-                },
-                "Variable": {
-                    "type": "string"
-                },
-                "ColormapName": {
-                    "type": "string"
-                },
-                "Rescale": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
+                    "type": "object",
+                    "title": "XCube Server Resource",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "xcube"
+                        },
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "Type": {
+                            "type": "string",
+                            "enum": ["zarr"]
+                        },
+                        "StacEndpoint": {
+                            "type": "string"
+                        },
+                        "DatacubeId": {
+                            "type": "string"
+                        },
+                        "Variable": {
+                            "type": "string"
+                        },
+                        "ColormapName": {
+                            "type": "string"
+                        },
+                        "Rescale": {
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
+                            "minItems": 2,
+                            "maxItems": 2
+                        }
                     },
-                    "minItems": 2,
-                    "maxItems": 2
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
+                    "required": [
+                        "Name",
+                        "EndPoint",
+                        "Type",
+                        "StacEndpoint",
+                        "DatacubeId",
+                        "Variable"
+                    ],
+                    "additionalProperties": false
                 }
-            },
-            "required": [
-                "Name",
-                "EndPoint",
-                "Type",
-                "StacEndpoint",
-                "DatacubeId",
-                "Variable"
-            ],
-            "additionalProperties": false
+            ]
         },
         "CopernicusMarineDataStoreWMTSResource": {
-            "type": "object",
-            "title": "Copernicus Marine Data Store WMTS Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "marinedatastore"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "Type": {
-                    "type": "string",
-                    "enum": ["WMTSCapabilities"]
-                },
-                "LayerId": {
-                    "type": "string"
-                },
-                "Variable": {
-                    "type": "string"
-                },
-                "Dimensions": {
-                    "$ref": "#/definitions/Dimensions"
-                },
-                "Query": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
                     "type": "object",
+                    "title": "Copernicus Marine Data Store WMTS Resource",
                     "properties": {
-                        "Start": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
                             "type": "string",
-                            "format": "datetime"
+                            "const": "marinedatastore"
                         },
-                        "End": {
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "Type": {
                             "type": "string",
-                            "format": "datetime"
+                            "enum": ["WMTSCapabilities"]
+                        },
+                        "LayerId": {
+                            "type": "string"
+                        },
+                        "Variable": {
+                            "type": "string"
+                        },
+                        "Dimensions": {
+                            "$ref": "#/definitions/Dimensions"
+                        },
+                        "Query": {
+                            "type": "object",
+                            "properties": {
+                                "Start": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                },
+                                "End": {
+                                    "type": "string",
+                                    "format": "datetime"
+                                }
+                            }
                         }
-                    }
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
+                    },
+                    "required": [
+                        "Name",
+                        "EndPoint",
+                        "Type",
+                        "LayerId",
+                        "Dimensions"
+                    ],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "EndPoint", "Type", "LayerId", "Dimensions"],
-            "additionalProperties": false
+            ]
         },
         "RasdamanWCSResource": {
-            "type": "object",
-            "title": "Rasdaman WCS Resource",
-            "properties": {
-                "Name": {
-                    "title": "Resource Identifier",
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "rasdaman"
-                },
-                "EndPoint": {
-                    "type": "string"
-                },
-                "CoverageId": {
-                    "type": "string"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
+                    "type": "object",
+                    "title": "Rasdaman WCS Resource",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "rasdaman"
+                        },
+                        "EndPoint": {
+                            "type": "string"
+                        },
+                        "CoverageId": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["Name", "EndPoint", "CoverageId"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["Name", "EndPoint", "CoverageId"],
-            "additionalProperties": false
+            ]
         },
         "RawSourceResourceCOG": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
             "type": "object",
             "title": "Cloud Optimized Geotiff (COG) Source",
             "properties": {
@@ -1406,22 +1419,18 @@
                 "TimeEntries": {
                     "$ref": "#/definitions/TimeEntries"
                 },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
                 "MergeAssets": {
                     "type": "boolean",
                     "description": "If assets of the same type are merged into one layer"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
                 }
             },
             "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false
+            "additionalProperties": false}]
         },
         "RawSourceResourceGeoJSON": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
             "type": "object",
             "title": "GeoJSON Source",
             "properties": {
@@ -1443,22 +1452,18 @@
                 "TimeEntries": {
                     "$ref": "#/definitions/TimeEntries"
                 },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
                 "MergeAssets": {
                     "type": "boolean",
                     "description": "If assets of the same type are merged into one layer"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
                 }
             },
             "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false
+            "additionalProperties": false}]
         },
         "RawSourceResourceFlatGeobuf": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
             "type": "object",
             "title": "FlatGeobuf Source",
             "properties": {
@@ -1480,22 +1485,19 @@
                 "TimeEntries": {
                     "$ref": "#/definitions/TimeEntries"
                 },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
+
                 "MergeAssets": {
                     "type": "boolean",
                     "description": "If assets of the same type are merged into one layer"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
                 }
             },
             "required": ["Name", "Style", "TimeEntries"],
-            "additionalProperties": false
+            "additionalProperties": false}]
         },
         "RawSourceResourceVectorTile": {
+            "allOf": [
+                { "$ref": "/#definitions/defaultResourceParameters" },
+                {
             "type": "object",
             "title": "Vector Tile Source",
             "properties": {
@@ -1526,17 +1528,11 @@
                 },
                 "TimeEntries": {
                     "$ref": "#/definitions/TimeEntriesVectorTile"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
                 }
+                
             },
             "required": ["Name", "TimeEntries"],
-            "additionalProperties": false
+            "additionalProperties": false}]
         },
         "TimeEntriesVectorTile": {
             "type": "array",
@@ -1549,9 +1545,6 @@
                     },
                     "Url": {
                         "type": "string"
-                    },
-                    "Attribution": {
-                        "$ref": "#/definitions/Attribution"
                     }
                 },
                 "required": ["Time", "Url"]
@@ -1580,9 +1573,6 @@
                             },
                             "required": ["Identifier", "File"]
                         }
-                    },
-                    "Attribution": {
-                        "$ref": "#/definitions/Attribution"
                     }
                 },
                 "required": ["Time", "Assets"]
@@ -1629,12 +1619,6 @@
                 "IdKey": {
                     "type": "string",
                     "description": "column name for optionally retrieving unique IDs for Items, default is city"
-                },
-                "Attribution": {
-                    "type": "string",
-                    "media": {
-                        "type": "html"
-                    }
                 },
                 "InputData": {
                     "type": "array",

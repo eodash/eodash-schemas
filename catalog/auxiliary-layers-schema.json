@@ -13,5 +13,6 @@
             },
             "description": "auxiliary layer definition list"
         }
-    }
+    },
+    "required": ["layers"]
 }
