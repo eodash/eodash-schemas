@@ -2102,9 +2102,8 @@
               },
               "Type": {
                 "type": "string",
-                "enum": [
-                  "zarr"
-                ]
+                "readOnly": true,
+                "const": "zarr"
               },
               "StacEndpoint": {
                 "type": "string"
@@ -2125,6 +2124,19 @@
                 },
                 "minItems": 2,
                 "maxItems": 2
+              },
+              "Query": {
+                "type": "object",
+                "properties": {
+                  "Start": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "End": {
+                    "type": "string",
+                    "format": "datetime"
+                  }
+                }
               }
             },
             "required": [
@@ -2259,12 +2271,6 @@
                   "name"
                 ]
               },
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "COG source"
-              },
               "Style": {
                 "type": "string"
               },
@@ -2287,6 +2293,10 @@
               },
               "ParquetSource": {
                 "type": "string"
+              },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
                 "type": "array",
@@ -2322,15 +2332,17 @@
                   ]
                 }
               },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
+              "Name": {
+                "title": "Resource Identifier",
+                "readOnly": true,
+                "type": "string",
+                "const": "COG source"
               }
             },
             "required": [
-              "Name",
               "Style",
-              "TimeEntries"
+              "TimeEntries",
+              "Name"
             ]
           },
           {
@@ -2366,12 +2378,6 @@
                   "name"
                 ]
               },
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "GeoJSON source"
-              },
               "Style": {
                 "type": "string"
               },
@@ -2394,6 +2400,10 @@
               },
               "ParquetSource": {
                 "type": "string"
+              },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
                 "type": "array",
@@ -2429,15 +2439,17 @@
                   ]
                 }
               },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
+              "Name": {
+                "title": "Resource Identifier",
+                "readOnly": true,
+                "type": "string",
+                "const": "GeoJSON source"
               }
             },
             "required": [
-              "Name",
               "Style",
-              "TimeEntries"
+              "TimeEntries",
+              "Name"
             ]
           },
           {
@@ -2473,12 +2485,6 @@
                   "name"
                 ]
               },
-              "Name": {
-                "title": "Resource Identifier",
-                "readOnly": true,
-                "type": "string",
-                "const": "FlatGeobuf source"
-              },
               "Style": {
                 "type": "string"
               },
@@ -2501,6 +2507,10 @@
               },
               "ParquetSource": {
                 "type": "string"
+              },
+              "MergeAssets": {
+                "type": "boolean",
+                "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
                 "type": "array",
@@ -2536,15 +2546,17 @@
                   ]
                 }
               },
-              "MergeAssets": {
-                "type": "boolean",
-                "description": "If assets of the same type are merged into one layer"
+              "Name": {
+                "title": "Resource Identifier",
+                "readOnly": true,
+                "type": "string",
+                "const": "FlatGeobuf source"
               }
             },
             "required": [
-              "Name",
               "Style",
-              "TimeEntries"
+              "TimeEntries",
+              "Name"
             ]
           },
           {
@@ -5528,9 +5540,8 @@
         },
         "Type": {
           "type": "string",
-          "enum": [
-            "zarr"
-          ]
+          "readOnly": true,
+          "const": "zarr"
         },
         "StacEndpoint": {
           "type": "string"
@@ -5551,6 +5562,19 @@
           },
           "minItems": 2,
           "maxItems": 2
+        },
+        "Query": {
+          "type": "object",
+          "properties": {
+            "Start": {
+              "type": "string",
+              "format": "datetime"
+            },
+            "End": {
+              "type": "string",
+              "format": "datetime"
+            }
+          }
         }
       },
       "required": [
@@ -5704,6 +5728,76 @@
         "CoverageId"
       ]
     },
+    "defaultRawResourceParameters": {
+      "type": "object",
+      "properties": {
+        "Style": {
+          "type": "string"
+        },
+        "Bbox": {
+          "anyOf": [
+            {
+              "type": "array",
+              "format": "bounding-box"
+            },
+            {
+              "type": "array",
+              "minItems": 4,
+              "maxItems": 4,
+              "items": {
+                "type": "number"
+              }
+            }
+          ],
+          "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
+        },
+        "ParquetSource": {
+          "type": "string"
+        },
+        "MergeAssets": {
+          "type": "boolean",
+          "description": "If assets of the same type are merged into one layer"
+        },
+        "TimeEntries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Time": {
+                "type": "string",
+                "format": "datetime"
+              },
+              "Assets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Identifier": {
+                      "type": "string"
+                    },
+                    "File": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "Identifier",
+                    "File"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "Time",
+              "Assets"
+            ]
+          }
+        }
+      },
+      "required": [
+        "Style",
+        "TimeEntries"
+      ]
+    },
     "RawSourceResourceCOG": {
       "title": "Cloud Optimized Geotiff (COG) Source",
       "properties": {
@@ -5737,12 +5831,6 @@
             "name"
           ]
         },
-        "Name": {
-          "title": "Resource Identifier",
-          "readOnly": true,
-          "type": "string",
-          "const": "COG source"
-        },
         "Style": {
           "type": "string"
         },
@@ -5765,6 +5853,10 @@
         },
         "ParquetSource": {
           "type": "string"
+        },
+        "MergeAssets": {
+          "type": "boolean",
+          "description": "If assets of the same type are merged into one layer"
         },
         "TimeEntries": {
           "type": "array",
@@ -5800,15 +5892,17 @@
             ]
           }
         },
-        "MergeAssets": {
-          "type": "boolean",
-          "description": "If assets of the same type are merged into one layer"
+        "Name": {
+          "title": "Resource Identifier",
+          "readOnly": true,
+          "type": "string",
+          "const": "COG source"
         }
       },
       "required": [
-        "Name",
         "Style",
-        "TimeEntries"
+        "TimeEntries",
+        "Name"
       ]
     },
     "RawSourceResourceGeoJSON": {
@@ -5844,12 +5938,6 @@
             "name"
           ]
         },
-        "Name": {
-          "title": "Resource Identifier",
-          "readOnly": true,
-          "type": "string",
-          "const": "GeoJSON source"
-        },
         "Style": {
           "type": "string"
         },
@@ -5872,6 +5960,10 @@
         },
         "ParquetSource": {
           "type": "string"
+        },
+        "MergeAssets": {
+          "type": "boolean",
+          "description": "If assets of the same type are merged into one layer"
         },
         "TimeEntries": {
           "type": "array",
@@ -5907,15 +5999,17 @@
             ]
           }
         },
-        "MergeAssets": {
-          "type": "boolean",
-          "description": "If assets of the same type are merged into one layer"
+        "Name": {
+          "title": "Resource Identifier",
+          "readOnly": true,
+          "type": "string",
+          "const": "GeoJSON source"
         }
       },
       "required": [
-        "Name",
         "Style",
-        "TimeEntries"
+        "TimeEntries",
+        "Name"
       ]
     },
     "RawSourceResourceFlatGeobuf": {
@@ -5951,12 +6045,6 @@
             "name"
           ]
         },
-        "Name": {
-          "title": "Resource Identifier",
-          "readOnly": true,
-          "type": "string",
-          "const": "FlatGeobuf source"
-        },
         "Style": {
           "type": "string"
         },
@@ -5979,6 +6067,10 @@
         },
         "ParquetSource": {
           "type": "string"
+        },
+        "MergeAssets": {
+          "type": "boolean",
+          "description": "If assets of the same type are merged into one layer"
         },
         "TimeEntries": {
           "type": "array",
@@ -6014,15 +6106,17 @@
             ]
           }
         },
-        "MergeAssets": {
-          "type": "boolean",
-          "description": "If assets of the same type are merged into one layer"
+        "Name": {
+          "title": "Resource Identifier",
+          "readOnly": true,
+          "type": "string",
+          "const": "FlatGeobuf source"
         }
       },
       "required": [
-        "Name",
         "Style",
-        "TimeEntries"
+        "TimeEntries",
+        "Name"
       ]
     },
     "RawSourceResourceVectorTile": {
@@ -6916,9 +7010,8 @@
             },
             "Type": {
               "type": "string",
-              "enum": [
-                "zarr"
-              ]
+              "readOnly": true,
+              "const": "zarr"
             },
             "StacEndpoint": {
               "type": "string"
@@ -6939,6 +7032,19 @@
               },
               "minItems": 2,
               "maxItems": 2
+            },
+            "Query": {
+              "type": "object",
+              "properties": {
+                "Start": {
+                  "type": "string",
+                  "format": "datetime"
+                },
+                "End": {
+                  "type": "string",
+                  "format": "datetime"
+                }
+              }
             }
           },
           "required": [
@@ -7073,12 +7179,6 @@
                 "name"
               ]
             },
-            "Name": {
-              "title": "Resource Identifier",
-              "readOnly": true,
-              "type": "string",
-              "const": "COG source"
-            },
             "Style": {
               "type": "string"
             },
@@ -7101,6 +7201,10 @@
             },
             "ParquetSource": {
               "type": "string"
+            },
+            "MergeAssets": {
+              "type": "boolean",
+              "description": "If assets of the same type are merged into one layer"
             },
             "TimeEntries": {
               "type": "array",
@@ -7136,15 +7240,17 @@
                 ]
               }
             },
-            "MergeAssets": {
-              "type": "boolean",
-              "description": "If assets of the same type are merged into one layer"
+            "Name": {
+              "title": "Resource Identifier",
+              "readOnly": true,
+              "type": "string",
+              "const": "COG source"
             }
           },
           "required": [
-            "Name",
             "Style",
-            "TimeEntries"
+            "TimeEntries",
+            "Name"
           ]
         },
         {
@@ -7180,12 +7286,6 @@
                 "name"
               ]
             },
-            "Name": {
-              "title": "Resource Identifier",
-              "readOnly": true,
-              "type": "string",
-              "const": "GeoJSON source"
-            },
             "Style": {
               "type": "string"
             },
@@ -7208,6 +7308,10 @@
             },
             "ParquetSource": {
               "type": "string"
+            },
+            "MergeAssets": {
+              "type": "boolean",
+              "description": "If assets of the same type are merged into one layer"
             },
             "TimeEntries": {
               "type": "array",
@@ -7243,15 +7347,17 @@
                 ]
               }
             },
-            "MergeAssets": {
-              "type": "boolean",
-              "description": "If assets of the same type are merged into one layer"
+            "Name": {
+              "title": "Resource Identifier",
+              "readOnly": true,
+              "type": "string",
+              "const": "GeoJSON source"
             }
           },
           "required": [
-            "Name",
             "Style",
-            "TimeEntries"
+            "TimeEntries",
+            "Name"
           ]
         },
         {
@@ -7287,12 +7393,6 @@
                 "name"
               ]
             },
-            "Name": {
-              "title": "Resource Identifier",
-              "readOnly": true,
-              "type": "string",
-              "const": "FlatGeobuf source"
-            },
             "Style": {
               "type": "string"
             },
@@ -7315,6 +7415,10 @@
             },
             "ParquetSource": {
               "type": "string"
+            },
+            "MergeAssets": {
+              "type": "boolean",
+              "description": "If assets of the same type are merged into one layer"
             },
             "TimeEntries": {
               "type": "array",
@@ -7350,15 +7454,17 @@
                 ]
               }
             },
-            "MergeAssets": {
-              "type": "boolean",
-              "description": "If assets of the same type are merged into one layer"
+            "Name": {
+              "title": "Resource Identifier",
+              "readOnly": true,
+              "type": "string",
+              "const": "FlatGeobuf source"
             }
           },
           "required": [
-            "Name",
             "Style",
-            "TimeEntries"
+            "TimeEntries",
+            "Name"
           ]
         },
         {
