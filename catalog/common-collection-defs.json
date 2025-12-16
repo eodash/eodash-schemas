@@ -271,296 +271,202 @@
             }
         },
         "XYZLayer": {
-            "type": "object",
-            "title": "XYZ layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "xyz"
-                },
-                "media_type": {
-                    "type": "string",
-                    "description": "media type of resource, for example image/png"
+                {
+                    "type": "object",
+                    "title": "XYZ layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "xyz"
+                        },
+                        "media_type": {
+                            "type": "string",
+                            "description": "media type of resource, for example image/png"
+                        }
+                    },
+                    "required": ["protocol"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["protocol", "id", "url"],
-            "additionalProperties": false
-     
+            ]
         },
         "WMSLayer": {
-            "type": "object",
-            "title": "WMS Layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "wms"
-                },
-                "layers": {
-                    "description": "comma separated names of layers to fetch",
-                    "type": "string"
-                },
-                "dimensions": {
-                    "$ref": "#/definitions/Dimensions"
-                },
-                "version": {
-                    "description": "WMS version",
-                    "type": "string"
-                },
-                "styles": {
-                    "description": "comma separated WMS styles",
-                    "type": "string"
-                },
-                "tilesize": {
-                    "description": "WMS Tile size to request",
-                    "type": "number"
+                {
+                    "type": "object",
+                    "title": "WMS Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "wms"
+                        },
+                        "layers": {
+                            "description": "comma separated names of layers to fetch",
+                            "type": "string"
+                        },
+                        "dimensions": {
+                            "$ref": "#/definitions/Dimensions"
+                        },
+                        "version": {
+                            "description": "WMS version",
+                            "type": "string"
+                        },
+                        "styles": {
+                            "description": "comma separated WMS styles",
+                            "type": "string"
+                        },
+                        "tilesize": {
+                            "description": "WMS Tile size to request",
+                            "type": "number"
+                        }
+                    },
+                    "required": ["protocol", "layers"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["protocol", "layers", "id", "url"],
-            "additionalProperties": false
+            ]
         },
         "WMTSLayer": {
-            "type": "object",
-            "title": "WMTS Layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "wmts"
-                },
-                "layer": {
-                    "description": "layer to fetch",
-                    "type": "string"
-                },
-                "dimensions": { "$ref": "#/definitions/Dimensions" }
-            },
-            "required": ["protocol", "layer", "id", "url"],
-            "additionalProperties": false
-            
+                {
+                    "title": "WMTS Layer",
+                    "type": "object",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "wmts"
+                        },
+                        "layer": {
+                            "description": "layer to fetch",
+                            "type": "string"
+                        },
+                        "dimensions": { "$ref": "#/definitions/Dimensions" }
+                    },
+                    "required": ["protocol", "layer"],
+                    "additionalProperties": false
+                }
+            ]
         },
         "VectorTileLayer": {
-            "type": "object",
-            "title": "Vector Tile Layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "vector-tile"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "Url to style open layer flat style file used for rendering resource"
-                },
-                "idProperty": {
-                    "type": "string",
-                    "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
-                },
-                "layers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "description": "layer name from the vector tile to include"
+                {
+                    "title": "Vector Tile Layer",
+                    "type": "object",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "vector-tile"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        },
+                        "idProperty": {
+                            "type": "string",
+                            "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        },
+                        "layers": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "description": "layer name from the vector tile to include"
+                            },
+                            "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                        }
                     },
-                    "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+                    "required": ["protocol"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["protocol", "id", "url"],
-            "additionalProperties": false
+            ]
         },
         "RawCOGLayer": {
-            "type": "object",
-            "title": "COG Layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "COG Source"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "Url to style open layer flat style file used for rendering resource"
+                {
+                    "type": "object",
+                    "title": "COG Layer",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "COG Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["protocol", "id", "url"],
-            "additionalProperties": false
+            ]
         },
         "RawFlatGeobufLayer": {
-            "type": "object",
             "title": "FlatGeobuf Layer",
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "Unique identifier of layer"
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
                 },
-                "name": {
-                    "type": "string",
-                    "description": "recommended: Descriptive name to be shown on user interface"
-                },
-                "url": {
-                    "type": "string",
-                    "description": "URL of service endpoint of data or URL to a data file"
-                },
-                "visible": {
-                    "type": "boolean",
-                    "description": "defaults to true: for baselayers only one should be set to true, rest to false"
-                },
-                "Attribution": {
-                    "$ref": "#/definitions/Attribution"
-                },
-                "DataProjection": {
-                    "$ref": "#/definitions/Projection",
-                    "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "FlatGeobuf Source"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "Url to style open layer flat style file used for rendering resource"
+                {
+                    "type": "object",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "FlatGeobuf Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"],
+                    "additionalProperties": false
                 }
-            },
-            "required": ["protocol", "id", "url"],
-            "additionalProperties": false
+            ]
         },
         "RawGeoJSONLayer": {
-            "type": "object",
             "title": "GeoJSON Layer",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
+                },
+                {
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "GeoJSON Source"
+                        },
+                        "Style": {
+                            "type": "string",
+                            "description": "Url to style open layer flat style file used for rendering resource"
+                        }
+                    },
+                    "required": ["protocol"],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "defaultLayerProperties": {
+            "type": "object",
             "properties": {
                 "id": {
                     "type": "string",
@@ -584,26 +490,14 @@
                 "DataProjection": {
                     "$ref": "#/definitions/Projection",
                     "description": "Projection in which the data is stored"
-                },
-                "Colorlegend": {
-                    "$ref": "#/definitions/Colorlegend"
-                },
-                "protocol": {
-                    "readOnly": true,
-                    "type": "string",
-                    "const": "GeoJSON Source"
-                },
-                "Style": {
-                    "type": "string",
-                    "description": "Url to style open layer flat style file used for rendering resource"
                 }
             },
-            "required": ["protocol", "id", "url"],
-            "additionalProperties": false
+            "required": ["id", "url"]
         },
         "Locations": {
             "anyOf": [
-                { "type": "array",
+                {
+                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/Location"
                     },
@@ -614,7 +508,6 @@
                     "description": "If set to 'true', the collection is handled as geodb locations with a chart and map"
                 }
             ]
-            
         },
         "auxiliaryLayerDefinition": {
             "anyOf": [
@@ -1523,11 +1416,10 @@
                 "DataProjection": {
                     "$ref": "#/definitions/Projection",
                     "description": "Projection in which the data is stored"
-            }
+                }
             },
             "required": ["Name", "Style", "TimeEntries"],
             "additionalProperties": false
-            
         },
         "RawSourceResourceGeoJSON": {
             "type": "object",
