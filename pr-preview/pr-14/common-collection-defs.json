@@ -2730,8 +2730,7 @@
               "EndPoint",
               "Database",
               "CollectionId"
-            ],
-            "additionalProperties": false
+            ]
           },
           {
             "type": "object",
@@ -2802,8 +2801,7 @@
               "TimeParameter",
               "CollectionId",
               "Query"
-            ],
-            "additionalProperties": false
+            ]
           },
           {
             "title": "Rasdaman WCS Resource",
@@ -6209,8 +6207,7 @@
         "EndPoint",
         "Database",
         "CollectionId"
-      ],
-      "additionalProperties": false
+      ]
     },
     "GeoDBFeaturesResource": {
       "type": "object",
@@ -6281,8 +6278,7 @@
         "TimeParameter",
         "CollectionId",
         "Query"
-      ],
-      "additionalProperties": false
+      ]
     },
     "TimeEntriesVectorTile": {
       "type": "array",
@@ -7546,8 +7542,7 @@
             "EndPoint",
             "Database",
             "CollectionId"
-          ],
-          "additionalProperties": false
+          ]
         },
         {
           "type": "object",
@@ -7618,8 +7613,7 @@
             "TimeParameter",
             "CollectionId",
             "Query"
-          ],
-          "additionalProperties": false
+          ]
         },
         {
           "title": "Rasdaman WCS Resource",
