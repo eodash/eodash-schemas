@@ -1840,7 +1840,8 @@
                 "enum": [
                   "cog",
                   "tiles"
-                ]
+                ],
+                "description": "'cog' type of integration requires configured 'bidx', 'tiles' requires configured 'Assets'"
               },
               "CollectionId": {
                 "type": "string"
