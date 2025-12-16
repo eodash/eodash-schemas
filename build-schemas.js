@@ -104,7 +104,8 @@ async function buildAllSchemas() {
     if (!file.endsWith(".json")) continue;
 
     const inputPath = path.join(SRC_ROOT, file);
-    const outputPath = path.join(DIST_ROOT, file);
+    // to keep the same pages structure catalog/schema.json for backwards compatibility of all data editors
+    const outputPath = path.join(DIST_ROOT, SRC_ROOT, file);
 
     console.log(`Building ${file}`);
     await buildSchema(inputPath, outputPath);
