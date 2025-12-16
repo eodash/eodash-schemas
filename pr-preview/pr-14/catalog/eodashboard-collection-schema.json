@@ -197,24 +197,7 @@
             }
           }
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "Citation"
-          ]
-        },
-        {
-          "required": [
-            "DOI"
-          ]
-        },
-        {
-          "required": [
-            "Publication"
-          ]
-        }
-      ]
+      }
     },
     "Image": {
       "type": "string",

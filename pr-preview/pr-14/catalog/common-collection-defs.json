@@ -198,24 +198,7 @@
             }
           }
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "Citation"
-          ]
-        },
-        {
-          "required": [
-            "DOI"
-          ]
-        },
-        {
-          "required": [
-            "Publication"
-          ]
-        }
-      ]
+      }
     },
     "Image": {
       "type": "string",
@@ -4946,24 +4929,7 @@
             }
           }
         }
-      },
-      "anyOf": [
-        {
-          "required": [
-            "Citation"
-          ]
-        },
-        {
-          "required": [
-            "DOI"
-          ]
-        },
-        {
-          "required": [
-            "Publication"
-          ]
-        }
-      ]
+      }
     },
     "Provider": {
       "type": "object",
