@@ -181,7 +181,7 @@
           "type": "string",
           "description": "The recommended human-readable reference (citation) to be used by publications citing the data"
         },
-        "Publications": {
+        "Publication": {
           "type": "array",
           "items": {
             "type": "object",
@@ -194,17 +194,26 @@
                 "type": "string",
                 "description": "Citation of a publication referencing the data."
               }
-            },
-            "required": [
-              "DOI",
-              "Citation"
-            ]
+            }
           }
         }
       },
-      "required": [
-        "Citation",
-        "DOI"
+      "anyOf": [
+        {
+          "required": [
+            "Citation"
+          ]
+        },
+        {
+          "required": [
+            "DOI"
+          ]
+        },
+        {
+          "required": [
+            "Publication"
+          ]
+        }
       ]
     },
     "Image": {
@@ -222,11 +231,6 @@
               "Name": {
                 "type": "string",
                 "const": "Statistical API"
-              },
-              "EndPoint": {
-                "type": "string",
-                "default": "https://services.sentinel-hub.com/api/v1/statistics",
-                "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
               },
               "Type": {
                 "type": "string",
@@ -246,7 +250,6 @@
             },
             "required": [
               "Name",
-              "EndPoint",
               "Type",
               "CollectionId",
               "Script"
@@ -1876,12 +1879,55 @@
               },
               "LayerId": {
                 "type": "string"
+              },
+              "WMSIntervalsBetweenDates": {
+                "type": "boolean"
+              },
+              "DateTimeInterval": {
+                "type": "object",
+                "properties": {
+                  "Start": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "End": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "Timedelta": {
+                    "type": "object",
+                    "properties": {
+                      "days": {
+                        "type": "number"
+                      },
+                      "hours": {
+                        "type": "number"
+                      },
+                      "minutes": {
+                        "type": "number"
+                      },
+                      "seconds": {
+                        "type": "number"
+                      }
+                    },
+                    "description": "Time delta to be applied to the start and end date"
+                  }
+                },
+                "required": [
+                  "Start",
+                  "End"
+                ],
+                "description": "Date time interval to be applied to the collection"
+              },
+              "Times": {
+                "items": {
+                  "type": "string"
+                }
               }
             },
             "required": [
               "Name",
               "EndPoint",
-              "CollectionId",
               "LayerId"
             ]
           },
@@ -1956,6 +2002,9 @@
                   "type": "string"
                 }
               },
+              "MediaType": {
+                "type": "string"
+              },
               "Version": {
                 "type": "string",
                 "enum": [
@@ -1963,6 +2012,9 @@
                   "1.1.1",
                   "1.3.0"
                 ]
+              },
+              "WMSIntervalsBetweenDates": {
+                "type": "boolean"
               },
               "DateTimeInterval": {
                 "type": "object",
@@ -1999,6 +2051,11 @@
                   "End"
                 ],
                 "description": "Date time interval to be applied to the collection"
+              },
+              "Times": {
+                "items": {
+                  "type": "string"
+                }
               },
               "OverwriteBBox": {
                 "anyOf": [

@@ -181,7 +181,7 @@
           "type": "string",
           "description": "The recommended human-readable reference (citation) to be used by publications citing the data"
         },
-        "Publications": {
+        "Publication": {
           "type": "array",
           "items": {
             "type": "object",
@@ -194,17 +194,26 @@
                 "type": "string",
                 "description": "Citation of a publication referencing the data."
               }
-            },
-            "required": [
-              "DOI",
-              "Citation"
-            ]
+            }
           }
         }
       },
-      "required": [
-        "Citation",
-        "DOI"
+      "anyOf": [
+        {
+          "required": [
+            "Citation"
+          ]
+        },
+        {
+          "required": [
+            "DOI"
+          ]
+        },
+        {
+          "required": [
+            "Publication"
+          ]
+        }
       ]
     },
     "Image": {
@@ -222,11 +231,6 @@
               "Name": {
                 "type": "string",
                 "const": "Statistical API"
-              },
-              "EndPoint": {
-                "type": "string",
-                "default": "https://services.sentinel-hub.com/api/v1/statistics",
-                "description": "Url to endpoint, usually \"https://services.sentinel-hub.com/api/v1/statistics\""
               },
               "Type": {
                 "type": "string",
@@ -246,7 +250,6 @@
             },
             "required": [
               "Name",
-              "EndPoint",
               "Type",
               "CollectionId",
               "Script"
