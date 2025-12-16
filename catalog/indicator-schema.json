@@ -6,7 +6,7 @@
     "basicCategoryTitle": "General",
     "allOf": [
         {
-            "$ref": "./collection-schema.json"
+            "$ref": "./common-collection-defs.json"
         },
         {
             "type": "object",
