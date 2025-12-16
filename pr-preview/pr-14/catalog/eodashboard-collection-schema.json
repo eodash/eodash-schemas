@@ -324,9 +324,11 @@
                 "enum": [
                   "application/geo+json",
                   "application/json",
+                  "application/vnd.flatgeobuf",
                   "text/csv",
                   "image/png",
-                  "image/tiff"
+                  "image/tiff",
+                  "text/plain"
                 ],
                 "description": "MIME type of the returned data"
               },
