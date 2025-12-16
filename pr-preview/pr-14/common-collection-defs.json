@@ -424,6 +424,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -488,6 +489,7 @@
             ]
           },
           {
+            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -579,6 +581,7 @@
             ]
           },
           {
+            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -658,6 +661,7 @@
             ]
           },
           {
+            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -734,6 +738,7 @@
             ]
           },
           {
+            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -936,6 +941,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1000,6 +1006,7 @@
             ]
           },
           {
+            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1091,6 +1098,7 @@
             ]
           },
           {
+            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1170,6 +1178,7 @@
             ]
           },
           {
+            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1246,6 +1255,7 @@
             ]
           },
           {
+            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1543,6 +1553,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "Sentinel Hub Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1606,6 +1617,7 @@
             ]
           },
           {
+            "title": "Sentinel Hub WMS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1661,6 +1673,7 @@
             ]
           },
           {
+            "title": "WMS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1789,6 +1802,7 @@
             ]
           },
           {
+            "title": "VEDA Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2044,6 +2058,7 @@
             ]
           },
           {
+            "title": "XCube Server Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2121,6 +2136,7 @@
             ]
           },
           {
+            "title": "Copernicus Marine Data Store WMTS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2210,6 +2226,7 @@
             ]
           },
           {
+            "title": "Cloud Optimized Geotiff (COG) Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2316,6 +2333,7 @@
             ]
           },
           {
+            "title": "GeoJSON Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2422,6 +2440,7 @@
             ]
           },
           {
+            "title": "FlatGeobuf Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2528,6 +2547,7 @@
             ]
           },
           {
+            "title": "Vector Tile Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2786,6 +2806,7 @@
             "additionalProperties": false
           },
           {
+            "title": "Rasdaman WCS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -3121,6 +3142,7 @@
       }
     },
     "XYZLayer": {
+      "title": "XYZ layer",
       "properties": {
         "id": {
           "type": "string",
@@ -3185,6 +3207,7 @@
       ]
     },
     "WMSLayer": {
+      "title": "WMS Layer",
       "properties": {
         "id": {
           "type": "string",
@@ -3276,6 +3299,7 @@
       ]
     },
     "WMTSLayer": {
+      "title": "WMTS Layer",
       "properties": {
         "id": {
           "type": "string",
@@ -3355,6 +3379,7 @@
       ]
     },
     "VectorTileLayer": {
+      "title": "Vector Tile Layer",
       "properties": {
         "id": {
           "type": "string",
@@ -3431,6 +3456,7 @@
       ]
     },
     "RawCOGLayer": {
+      "title": "COG Layer",
       "properties": {
         "id": {
           "type": "string",
@@ -3741,6 +3767,7 @@
     "auxiliaryLayerDefinition": {
       "anyOf": [
         {
+          "title": "XYZ layer",
           "properties": {
             "id": {
               "type": "string",
@@ -3805,6 +3832,7 @@
           ]
         },
         {
+          "title": "WMS Layer",
           "properties": {
             "id": {
               "type": "string",
@@ -3896,6 +3924,7 @@
           ]
         },
         {
+          "title": "WMTS Layer",
           "properties": {
             "id": {
               "type": "string",
@@ -3975,6 +4004,7 @@
           ]
         },
         {
+          "title": "Vector Tile Layer",
           "properties": {
             "id": {
               "type": "string",
@@ -4051,6 +4081,7 @@
           ]
         },
         {
+          "title": "COG Layer",
           "properties": {
             "id": {
               "type": "string",
@@ -4777,6 +4808,7 @@
       }
     },
     "SentinelHubResource": {
+      "title": "Sentinel Hub Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -4840,6 +4872,7 @@
       ]
     },
     "SentinelHubWMSResource": {
+      "title": "Sentinel Hub WMS Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -4895,6 +4928,7 @@
       ]
     },
     "WMSResource": {
+      "title": "WMS Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5195,6 +5229,7 @@
       ]
     },
     "VEDAResource": {
+      "title": "VEDA Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5450,6 +5485,7 @@
       ]
     },
     "XCubeServerResource": {
+      "title": "XCube Server Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5527,6 +5563,7 @@
       ]
     },
     "CopernicusMarineDataStoreWMTSResource": {
+      "title": "Copernicus Marine Data Store WMTS Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5616,6 +5653,7 @@
       ]
     },
     "RasdamanWCSResource": {
+      "title": "Rasdaman WCS Resource",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5667,6 +5705,7 @@
       ]
     },
     "RawSourceResourceCOG": {
+      "title": "Cloud Optimized Geotiff (COG) Source",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5773,6 +5812,7 @@
       ]
     },
     "RawSourceResourceGeoJSON": {
+      "title": "GeoJSON Source",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5879,6 +5919,7 @@
       ]
     },
     "RawSourceResourceFlatGeobuf": {
+      "title": "FlatGeobuf Source",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -5985,6 +6026,7 @@
       ]
     },
     "RawSourceResourceVectorTile": {
+      "title": "Vector Tile Source",
       "properties": {
         "Attribution": {
           "type": "string",
@@ -6079,59 +6121,6 @@
         "Name",
         "TimeEntries"
       ]
-    },
-    "TimeEntriesVectorTile": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "Time": {
-            "type": "string",
-            "format": "datetime"
-          },
-          "Url": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "Time",
-          "Url"
-        ]
-      }
-    },
-    "TimeEntries": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "Time": {
-            "type": "string",
-            "format": "datetime"
-          },
-          "Assets": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "Identifier": {
-                  "type": "string"
-                },
-                "File": {
-                  "type": "string"
-                }
-              },
-              "required": [
-                "Identifier",
-                "File"
-              ]
-            }
-          }
-        },
-        "required": [
-          "Time",
-          "Assets"
-        ]
-      }
     },
     "GeoDBResource": {
       "type": "object",
@@ -6295,6 +6284,59 @@
       ],
       "additionalProperties": false
     },
+    "TimeEntriesVectorTile": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Time": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "Url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "Time",
+          "Url"
+        ]
+      }
+    },
+    "TimeEntries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Time": {
+            "type": "string",
+            "format": "datetime"
+          },
+          "Assets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "Identifier": {
+                  "type": "string"
+                },
+                "File": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Identifier",
+                "File"
+              ]
+            }
+          }
+        },
+        "required": [
+          "Time",
+          "Assets"
+        ]
+      }
+    },
     "Flatstyle": {
       "anyOf": [
         {
@@ -6327,6 +6369,7 @@
     "Resource": {
       "anyOf": [
         {
+          "title": "Sentinel Hub Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6390,6 +6433,7 @@
           ]
         },
         {
+          "title": "Sentinel Hub WMS Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6445,6 +6489,7 @@
           ]
         },
         {
+          "title": "WMS Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6573,6 +6618,7 @@
           ]
         },
         {
+          "title": "VEDA Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6828,6 +6874,7 @@
           ]
         },
         {
+          "title": "XCube Server Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6905,6 +6952,7 @@
           ]
         },
         {
+          "title": "Copernicus Marine Data Store WMTS Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -6994,6 +7042,7 @@
           ]
         },
         {
+          "title": "Cloud Optimized Geotiff (COG) Source",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -7100,6 +7149,7 @@
           ]
         },
         {
+          "title": "GeoJSON Source",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -7206,6 +7256,7 @@
           ]
         },
         {
+          "title": "FlatGeobuf Source",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -7312,6 +7363,7 @@
           ]
         },
         {
+          "title": "Vector Tile Source",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -7570,6 +7622,7 @@
           "additionalProperties": false
         },
         {
+          "title": "Rasdaman WCS Resource",
           "properties": {
             "Attribution": {
               "type": "string",
@@ -7622,6 +7675,5 @@
         }
       ]
     }
-  },
-  "additionalProperties": false
+  }
 }

@@ -423,6 +423,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -487,6 +488,7 @@
             ]
           },
           {
+            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -578,6 +580,7 @@
             ]
           },
           {
+            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -657,6 +660,7 @@
             ]
           },
           {
+            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -733,6 +737,7 @@
             ]
           },
           {
+            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -935,6 +940,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -999,6 +1005,7 @@
             ]
           },
           {
+            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1090,6 +1097,7 @@
             ]
           },
           {
+            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1169,6 +1177,7 @@
             ]
           },
           {
+            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1245,6 +1254,7 @@
             ]
           },
           {
+            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -1535,6 +1545,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "Sentinel Hub Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1598,6 +1609,7 @@
             ]
           },
           {
+            "title": "Sentinel Hub WMS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1653,6 +1665,7 @@
             ]
           },
           {
+            "title": "WMS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -1781,6 +1794,7 @@
             ]
           },
           {
+            "title": "VEDA Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2036,6 +2050,7 @@
             ]
           },
           {
+            "title": "XCube Server Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2113,6 +2128,7 @@
             ]
           },
           {
+            "title": "Copernicus Marine Data Store WMTS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2202,6 +2218,7 @@
             ]
           },
           {
+            "title": "Cloud Optimized Geotiff (COG) Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2308,6 +2325,7 @@
             ]
           },
           {
+            "title": "GeoJSON Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2414,6 +2432,7 @@
             ]
           },
           {
+            "title": "FlatGeobuf Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2520,6 +2539,7 @@
             ]
           },
           {
+            "title": "Vector Tile Source",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2778,6 +2798,7 @@
             "additionalProperties": false
           },
           {
+            "title": "Rasdaman WCS Resource",
             "properties": {
               "Attribution": {
                 "type": "string",
@@ -2952,6 +2973,5 @@
     "Description",
     "Resources",
     "EodashIdentifier"
-  ],
-  "additionalProperties": false
+  ]
 }

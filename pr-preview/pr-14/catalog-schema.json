@@ -49,6 +49,5 @@
     "endpoint",
     "assets_endpoint",
     "collections"
-  ],
-  "additionalProperties": false
+  ]
 }

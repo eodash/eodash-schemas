@@ -11,6 +11,7 @@
       "items": {
         "anyOf": [
           {
+            "title": "XYZ layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -75,6 +76,7 @@
             ]
           },
           {
+            "title": "WMS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -166,6 +168,7 @@
             ]
           },
           {
+            "title": "WMTS Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -245,6 +248,7 @@
             ]
           },
           {
+            "title": "Vector Tile Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -321,6 +325,7 @@
             ]
           },
           {
+            "title": "COG Layer",
             "properties": {
               "id": {
                 "type": "string",
@@ -521,6 +526,5 @@
   },
   "required": [
     "layers"
-  ],
-  "additionalProperties": false
+  ]
 }
