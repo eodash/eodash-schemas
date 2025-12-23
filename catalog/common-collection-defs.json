@@ -453,6 +453,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -531,6 +534,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -558,7 +564,12 @@
               },
               "layers": {
                 "description": "comma separated names of layers to fetch",
-                "type": "string"
+                "styles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
               },
               "dimensions": {
                 "description": "key/value pairs of parameters to add to the WMS request",
@@ -579,8 +590,11 @@
                 "type": "string"
               },
               "styles": {
-                "description": "comma separated WMS styles",
-                "type": "string"
+                "description": "wms styles to apply",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "tilesize": {
                 "description": "WMS Tile size to request",
@@ -636,6 +650,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -729,6 +746,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -819,6 +839,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -897,6 +920,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -975,6 +1001,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1061,6 +1090,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1139,6 +1171,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1166,7 +1201,12 @@
               },
               "layers": {
                 "description": "comma separated names of layers to fetch",
-                "type": "string"
+                "styles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
               },
               "dimensions": {
                 "description": "key/value pairs of parameters to add to the WMS request",
@@ -1187,8 +1227,11 @@
                 "type": "string"
               },
               "styles": {
-                "description": "comma separated WMS styles",
-                "type": "string"
+                "description": "wms styles to apply",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "tilesize": {
                 "description": "WMS Tile size to request",
@@ -1244,6 +1287,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1337,6 +1383,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1427,6 +1476,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1505,6 +1557,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1583,6 +1638,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1639,6 +1697,9 @@
             },
             "extent": {
               "type": "array",
+              "items": {
+                "type": "number"
+              },
               "minItems": 4,
               "maxItems": 4,
               "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1761,6 +1822,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1802,6 +1866,20 @@
               },
               "LayerId": {
                 "type": "string"
+              },
+              "Dimensions": {
+                "description": "key/value pairs of parameters to add to the WMS request",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
               }
             },
             "required": [
@@ -1838,6 +1916,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -1913,8 +1994,23 @@
                 "description": "Date time interval to be applied to the collection"
               },
               "Times": {
+                "type": "array",
                 "items": {
                   "type": "string"
+                }
+              },
+              "Dimensions": {
+                "description": "key/value pairs of parameters to add to the WMS request",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
                 }
               }
             },
@@ -1950,6 +2046,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2046,6 +2145,7 @@
                 "description": "Date time interval to be applied to the collection"
               },
               "Times": {
+                "type": "array",
                 "items": {
                   "type": "string"
                 }
@@ -2069,6 +2169,20 @@
               },
               "TileSize": {
                 "type": "number"
+              },
+              "Dimensions": {
+                "description": "key/value pairs of parameters to add to the WMS request",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
               }
             },
             "required": [
@@ -2103,6 +2217,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2380,6 +2497,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2483,6 +2603,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2586,6 +2709,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2706,6 +2832,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2826,6 +2955,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -2946,6 +3078,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3056,6 +3191,9 @@
                       },
                       "extent": {
                         "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
                         "minItems": 4,
                         "maxItems": 4,
                         "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3159,6 +3297,7 @@
                 "description": "Date time interval to be applied to the collection"
               },
               "Times": {
+                "type": "array",
                 "items": {
                   "type": "string"
                 }
@@ -3239,6 +3378,9 @@
             },
             "extent": {
               "type": "array",
+              "items": {
+                "type": "number"
+              },
               "minItems": 4,
               "maxItems": 4,
               "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3511,6 +3653,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3589,6 +3734,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3616,7 +3764,12 @@
         },
         "layers": {
           "description": "comma separated names of layers to fetch",
-          "type": "string"
+          "styles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
         },
         "dimensions": {
           "description": "key/value pairs of parameters to add to the WMS request",
@@ -3637,8 +3790,11 @@
           "type": "string"
         },
         "styles": {
-          "description": "comma separated WMS styles",
-          "type": "string"
+          "description": "wms styles to apply",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "tilesize": {
           "description": "WMS Tile size to request",
@@ -3694,6 +3850,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3787,6 +3946,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3877,6 +4039,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -3955,6 +4120,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4033,6 +4201,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4111,6 +4282,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4240,6 +4414,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4318,6 +4495,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4345,7 +4525,12 @@
             },
             "layers": {
               "description": "comma separated names of layers to fetch",
-              "type": "string"
+              "styles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
             },
             "dimensions": {
               "description": "key/value pairs of parameters to add to the WMS request",
@@ -4366,8 +4551,11 @@
               "type": "string"
             },
             "styles": {
-              "description": "comma separated WMS styles",
-              "type": "string"
+              "description": "wms styles to apply",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             },
             "tilesize": {
               "description": "WMS Tile size to request",
@@ -4423,6 +4611,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4516,6 +4707,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4606,6 +4800,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4684,6 +4881,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -4762,6 +4962,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5001,6 +5204,9 @@
             },
             "extent": {
               "type": "array",
+              "items": {
+                "type": "number"
+              },
               "minItems": 4,
               "maxItems": 4,
               "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5350,6 +5556,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5398,6 +5607,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5439,6 +5651,20 @@
         },
         "LayerId": {
           "type": "string"
+        },
+        "Dimensions": {
+          "description": "key/value pairs of parameters to add to the WMS request",
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
         }
       },
       "required": [
@@ -5475,6 +5701,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5550,8 +5779,23 @@
           "description": "Date time interval to be applied to the collection"
         },
         "Times": {
+          "type": "array",
           "items": {
             "type": "string"
+          }
+        },
+        "Dimensions": {
+          "description": "key/value pairs of parameters to add to the WMS request",
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
           }
         }
       },
@@ -5587,6 +5831,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -5683,6 +5930,7 @@
           "description": "Date time interval to be applied to the collection"
         },
         "Times": {
+          "type": "array",
           "items": {
             "type": "string"
           }
@@ -5706,6 +5954,20 @@
         },
         "TileSize": {
           "type": "number"
+        },
+        "Dimensions": {
+          "description": "key/value pairs of parameters to add to the WMS request",
+          "type": "object",
+          "additionalProperties": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "number"
+              }
+            ]
+          }
         }
       },
       "required": [
@@ -5912,6 +6174,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6189,6 +6454,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6292,6 +6560,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6395,6 +6666,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6530,6 +6804,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6650,6 +6927,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6770,6 +7050,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -6890,6 +7173,9 @@
                 },
                 "extent": {
                   "type": "array",
+                  "items": {
+                    "type": "number"
+                  },
                   "minItems": 4,
                   "maxItems": 4,
                   "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -7198,6 +7484,7 @@
           "description": "Date time interval to be applied to the collection"
         },
         "Times": {
+          "type": "array",
           "items": {
             "type": "string"
           }
@@ -7317,6 +7604,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -7358,6 +7648,20 @@
             },
             "LayerId": {
               "type": "string"
+            },
+            "Dimensions": {
+              "description": "key/value pairs of parameters to add to the WMS request",
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
             }
           },
           "required": [
@@ -7394,6 +7698,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -7469,8 +7776,23 @@
               "description": "Date time interval to be applied to the collection"
             },
             "Times": {
+              "type": "array",
               "items": {
                 "type": "string"
+              }
+            },
+            "Dimensions": {
+              "description": "key/value pairs of parameters to add to the WMS request",
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
               }
             }
           },
@@ -7506,6 +7828,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -7602,6 +7927,7 @@
               "description": "Date time interval to be applied to the collection"
             },
             "Times": {
+              "type": "array",
               "items": {
                 "type": "string"
               }
@@ -7625,6 +7951,20 @@
             },
             "TileSize": {
               "type": "number"
+            },
+            "Dimensions": {
+              "description": "key/value pairs of parameters to add to the WMS request",
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "number"
+                  }
+                ]
+              }
             }
           },
           "required": [
@@ -7659,6 +7999,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -7936,6 +8279,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8039,6 +8385,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8142,6 +8491,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8262,6 +8614,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8382,6 +8737,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8502,6 +8860,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8612,6 +8973,9 @@
                     },
                     "extent": {
                       "type": "array",
+                      "items": {
+                        "type": "number"
+                      },
                       "minItems": 4,
                       "maxItems": 4,
                       "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -8715,6 +9079,7 @@
               "description": "Date time interval to be applied to the collection"
             },
             "Times": {
+              "type": "array",
               "items": {
                 "type": "string"
               }
