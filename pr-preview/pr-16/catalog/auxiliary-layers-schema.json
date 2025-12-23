@@ -1,0 +1,650 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://eodash.github.io/eodash-schemas/catalog/auxiliary-layers-schema.json",
+  "title": "Auxiliary layers schema",
+  "format": "categories",
+  "basicCategoryTitle": "General",
+  "type": "object",
+  "properties": {
+    "layers": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "title": "XYZ layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "xyz"
+              },
+              "media_type": {
+                "type": "string",
+                "description": "media type of resource, for example image/png"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
+          },
+          {
+            "title": "WMS Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "wms"
+              },
+              "layers": {
+                "description": "comma separated names of layers to fetch",
+                "styles": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "dimensions": {
+                "description": "key/value pairs of parameters to add to the WMS request",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
+              },
+              "version": {
+                "description": "WMS version",
+                "type": "string"
+              },
+              "styles": {
+                "description": "wms styles to apply",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tilesize": {
+                "description": "WMS Tile size to request",
+                "type": "number"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol",
+              "layers"
+            ]
+          },
+          {
+            "title": "WMTS Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "wmts"
+              },
+              "layer": {
+                "description": "layer to fetch",
+                "type": "string"
+              },
+              "dimensions": {
+                "description": "key/value pairs of parameters to add to the WMS request",
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol",
+              "layer"
+            ]
+          },
+          {
+            "title": "Vector Tile Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "vector-tile"
+              },
+              "Style": {
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
+              },
+              "idProperty": {
+                "type": "string",
+                "description": "Optional. Name of unique identifier of features for MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+              },
+              "layers": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "layer name from the vector tile to include"
+                },
+                "description": "Optional. Names of layers to read from vector tile in MVT format - see https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
+          },
+          {
+            "title": "COG Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "COG source"
+              },
+              "Style": {
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
+          },
+          {
+            "title": "GeoJSON Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "GeoJSON source"
+              },
+              "Style": {
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
+          },
+          {
+            "title": "FlatGeobuf Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "FlatGeobuf source"
+              },
+              "Style": {
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
+          }
+        ]
+      },
+      "description": "auxiliary layer definition list"
+    }
+  },
+  "required": [
+    "layers"
+  ]
+}
