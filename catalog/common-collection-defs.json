@@ -176,6 +176,9 @@
                         },
                         "extent": {
                             "type": "array",
+                            "items": {
+                                "type": "number"
+                            },
                             "minItems": 4,
                             "maxItems": 4,
                             "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
@@ -324,7 +327,12 @@
                         },
                         "layers": {
                             "description": "comma separated names of layers to fetch",
-                            "type": "string"
+                            "styles": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
                         },
                         "dimensions": {
                             "$ref": "#/definitions/Dimensions"
@@ -334,8 +342,11 @@
                             "type": "string"
                         },
                         "styles": {
-                            "description": "comma separated WMS styles",
-                            "type": "string"
+                            "description": "wms styles to apply",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
                         },
                         "tilesize": {
                             "description": "WMS Tile size to request",
@@ -928,6 +939,9 @@
                         },
                         "LayerId": {
                             "type": "string"
+                        },
+                        "Dimensions": {
+                            "$ref": "#/definitions/Dimensions"
                         }
                     },
                     "required": [
@@ -969,9 +983,13 @@
                             "$ref": "#/definitions/DateTimeInterval"
                         },
                         "Times": {
+                            "type": "array",
                             "items": {
                                 "type": "string"
                             }
+                        },
+                        "Dimensions": {
+                            "$ref": "#/definitions/Dimensions"
                         }
                     },
                     "required": ["Name", "EndPoint", "LayerId"]
@@ -1021,6 +1039,7 @@
                             "$ref": "#/definitions/DateTimeInterval"
                         },
                         "Times": {
+                            "type": "array",
                             "items": {
                                 "type": "string"
                             }
@@ -1030,6 +1049,9 @@
                         },
                         "TileSize": {
                             "type": "number"
+                        },
+                        "Dimensions": {
+                            "$ref": "#/definitions/Dimensions"
                         }
                     },
                     "required": ["Name", "EndPoint", "LayerId"]
@@ -1675,14 +1697,13 @@
                     "$ref": "#/definitions/DateTimeInterval"
                 },
                 "Times": {
+                    "type": "array",
                     "items": {
                         "type": "string"
                     }
                 }
             },
-            "required": [
-                "Name"
-            ]
+            "required": ["Name"]
         },
         "TimeEntriesVectorTile": {
             "type": "array",
@@ -1769,7 +1790,7 @@
                 { "$ref": "#/definitions/RawSourceResourceFlatGeobuf" },
                 { "$ref": "#/definitions/RawSourceResourceVectorTile" },
                 { "$ref": "#/definitions/RasdamanWCSResource" },
-                {"$ref": "#/definitions/CollectionOnly" }
+                { "$ref": "#/definitions/CollectionOnly" }
             ]
         }
     }
