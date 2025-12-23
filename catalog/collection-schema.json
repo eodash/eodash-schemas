@@ -220,7 +220,8 @@
                 "enum": [
                   "byoc",
                   "zarr"
-                ]
+                ],
+                "description": "byoc or zarr SH collection differentiation"
               },
               "CollectionId": {
                 "type": "string",
@@ -272,10 +273,12 @@
         "type": "object",
         "properties": {
           "Url": {
-            "type": "string"
+            "type": "string",
+            "description": "URL of the link"
           },
           "Name": {
-            "type": "string"
+            "type": "string",
+            "description": "title of the referenced link"
           }
         },
         "required": [
@@ -309,6 +312,7 @@
           "type": "array",
           "minItems": 1,
           "items": {
+            "description": "Defines handling of a single process endpoint.",
             "type": "object",
             "properties": {
               "Identifier": {
@@ -571,16 +575,12 @@
                 }
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               },
@@ -682,16 +682,12 @@
                 "type": "string"
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               }
@@ -1208,16 +1204,12 @@
                 }
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               },
@@ -1319,16 +1311,12 @@
                 "type": "string"
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               }
@@ -1681,7 +1669,7 @@
       "description": "Optional overwrite of default overlay layer definition list"
     },
     "MapProjection": {
-      "description": "Projection in which the data is visualized, defaults to projection configured in eodash",
+      "description": "Definition of a projection for the map on this collection",
       "anyOf": [
         {
           "type": "object",
@@ -1720,6 +1708,7 @@
       ]
     },
     "Colorlegend": {
+      "description": "Definition of a static legend for collection",
       "type": "object",
       "properties": {
         "title": {
@@ -1736,13 +1725,9 @@
         "domain": {
           "type": "array",
           "items": {
-            "anyOf": [
-              {
-                "type": "number"
-              },
-              {
-                "type": "string"
-              }
+            "type": [
+              "number",
+              "string"
             ]
           },
           "description": "List of domain entries, usually minimum and maximum value of domain, list of strings when using <b>categorical</b> <b>scaleType</b>"
@@ -1780,8 +1765,8 @@
       }
     },
     "Legend": {
-      "type": "string",
-      "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
+      "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to legend image file",
+      "type": "string"
     },
     "Resources": {
       "type": "array",
@@ -1844,33 +1829,47 @@
                 "const": "Sentinel Hub"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "For example https://services.sentinel-hub.com"
               },
               "Type": {
                 "type": "string",
                 "enum": [
                   "byoc",
                   "zarr"
-                ]
+                ],
+                "description": "if dataset is stored as byoc or zarr"
               },
               "CollectionId": {
-                "type": "string"
+                "type": "string",
+                "description": "sentinel hub collection id to query"
               },
               "LayerId": {
-                "type": "string"
+                "type": "string",
+                "description": "sentinel hub WMS layer name"
               },
               "Dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
+                }
+              },
+              "Query": {
+                "description": "Start and end datetime of data requested from STAC API",
+                "type": "object",
+                "properties": {
+                  "Start": {
+                    "type": "string",
+                    "format": "datetime"
+                  },
+                  "End": {
+                    "type": "string",
+                    "format": "datetime"
+                  }
                 }
               }
             },
@@ -1938,45 +1937,56 @@
                 "const": "Sentinel Hub WMS"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "For example https://services.sentinel-hub.com/ogc/wms/{SH_INSTANCE_ID}"
               },
               "CollectionId": {
-                "type": "string"
+                "type": "string",
+                "description": "STAC collection id to request"
               },
               "LayerId": {
-                "type": "string"
+                "type": "string",
+                "description": "sentinel hub WMS layer name"
               },
               "WMSIntervalsBetweenDates": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "triggers if resulting WMS intervals should be between start/end dates",
+                "default": false
               },
               "DateTimeInterval": {
                 "type": "object",
                 "properties": {
                   "Start": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "start of time interval"
                   },
                   "End": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "end of time interval"
                   },
                   "Timedelta": {
                     "type": "object",
                     "properties": {
                       "days": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of days"
                       },
                       "hours": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of hours"
                       },
                       "minutes": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of minutes"
                       },
                       "seconds": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of seconds"
                       }
                     },
-                    "description": "Time delta to be applied to the start and end date"
+                    "description": "Time delta to be applied to the start and end date as python datetime.timedelta object. Can use any combination of days, hours, minutes, seconds"
                   }
                 },
                 "required": [
@@ -1989,19 +1999,16 @@
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "Optional list of time strings to pass to collection handler instead of querying the endpoint for times"
               },
               "Dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               }
@@ -2068,26 +2075,31 @@
                 "const": "WMS"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "service endpoint url"
               },
               "Type": {
                 "type": "string",
                 "enum": [
-                  "Time",
                   "OverwriteTimes"
-                ]
+                ],
+                "description": "Set to 'OverwriteTimes' together with 'Times' to override set of collection times and prevent querying the WMS endpoint for available times"
               },
               "LayerId": {
-                "type": "string"
+                "type": "string",
+                "description": "WMS Layer name"
               },
               "Styles": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "list of WMS styles to use in the request"
               },
               "MediaType": {
-                "type": "string"
+                "type": "string",
+                "description": "file format to request from wms server",
+                "default": "image/png"
               },
               "Version": {
                 "type": "string",
@@ -2095,39 +2107,48 @@
                   "1.1.0",
                   "1.1.1",
                   "1.3.0"
-                ]
+                ],
+                "description": "WMS request version to use"
               },
               "WMSIntervalsBetweenDates": {
-                "type": "boolean"
+                "type": "boolean",
+                "description": "triggers if resulting WMS intervals should be between start/end dates",
+                "default": false
               },
               "DateTimeInterval": {
                 "type": "object",
                 "properties": {
                   "Start": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "start of time interval"
                   },
                   "End": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "end of time interval"
                   },
                   "Timedelta": {
                     "type": "object",
                     "properties": {
                       "days": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of days"
                       },
                       "hours": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of hours"
                       },
                       "minutes": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of minutes"
                       },
                       "seconds": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of seconds"
                       }
                     },
-                    "description": "Time delta to be applied to the start and end date"
+                    "description": "Time delta to be applied to the start and end date as python datetime.timedelta object. Can use any combination of days, hours, minutes, seconds"
                   }
                 },
                 "required": [
@@ -2140,7 +2161,8 @@
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "Optional list of time strings to pass to collection handler instead of querying the endpoint for times"
               },
               "OverwriteBBox": {
                 "anyOf": [
@@ -2160,19 +2182,17 @@
                 "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
               },
               "TileSize": {
-                "type": "number"
+                "type": "number",
+                "description": "WMS tile size to use",
+                "default": 512
               },
               "Dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               }
@@ -2239,7 +2259,8 @@
                 "const": "VEDA"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "service endpoint url"
               },
               "Type": {
                 "type": "string",
@@ -2250,10 +2271,12 @@
                 "description": "'cog' type of integration requires configured 'bidx', 'tiles' requires configured 'Assets'"
               },
               "CollectionId": {
-                "type": "string"
+                "type": "string",
+                "description": "STAC collection id to request"
               },
               "ColormapName": {
                 "type": "string",
+                "description": "colormap to request for the collection",
                 "enum": [
                   "accent",
                   "accent_r",
@@ -2426,14 +2449,11 @@
               },
               "Rescale": {
                 "type": "array",
+                "description": "rescale parameter min and max to use as stretch",
                 "items": {
-                  "anyOf": [
-                    {
-                      "type": "number"
-                    },
-                    {
-                      "type": "string"
-                    }
+                  "type": [
+                    "number",
+                    "string"
                   ]
                 },
                 "minItems": 2,
@@ -2441,18 +2461,22 @@
               },
               "Bidx": {
                 "type": "integer",
+                "description": "band index to use from the source COG",
                 "default": 1
               },
               "Assets": {
+                "description": "list of asset names to request for the STAC Item",
                 "type": "array",
                 "items": {
                   "type": "string"
                 }
               },
               "ColorFormula": {
+                "description": "url escaped titiler colorformula definition",
                 "type": "string"
               },
               "Nodata": {
+                "description": "specify raster value as nodata to make it transparent in the rendering",
                 "type": "number"
               }
             },
@@ -2519,7 +2543,8 @@
                 "const": "xcube"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "service endpoint url"
               },
               "Type": {
                 "type": "string",
@@ -2527,18 +2552,186 @@
                 "const": "zarr"
               },
               "StacEndpoint": {
-                "type": "string"
+                "type": "string",
+                "description": "url suffix pointing to STAC endpoint",
+                "default": "/ogc"
               },
               "DatacubeId": {
-                "type": "string"
+                "type": "string",
+                "description": "identifier of the datacube to reference"
               },
               "Variable": {
-                "type": "string"
+                "type": "string",
+                "description": "identifier of the variable to reference from the datacube"
               },
               "ColormapName": {
-                "type": "string"
+                "type": "string",
+                "description": "name of the colormap to use for rendering requests",
+                "enum": [
+                  "Accent",
+                  "Blues",
+                  "BrBG",
+                  "BuGn",
+                  "BuPu",
+                  "CMRmap",
+                  "Dark2",
+                  "GnBu",
+                  "Grays",
+                  "Greens",
+                  "Greys",
+                  "OrRd",
+                  "Oranges",
+                  "PRGn",
+                  "Paired",
+                  "Pastel1",
+                  "Pastel2",
+                  "PiYG",
+                  "PuBu",
+                  "PuBuGn",
+                  "PuOr",
+                  "PuRd",
+                  "Purples",
+                  "RdBu",
+                  "RdGy",
+                  "RdPu",
+                  "RdYlBu",
+                  "RdYlGn",
+                  "Reds",
+                  "Set1",
+                  "Set2",
+                  "Set3",
+                  "Spectral",
+                  "Wistia",
+                  "YlGn",
+                  "YlGnBu",
+                  "YlOrBr",
+                  "YlOrRd",
+                  "afmhot",
+                  "algae",
+                  "algae_i",
+                  "algae_r_i",
+                  "amp",
+                  "amp_i",
+                  "amp_r_i",
+                  "autumn",
+                  "balance",
+                  "balance_i",
+                  "balance_r_i",
+                  "berlin",
+                  "binary",
+                  "bone",
+                  "brg",
+                  "bwr",
+                  "chl_DeM2",
+                  "cividis",
+                  "cool",
+                  "coolwarm",
+                  "copper",
+                  "cubehelix",
+                  "curl",
+                  "curl_i",
+                  "curl_r_i",
+                  "deep",
+                  "deep_i",
+                  "deep_r_i",
+                  "delta",
+                  "delta_i",
+                  "delta_r_i",
+                  "dense",
+                  "dense_i",
+                  "dense_r_i",
+                  "diff",
+                  "diff_i",
+                  "diff_r_i",
+                  "esa_cci_lc_classes",
+                  "flag",
+                  "gist_earth",
+                  "gist_gray",
+                  "gist_grey",
+                  "gist_heat",
+                  "gist_ncar",
+                  "gist_rainbow",
+                  "gist_stern",
+                  "gist_yarg",
+                  "gist_yerg",
+                  "gnuplot",
+                  "gnuplot2",
+                  "gray",
+                  "gray_i",
+                  "gray_r_i",
+                  "grey",
+                  "haline",
+                  "haline_i",
+                  "haline_r_i",
+                  "hot",
+                  "hsv",
+                  "ice",
+                  "ice_i",
+                  "ice_r_i",
+                  "inferno",
+                  "jet",
+                  "magma",
+                  "managua",
+                  "matter",
+                  "matter_i",
+                  "matter_r_i",
+                  "nipy_spectral",
+                  "ocean",
+                  "oxy",
+                  "oxy_i",
+                  "oxy_r_i",
+                  "phase",
+                  "phase_i",
+                  "phase_r_i",
+                  "pink",
+                  "plasma",
+                  "prism",
+                  "rain",
+                  "rain_i",
+                  "rain_r_i",
+                  "rainbow",
+                  "reg_map",
+                  "reg_map_i",
+                  "reg_map_r_i",
+                  "seismic",
+                  "solar",
+                  "solar_i",
+                  "solar_r_i",
+                  "speed",
+                  "speed_i",
+                  "speed_r_i",
+                  "spring",
+                  "summer",
+                  "tab10",
+                  "tab20",
+                  "tab20b",
+                  "tab20c",
+                  "tarn",
+                  "tarn_i",
+                  "tarn_r_i",
+                  "tempo",
+                  "tempo_i",
+                  "tempo_r_i",
+                  "terrain",
+                  "thermal",
+                  "thermal_i",
+                  "thermal_r_i",
+                  "topo",
+                  "topo_i",
+                  "topo_r_i",
+                  "turbid",
+                  "turbid_i",
+                  "turbid_r_i",
+                  "turbo",
+                  "twilight",
+                  "twilight_shifted",
+                  "vanimo",
+                  "viridis",
+                  "winter"
+                ]
               },
               "Rescale": {
+                "description": "rescale parameter min and max to use as stretch",
                 "type": "array",
                 "items": {
                   "type": "number"
@@ -2547,6 +2740,7 @@
                 "maxItems": 2
               },
               "Query": {
+                "description": "Start and end datetime of data requested from STAC API",
                 "type": "object",
                 "properties": {
                   "Start": {
@@ -2625,7 +2819,8 @@
                 "const": "marinedatastore"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "service endpoint url"
               },
               "Type": {
                 "type": "string",
@@ -2634,26 +2829,25 @@
                 ]
               },
               "LayerId": {
-                "type": "string"
+                "type": "string",
+                "description": "WMTS layer name"
               },
               "Variable": {
-                "type": "string"
+                "type": "string",
+                "description": "identifier of the variable to reference from the server"
               },
               "Dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               },
               "Query": {
+                "description": "Start and end datetime of data requested from STAC API",
                 "type": "object",
                 "properties": {
                   "Start": {
@@ -2725,7 +2919,8 @@
                 ]
               },
               "Style": {
-                "type": "string"
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
               },
               "Bbox": {
                 "anyOf": [
@@ -2745,20 +2940,23 @@
                 "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
               },
               "ParquetSource": {
-                "type": "string"
+                "type": "string",
+                "description": "Optional url to geoparquet file holding the STAC Items"
               },
               "MergeAssets": {
                 "type": "boolean",
                 "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
+                "description": "list of individual time entries of raw data",
                 "type": "array",
                 "items": {
                   "type": "object",
                   "properties": {
                     "Time": {
                       "type": "string",
-                      "format": "datetime"
+                      "format": "datetime",
+                      "description": "datetime string which corresponds to the raw file"
                     },
                     "Assets": {
                       "type": "array",
@@ -2766,10 +2964,12 @@
                         "type": "object",
                         "properties": {
                           "Identifier": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "asset identifier, must be unique within a single time entry"
                           },
                           "File": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "full URL to the raw file"
                           }
                         },
                         "required": [
@@ -2848,7 +3048,8 @@
                 ]
               },
               "Style": {
-                "type": "string"
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
               },
               "Bbox": {
                 "anyOf": [
@@ -2868,20 +3069,23 @@
                 "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
               },
               "ParquetSource": {
-                "type": "string"
+                "type": "string",
+                "description": "Optional url to geoparquet file holding the STAC Items"
               },
               "MergeAssets": {
                 "type": "boolean",
                 "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
+                "description": "list of individual time entries of raw data",
                 "type": "array",
                 "items": {
                   "type": "object",
                   "properties": {
                     "Time": {
                       "type": "string",
-                      "format": "datetime"
+                      "format": "datetime",
+                      "description": "datetime string which corresponds to the raw file"
                     },
                     "Assets": {
                       "type": "array",
@@ -2889,10 +3093,12 @@
                         "type": "object",
                         "properties": {
                           "Identifier": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "asset identifier, must be unique within a single time entry"
                           },
                           "File": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "full URL to the raw file"
                           }
                         },
                         "required": [
@@ -2971,7 +3177,8 @@
                 ]
               },
               "Style": {
-                "type": "string"
+                "type": "string",
+                "description": "Url to style open layer flat style file used for rendering resource"
               },
               "Bbox": {
                 "anyOf": [
@@ -2991,20 +3198,23 @@
                 "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
               },
               "ParquetSource": {
-                "type": "string"
+                "type": "string",
+                "description": "Optional url to geoparquet file holding the STAC Items"
               },
               "MergeAssets": {
                 "type": "boolean",
                 "description": "If assets of the same type are merged into one layer"
               },
               "TimeEntries": {
+                "description": "list of individual time entries of raw data",
                 "type": "array",
                 "items": {
                   "type": "object",
                   "properties": {
                     "Time": {
                       "type": "string",
-                      "format": "datetime"
+                      "format": "datetime",
+                      "description": "datetime string which corresponds to the raw file"
                     },
                     "Assets": {
                       "type": "array",
@@ -3012,10 +3222,12 @@
                         "type": "object",
                         "properties": {
                           "Identifier": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "asset identifier, must be unique within a single time entry"
                           },
                           "File": {
-                            "type": "string"
+                            "type": "string",
+                            "description": "full URL to the raw file"
                           }
                         },
                         "required": [
@@ -3213,10 +3425,12 @@
                 "const": "rasdaman"
               },
               "EndPoint": {
-                "type": "string"
+                "type": "string",
+                "description": "service endpoint url"
               },
               "CoverageId": {
-                "type": "string"
+                "type": "string",
+                "description": "coverage identifier to request from server"
               }
             },
             "required": [
@@ -3257,29 +3471,35 @@
                 "properties": {
                   "Start": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "start of time interval"
                   },
                   "End": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "end of time interval"
                   },
                   "Timedelta": {
                     "type": "object",
                     "properties": {
                       "days": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of days"
                       },
                       "hours": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of hours"
                       },
                       "minutes": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of minutes"
                       },
                       "seconds": {
-                        "type": "number"
+                        "type": "number",
+                        "description": "timedelta number of seconds"
                       }
                     },
-                    "description": "Time delta to be applied to the start and end date"
+                    "description": "Time delta to be applied to the start and end date as python datetime.timedelta object. Can use any combination of days, hours, minutes, seconds"
                   }
                 },
                 "required": [
@@ -3292,7 +3512,8 @@
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "Optional list of time strings to pass to collection handler instead of querying the endpoint for times"
               }
             },
             "required": [
@@ -3311,16 +3532,19 @@
             "type": "object",
             "properties": {
               "Identifier": {
-                "type": "string"
+                "type": "string",
+                "description": "Collection identifier for location"
               },
               "Name": {
-                "type": "string"
+                "type": "string",
+                "description": "Collection title for location"
               },
               "Times": {
                 "type": "array",
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "Optional list of time strings to pass to WMS handler for location"
               },
               "Country": {
                 "type": [
@@ -3329,11 +3553,13 @@
                 ],
                 "items": {
                   "type": "string"
-                }
+                },
+                "description": "Either a single country where location is or a list of them"
               },
               "Point": {
                 "type": "array",
-                "format": "point"
+                "format": "point",
+                "description": "Point location of the collection in EPSG:4326"
               },
               "Bbox": {
                 "anyOf": [
@@ -3368,13 +3594,16 @@
         "type": "object",
         "properties": {
           "Identifier": {
-            "type": "string"
+            "type": "string",
+            "description": "Collection identifier for subcollection"
           },
           "Name": {
-            "type": "string"
+            "type": "string",
+            "description": "Collection title for subcollection"
           },
           "Collection": {
-            "type": "string"
+            "type": "string",
+            "description": "STAC collection to query"
           },
           "Country": {
             "type": [
@@ -3383,11 +3612,13 @@
             ],
             "items": {
               "type": "string"
-            }
+            },
+            "description": "Either a single country where location is or a list of them"
           },
           "Point": {
             "type": "array",
-            "format": "point"
+            "format": "point",
+            "description": "Point location of the collection in EPSG:4326"
           },
           "Bbox": {
             "anyOf": [
@@ -3408,7 +3639,7 @@
           }
         }
       },
-      "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, thes Resources of the linked subcollections are used."
+      "description": "List of Subcollections that are integrated into the defined collection. When used no <b> Resources </b> should be defined, the Resources of the linked subcollections are used."
     }
   },
   "required": [

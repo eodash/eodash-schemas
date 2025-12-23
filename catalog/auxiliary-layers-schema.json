@@ -171,16 +171,12 @@
                 }
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               },
@@ -282,16 +278,12 @@
                 "type": "string"
               },
               "dimensions": {
-                "description": "key/value pairs of parameters to add to the WMS request",
+                "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
                 "additionalProperties": {
-                  "anyOf": [
-                    {
-                      "type": "string"
-                    },
-                    {
-                      "type": "number"
-                    }
+                  "type": [
+                    "string",
+                    "number"
                   ]
                 }
               }
