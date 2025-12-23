@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build:schemas": "node build-schemas.js"
+    "build:schemas": "node build-schemas.js && cp -r race build",
   },
   "devDependencies": {
     "@apidevtools/json-schema-ref-parser": "^15.1.3"
