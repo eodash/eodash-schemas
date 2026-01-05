@@ -2964,7 +2964,8 @@
                     "Time": {
                       "type": "string",
                       "format": "datetime",
-                      "description": "datetime string which corresponds to the raw file"
+                      "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                      "title": "Datetime"
                     },
                     "Assets": {
                       "type": "array",
@@ -3093,7 +3094,8 @@
                     "Time": {
                       "type": "string",
                       "format": "datetime",
-                      "description": "datetime string which corresponds to the raw file"
+                      "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                      "title": "Datetime"
                     },
                     "Assets": {
                       "type": "array",
@@ -3222,7 +3224,8 @@
                     "Time": {
                       "type": "string",
                       "format": "datetime",
-                      "description": "datetime string which corresponds to the raw file"
+                      "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                      "title": "Datetime"
                     },
                     "Assets": {
                       "type": "array",
@@ -3359,10 +3362,13 @@
                   "properties": {
                     "Time": {
                       "type": "string",
-                      "format": "datetime"
+                      "format": "datetime",
+                      "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                      "title": "Datetime"
                     },
                     "Url": {
-                      "type": "string"
+                      "type": "string",
+                      "description": "full templated URL to the vector tile layer"
                     }
                   },
                   "required": [
@@ -7215,7 +7221,8 @@
               "Time": {
                 "type": "string",
                 "format": "datetime",
-                "description": "datetime string which corresponds to the raw file"
+                "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                "title": "Datetime"
               },
               "Assets": {
                 "type": "array",
@@ -7337,7 +7344,8 @@
               "Time": {
                 "type": "string",
                 "format": "datetime",
-                "description": "datetime string which corresponds to the raw file"
+                "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                "title": "Datetime"
               },
               "Assets": {
                 "type": "array",
@@ -7466,7 +7474,8 @@
               "Time": {
                 "type": "string",
                 "format": "datetime",
-                "description": "datetime string which corresponds to the raw file"
+                "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                "title": "Datetime"
               },
               "Assets": {
                 "type": "array",
@@ -7595,7 +7604,8 @@
               "Time": {
                 "type": "string",
                 "format": "datetime",
-                "description": "datetime string which corresponds to the raw file"
+                "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                "title": "Datetime"
               },
               "Assets": {
                 "type": "array",
@@ -7732,10 +7742,13 @@
             "properties": {
               "Time": {
                 "type": "string",
-                "format": "datetime"
+                "format": "datetime",
+                "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                "title": "Datetime"
               },
               "Url": {
-                "type": "string"
+                "type": "string",
+                "description": "full templated URL to the vector tile layer"
               }
             },
             "required": [
@@ -7998,10 +8011,13 @@
         "properties": {
           "Time": {
             "type": "string",
-            "format": "datetime"
+            "format": "datetime",
+            "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+            "title": "Datetime"
           },
           "Url": {
-            "type": "string"
+            "type": "string",
+            "description": "full templated URL to the vector tile layer"
           }
         },
         "required": [
@@ -8019,7 +8035,8 @@
           "Time": {
             "type": "string",
             "format": "datetime",
-            "description": "datetime string which corresponds to the raw file"
+            "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+            "title": "Datetime"
           },
           "Assets": {
             "type": "array",
@@ -9262,7 +9279,8 @@
                   "Time": {
                     "type": "string",
                     "format": "datetime",
-                    "description": "datetime string which corresponds to the raw file"
+                    "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                    "title": "Datetime"
                   },
                   "Assets": {
                     "type": "array",
@@ -9391,7 +9409,8 @@
                   "Time": {
                     "type": "string",
                     "format": "datetime",
-                    "description": "datetime string which corresponds to the raw file"
+                    "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                    "title": "Datetime"
                   },
                   "Assets": {
                     "type": "array",
@@ -9520,7 +9539,8 @@
                   "Time": {
                     "type": "string",
                     "format": "datetime",
-                    "description": "datetime string which corresponds to the raw file"
+                    "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                    "title": "Datetime"
                   },
                   "Assets": {
                     "type": "array",
@@ -9657,10 +9677,13 @@
                 "properties": {
                   "Time": {
                     "type": "string",
-                    "format": "datetime"
+                    "format": "datetime",
+                    "description": "ISO-8601 datetime, for example 20210321 or 20210321T153200",
+                    "title": "Datetime"
                   },
                   "Url": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "full templated URL to the vector tile layer"
                   }
                 },
                 "required": [
