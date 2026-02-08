@@ -415,6 +415,29 @@
                 }
             ]
         },
+        "MapboxStyleDocumentLayer": {
+            "title": "Mapbox Style Document Layer",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "mapbox-style-document"
+                        },
+                        "applyOptions": {
+                            "type": "object",
+                            "description": "Options to be passed to the mapbox style document apply function. See https://openlayers.org/ol-mapbox-style/functions/apply.html"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
         "RawCOGLayer": {
             "title": "COG Layer",
             "allOf": [
@@ -533,6 +556,7 @@
                 { "$ref": "#/definitions/WMSLayer" },
                 { "$ref": "#/definitions/WMTSLayer" },
                 { "$ref": "#/definitions/VectorTileLayer" },
+                { "$ref": "#/definitions/MapboxStyleDocumentLayer" },
                 { "$ref": "#/definitions/RawCOGLayer" },
                 { "$ref": "#/definitions/RawGeoJSONLayer" },
                 { "$ref": "#/definitions/RawFlatGeobufLayer" }
@@ -1761,6 +1785,34 @@
                 }
             ]
         },
+        "RawSourceResourceMapboxStyleDocument": {
+            "title": "Mapbox Style Document Source",
+            "allOf": [
+                { "$ref": "#/definitions/defaultResourceParameters" },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "MapboxStyle source"
+                        },
+                        "Bbox": {
+                            "$ref": "#/definitions/Bbox"
+                        },
+                        "TimeEntries": {
+                            "$ref": "#/definitions/TimeEntriesVectorTile"
+                        },
+                        "applyOptions": {
+                            "type": "object",
+                            "description": "Options to be passed to the mapbox style document apply function. See https://openlayers.org/ol-mapbox-style/functions/apply.html"
+                        }
+                    },
+                    "required": ["Name", "TimeEntries"]
+                }
+            ]
+        },
         "GeoDBResource": {
             "type": "object",
             "title": "GeoDB Resource",
@@ -1925,7 +1977,7 @@
                     },
                     "Url": {
                         "type": "string",
-                        "description": "full templated URL to the vector tile layer"
+                        "description": "full templated URL to the vector tile layer or mapbox style document"
                     }
                 },
                 "required": ["Time", "Url"]
@@ -2004,6 +2056,9 @@
                 { "$ref": "#/definitions/RawSourceResourceGeoJSON" },
                 { "$ref": "#/definitions/RawSourceResourceFlatGeobuf" },
                 { "$ref": "#/definitions/RawSourceResourceVectorTile" },
+                {
+                    "$ref": "#/definitions/RawSourceResourceMapboxStyleDocument"
+                },
                 { "$ref": "#/definitions/RasdamanWCSResource" },
                 { "$ref": "#/definitions/CollectionOnly" }
             ]
