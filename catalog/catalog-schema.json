@@ -35,11 +35,11 @@
         },
         "default_base_layers": {
             "type": "string",
-            "description": "Optional relative path to baselayer definition file"
+            "description": "Optional relative path to baselayer definition file. Example: layers/baselayers.json"
         },
         "default_overlay_layers": {
             "type": "string",
-            "description": "Optional relative path to overlay definition file"
+            "description": "Optional relative path to overlay definition file. Example: layers/overlays.json"
         }
     },
     "required": [

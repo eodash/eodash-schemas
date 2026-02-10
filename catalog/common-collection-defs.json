@@ -38,8 +38,7 @@
             "description": "List of tag strings that represent the collection"
         },
         "DataSource": {
-            "$ref": "#/definitions/DataSource",
-            "description": "defining sources of data"
+            "$ref": "#/definitions/DataSource"
         },
         "Agency": {
             "type": "array",
@@ -58,8 +57,7 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/License"
-                    },
-                    "description": "A list of custom License objects"
+                    }
                 }
             ],
             "description": "Either a string for the Collection's SPDX License identifier or if none apply a list of custom License objects"
@@ -79,12 +77,11 @@
             "description": "List of stories where the collection is used."
         },
         "Citation": {
-            "$ref": "#/definitions/Citation",
-            "description": "Citation object containing information on citation aspects of data"
+            "$ref": "#/definitions/Citation"
         },
         "Image": {
             "type": "string",
-            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
+            "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
         },
         "Services": {
             "type": "array",
@@ -105,8 +102,7 @@
             "description": "(Optional) identifier that can be used to group collections/indicators in eodash using the <b>collection_group</b> property for grouping in the configuration"
         },
         "Process": {
-            "$ref": "#/definitions/Process",
-            "description": "Configuration of the process of the collection"
+            "$ref": "#/definitions/Process"
         },
         "Subtitle": {
             "type": "string",
@@ -131,16 +127,13 @@
             "description": "Optional overwrite of default overlay layer definition list"
         },
         "MapProjection": {
-            "$ref": "#/definitions/MapProjection",
-            "description": "Definition of a projection for the map on this collection"
+            "$ref": "#/definitions/MapProjection"
         },
         "Colorlegend": {
-            "$ref": "#/definitions/Colorlegend",
-            "description": "Definition of a static legend for collection"
+            "$ref": "#/definitions/Colorlegend"
         },
         "Legend": {
-            "$ref": "#/definitions/Legend",
-            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to legend image file"
+            "$ref": "#/definitions/Legend"
         }
     },
     "required": ["Name", "Title", "Description"],
@@ -155,7 +148,7 @@
         },
         "Legend": {
             "type": "string",
-            "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
+            "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
         },
         "Subcollections": {
             "type": "array",
@@ -209,7 +202,7 @@
             }
         },
         "Process": {
-            "description": "Definition of a processing panel behavior on this collection",
+            "description": "Configuration of the process of the collection",
             "type": "object",
             "properties": {
                 "Name": {
@@ -395,8 +388,7 @@
                             "const": "vector-tile"
                         },
                         "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
+                            "$ref": "#/definitions/Style"
                         },
                         "idProperty": {
                             "type": "string",
@@ -453,8 +445,7 @@
                             "const": "COG source"
                         },
                         "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
+                            "$ref": "#/definitions/Style"
                         }
                     },
                     "required": ["protocol"]
@@ -476,8 +467,7 @@
                             "const": "FlatGeobuf source"
                         },
                         "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
+                            "$ref": "#/definitions/Style"
                         }
                     },
                     "required": ["protocol"]
@@ -498,8 +488,7 @@
                             "const": "GeoJSON source"
                         },
                         "Style": {
-                            "type": "string",
-                            "description": "Url to style open layer flat style file used for rendering resource"
+                            "$ref": "#/definitions/Style"
                         }
                     },
                     "required": ["protocol"]
@@ -563,6 +552,7 @@
             ]
         },
         "License": {
+            "description": "A list of custom License objects",
             "type": "object",
             "properties": {
                 "Url": {
@@ -582,6 +572,7 @@
             "required": ["Url"]
         },
         "Citation": {
+            "description": "Citation object containing information on citation aspects of data",
             "type": "object",
             "properties": {
                 "DOI": {
@@ -746,7 +737,7 @@
                 },
                 "Script": {
                     "type": "string",
-                    "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
+                    "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
                 }
             },
             "required": ["Name", "Type", "CollectionId", "Script"]
@@ -836,10 +827,10 @@
         },
         "DataSource": {
             "type": "object",
+            "description": "defining sources of data",
             "properties": {
                 "Spaceborne": {
-                    "$ref": "#/definitions/Spaceborne",
-                    "description": "Information if the source is spaceborn."
+                    "$ref": "#/definitions/Spaceborne"
                 },
                 "InSitu": {
                     "type": "array",
@@ -859,6 +850,7 @@
         },
         "Spaceborne": {
             "type": "object",
+            "description": "Information if the source is spaceborn.",
             "properties": {
                 "Satellite": {
                     "type": "array",
@@ -1668,8 +1660,7 @@
             "type": "object",
             "properties": {
                 "Style": {
-                    "type": "string",
-                    "description": "Url to style open layer flat style file used for rendering resource"
+                    "$ref": "#/definitions/Style"
                 },
                 "Bbox": {
                     "$ref": "#/definitions/Bbox"
@@ -1759,8 +1750,7 @@
                             "const": "VectorTile source"
                         },
                         "Style": {
-                            "type": "string",
-                            "description": "URL to the EOxStyle definition"
+                            "$ref": "#/definitions/Style"
                         },
                         "idProperty": {
                             "type": "string",
@@ -1844,8 +1834,7 @@
                     "description": "GeoDB Collection for the features"
                 },
                 "Style": {
-                    "type": "string",
-                    "description": "URL to the EOxStyle definition"
+                    "$ref": "#/definitions/Style"
                 },
                 "AdditionalQueryString": {
                     "type": "string",
@@ -1926,8 +1915,7 @@
                     "enum": ["day", "hour", "month", "year"]
                 },
                 "Style": {
-                    "type": "string",
-                    "description": "URL to the EOxStyle definition"
+                    "$ref": "#/definitions/Style"
                 },
                 "OverwriteBBox": {
                     "$ref": "#/definitions/Bbox"
@@ -2034,7 +2022,7 @@
                             },
                             "Url": {
                                 "type": "string",
-                                "description": "URL of the flatstyle."
+                                "description": "Absolute URL of the flatstyle."
                             }
                         },
                         "required": ["Identifier", "Url"]
@@ -2062,6 +2050,10 @@
                 { "$ref": "#/definitions/RasdamanWCSResource" },
                 { "$ref": "#/definitions/CollectionOnly" }
             ]
+        },
+        "Style": {
+            "type": "string",
+            "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
         }
     }
 }
