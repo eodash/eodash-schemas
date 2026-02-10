@@ -37,12 +37,12 @@
       "description": "List of tag strings that represent the collection"
     },
     "DataSource": {
-      "description": "defining sources of data",
       "type": "object",
+      "description": "defining sources of data",
       "properties": {
         "Spaceborne": {
-          "description": "Information if the source is spaceborn.",
           "type": "object",
+          "description": "Information if the source is spaceborn.",
           "properties": {
             "Satellite": {
               "type": "array",
@@ -92,6 +92,7 @@
         {
           "type": "array",
           "items": {
+            "description": "A list of custom License objects",
             "type": "object",
             "properties": {
               "Url": {
@@ -111,8 +112,7 @@
             "required": [
               "Url"
             ]
-          },
-          "description": "A list of custom License objects"
+          }
         }
       ],
       "description": "Either a string for the Collection's SPDX License identifier or if none apply a list of custom License objects"
@@ -201,7 +201,7 @@
     },
     "Image": {
       "type": "string",
-      "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
+      "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a preview image file"
     },
     "Services": {
       "type": "array",
@@ -229,7 +229,7 @@
               },
               "Script": {
                 "type": "string",
-                "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a javascript evalscript"
               }
             },
             "required": [
@@ -375,7 +375,7 @@
                         },
                         "Url": {
                           "type": "string",
-                          "description": "URL of the flatstyle."
+                          "description": "Absolute URL of the flatstyle."
                         }
                       },
                       "required": [
@@ -771,7 +771,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "idProperty": {
                 "type": "string",
@@ -945,7 +945,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1026,7 +1026,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1107,7 +1107,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1481,7 +1481,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "idProperty": {
                 "type": "string",
@@ -1655,7 +1655,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1736,7 +1736,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1817,7 +1817,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               }
             },
             "required": [
@@ -1831,7 +1831,7 @@
       "description": "Optional overwrite of default overlay layer definition list"
     },
     "MapProjection": {
-      "description": "Definition of a projection for the map on this collection",
+      "description": "Projection in which the map is visualized, defaults to projection configured in eodash",
       "anyOf": [
         {
           "type": "object",
@@ -1870,7 +1870,7 @@
       ]
     },
     "Colorlegend": {
-      "description": "Definition of a static legend for collection",
+      "description": "Definition of a static legend for a collection",
       "type": "object",
       "properties": {
         "title": {
@@ -1927,8 +1927,8 @@
       }
     },
     "Legend": {
-      "description": "Relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to legend image file",
-      "type": "string"
+      "type": "string",
+      "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to colormap legend image file"
     },
     "Resources": {
       "maxItems": 1,
@@ -3083,7 +3083,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "Bbox": {
                 "anyOf": [
@@ -3213,7 +3213,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "Bbox": {
                 "anyOf": [
@@ -3343,7 +3343,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "Url to style open layer flat style file used for rendering resource"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "Bbox": {
                 "anyOf": [
@@ -3479,7 +3479,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "URL to the EOxStyle definition"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "idProperty": {
                 "type": "string",
@@ -3570,7 +3570,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "URL to the EOxStyle definition"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "AdditionalQueryString": {
                 "type": "string",
@@ -3669,7 +3669,7 @@
               },
               "Style": {
                 "type": "string",
-                "description": "URL to the EOxStyle definition"
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
               },
               "OverwriteBBox": {
                 "anyOf": [
