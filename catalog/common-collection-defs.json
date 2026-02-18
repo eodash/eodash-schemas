@@ -635,10 +635,13 @@
                 },
                 "Url": {
                     "type": "string",
-                    "description": "URL to the story. Can be provided as relative path (which root is taken from the stories_endpoint configured for the catalog) to a story markdown file or an absolute URL to either the rendered story or to the raw markdown."
+                    "description": "Absolute URL to the rendered story. (https://dashboard_url/story?id=id). Raw MD File URL is automatically inferred from the story ID and uses ``stories_endpoint.raw_url`` configured for the catalog)."
+                },
+                "Id": {
+                    "type": "string",
+                    "description": "Optional. Unique identifier of the story. Matches the filename without the .md suffix. Rendered URL and raw URL are automatically inferred from ``stories_endpoint.raw_url`` and ``stories_endpoint.rendered_url`` configured for the catalog respectively."
                 }
-            },
-            "required": ["Url"]
+            }
         },
         "Location": {
             "type": "object",

@@ -22,6 +22,21 @@
             "type": "string",
             "description": "Expected url where catalog will be deployed"
         },
+        "stories_endpoint": {
+            "type": "object",
+            "properties": {
+                "raw_url": {
+                    "type": "string",
+                    "description": "Base URL for raw story markdown files. Example https://raw.githubusercontent.com/username/repo/main/stories"
+                },
+                "rendered_url": {
+                    "type": "string",
+                    "description": "Base URL for rendered stories with {id} template. Example https://dashboard_url/story?id={id}"
+                }
+            },
+            "required": ["raw_url", "rendered_url"],
+            "description": "Expected urls where stories are deployed and hosted"
+        },
         "assets_endpoint": {
             "type": "string",
             "description": "Url base path to where locations will be deployed"
