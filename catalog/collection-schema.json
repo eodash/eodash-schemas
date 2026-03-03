@@ -398,7 +398,6 @@
         }
       },
       "required": [
-        "Name",
         "JsonForm",
         "EndPoints"
       ]
@@ -2244,7 +2243,8 @@
               "Type": {
                 "type": "string",
                 "enum": [
-                  "OverwriteTimes"
+                  "OverwriteTimes",
+                  "Time"
                 ],
                 "description": "Set to 'OverwriteTimes' together with 'Times' to override set of collection times and prevent querying the WMS endpoint for available times"
               },
@@ -2848,6 +2848,7 @@
                   "phase_r_i",
                   "pink",
                   "plasma",
+                  "plasma_r",
                   "prism",
                   "rain",
                   "rain_i",
@@ -2890,6 +2891,7 @@
                   "twilight_shifted",
                   "vanimo",
                   "viridis",
+                  "viridis_alpha",
                   "winter"
                 ]
               },
