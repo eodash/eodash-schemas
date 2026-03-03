@@ -32,6 +32,10 @@
                 "rendered_url": {
                     "type": "string",
                     "description": "Base URL for rendered stories with {id} template. Example https://dashboard_url/story?id={id}"
+                },
+                "additional_stac_property": {
+                    "type": "string",
+                    "description": "Optional property key under which to additionally add stories on root level of STAC collection. Example eodash:stories. If not provided stories will be added only in assets as default"
                 }
             },
             "required": ["raw_url", "rendered_url"],
