@@ -226,7 +226,7 @@
                     "description": "List of endpoints that are used in the process"
                 }
             },
-            "required": ["Name", "JsonForm", "EndPoints"]
+            "required": ["JsonForm", "EndPoints"]
         },
         "ProcessEndpoint": {
             "description": "Defines handling of a single process endpoint.",
@@ -1075,7 +1075,7 @@
                         },
                         "Type": {
                             "type": "string",
-                            "enum": ["OverwriteTimes"],
+                            "enum": ["OverwriteTimes", "Time"],
                             "description": "Set to 'OverwriteTimes' together with 'Times' to override set of collection times and prevent querying the WMS endpoint for available times"
                         },
                         "LayerId": {
@@ -1518,6 +1518,7 @@
                                 "phase_r_i",
                                 "pink",
                                 "plasma",
+                                "plasma_r",
                                 "prism",
                                 "rain",
                                 "rain_i",
@@ -1560,6 +1561,7 @@
                                 "twilight_shifted",
                                 "vanimo",
                                 "viridis",
+                                "viridis_alpha",
                                 "winter"
                             ]
                         },
