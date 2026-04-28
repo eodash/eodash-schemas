@@ -2432,11 +2432,15 @@
                   "cog",
                   "tiles"
                 ],
-                "description": "'cog' type of integration requires configured 'bidx', 'tiles' requires configured 'Assets'"
+                "description": "'cog' type of integration requires configured 'Bidx', 'tiles' requires configured 'Assets'"
               },
               "CollectionId": {
                 "type": "string",
                 "description": "STAC collection id to request"
+              },
+              "Colormap": {
+                "type": "string",
+                "description": "url escaped titiler colormap"
               },
               "ColormapName": {
                 "type": "string",
@@ -2622,6 +2626,10 @@
                 },
                 "minItems": 2,
                 "maxItems": 2
+              },
+              "Expression": {
+                "type": "string",
+                "description": "titiler band expression definition"
               },
               "Bidx": {
                 "type": "integer",
