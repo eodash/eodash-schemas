@@ -2034,6 +2034,14 @@
                     "format": "datetime"
                   }
                 }
+              },
+              "CustomSHEnvId": {
+                "type": "string",
+                "description": "Optional. If more than 1 SH account is used in the dashboard, this field contains value of a suffix for SH env variables (SH_CLIENT_ID,SH_CLIENT_SECRET) used in the dashboard deployments. Example value 'POLAR' would request env vars with _POLAR suffix."
+              },
+              "InstanceId": {
+                "type": "string",
+                "description": "Optional. Can be used for setting SH WMS INSTANCE_ID on a per collection basis if more than 1 SH account is used in the dashboard."
               }
             },
             "required": [
