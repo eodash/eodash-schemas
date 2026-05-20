@@ -1912,9 +1912,10 @@
             "continuous",
             "discrete",
             "threshold",
-            "categorical"
+            "categorical",
+            "log10"
           ],
-          "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
+          "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>, <b>log10</b>"
         },
         "markType": {
           "type": "string",
@@ -6081,9 +6082,10 @@
             "continuous",
             "discrete",
             "threshold",
-            "categorical"
+            "categorical",
+            "log10"
           ],
-          "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>"
+          "description": "Can be <b>continuous</b>, <b>discrete</b>, <b>threshold</b>, <b>categorical</b>, <b>log10</b>"
         },
         "markType": {
           "type": "string",
