@@ -19,8 +19,7 @@
             "description": "Title used to describe the collection"
         },
         "Description": {
-            "type": "string",
-            "format": "markdown",
+            "$ref": "#/definitions/Description",
             "description": "Description of the collection written as markdown"
         },
         "Themes": {
@@ -145,6 +144,20 @@
                 "$ref": "#/definitions/Resource"
             },
             "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
+        },
+        "Description": {
+            "type": "string",
+            "format": "markdown",
+            "options": {
+                "resolver": "ace",
+                "markdownToolbar": true,
+                "ace": {
+                    "highlightActiveLine": true,
+                    "fontSize": 14,
+                    "maxLines": 1000,
+                    "minLines": 10
+                }
+            }
         },
         "Legend": {
             "type": "string",
