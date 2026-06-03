@@ -27,7 +27,7 @@
         "ace": {
           "highlightActiveLine": true,
           "fontSize": 14,
-          "maxLines": 1000,
+          "maxLines": 50,
           "minLines": 10
         }
       }
