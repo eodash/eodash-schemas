@@ -3164,6 +3164,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
@@ -3294,6 +3298,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
@@ -3424,6 +3432,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
