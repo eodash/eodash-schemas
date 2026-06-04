@@ -19,9 +19,19 @@
       "description": "Title used to describe the collection"
     },
     "Description": {
+      "description": "Description of the collection written as markdown",
       "type": "string",
       "format": "markdown",
-      "description": "Description of the collection written as markdown"
+      "options": {
+        "resolver": "ace",
+        "markdownToolbar": true,
+        "ace": {
+          "highlightActiveLine": true,
+          "fontSize": 14,
+          "maxLines": 50,
+          "minLines": 10
+        }
+      }
     },
     "Themes": {
       "type": "array",
@@ -3161,6 +3171,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
@@ -3291,6 +3305,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
@@ -3421,6 +3439,10 @@
                           "File": {
                             "type": "string",
                             "description": "full URL to the raw file"
+                          },
+                          "Title": {
+                            "type": "string",
+                            "description": "Asset title. Will show as a layer name in eodash."
                           }
                         },
                         "required": [
@@ -3823,6 +3845,20 @@
         ]
       },
       "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
+    },
+    "Description": {
+      "type": "string",
+      "format": "markdown",
+      "options": {
+        "resolver": "ace",
+        "markdownToolbar": true,
+        "ace": {
+          "highlightActiveLine": true,
+          "fontSize": 14,
+          "maxLines": 50,
+          "minLines": 10
+        }
+      }
     },
     "Legend": {
       "type": "string",
@@ -7708,6 +7744,10 @@
                     "File": {
                       "type": "string",
                       "description": "full URL to the raw file"
+                    },
+                    "Title": {
+                      "type": "string",
+                      "description": "Asset title. Will show as a layer name in eodash."
                     }
                   },
                   "required": [
@@ -7831,6 +7871,10 @@
                     "File": {
                       "type": "string",
                       "description": "full URL to the raw file"
+                    },
+                    "Title": {
+                      "type": "string",
+                      "description": "Asset title. Will show as a layer name in eodash."
                     }
                   },
                   "required": [
@@ -7961,6 +8005,10 @@
                     "File": {
                       "type": "string",
                       "description": "full URL to the raw file"
+                    },
+                    "Title": {
+                      "type": "string",
+                      "description": "Asset title. Will show as a layer name in eodash."
                     }
                   },
                   "required": [
@@ -8091,6 +8139,10 @@
                     "File": {
                       "type": "string",
                       "description": "full URL to the raw file"
+                    },
+                    "Title": {
+                      "type": "string",
+                      "description": "Asset title. Will show as a layer name in eodash."
                     }
                   },
                   "required": [
@@ -8626,6 +8678,10 @@
                 "File": {
                   "type": "string",
                   "description": "full URL to the raw file"
+                },
+                "Title": {
+                  "type": "string",
+                  "description": "Asset title. Will show as a layer name in eodash."
                 }
               },
               "required": [
@@ -9889,6 +9945,10 @@
                         "File": {
                           "type": "string",
                           "description": "full URL to the raw file"
+                        },
+                        "Title": {
+                          "type": "string",
+                          "description": "Asset title. Will show as a layer name in eodash."
                         }
                       },
                       "required": [
@@ -10019,6 +10079,10 @@
                         "File": {
                           "type": "string",
                           "description": "full URL to the raw file"
+                        },
+                        "Title": {
+                          "type": "string",
+                          "description": "Asset title. Will show as a layer name in eodash."
                         }
                       },
                       "required": [
@@ -10149,6 +10213,10 @@
                         "File": {
                           "type": "string",
                           "description": "full URL to the raw file"
+                        },
+                        "Title": {
+                          "type": "string",
+                          "description": "Asset title. Will show as a layer name in eodash."
                         }
                       },
                       "required": [

@@ -18,9 +18,19 @@
       "description": "Title used to describe the collection"
     },
     "Description": {
+      "description": "Description of the collection written as markdown",
       "type": "string",
       "format": "markdown",
-      "description": "Description of the collection written as markdown"
+      "options": {
+        "resolver": "ace",
+        "markdownToolbar": true,
+        "ace": {
+          "highlightActiveLine": true,
+          "fontSize": 14,
+          "maxLines": 50,
+          "minLines": 10
+        }
+      }
     },
     "Themes": {
       "type": "array",
