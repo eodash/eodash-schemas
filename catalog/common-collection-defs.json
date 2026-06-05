@@ -137,6 +137,13 @@
     },
     "required": ["Name", "Title", "Description"],
     "definitions": {
+        "AvailableStyles": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Optional list of style identifiers to be used for interactive dropdown generation. If omitted for WMS/WMTS, they are automatically fetched from GetCapabilities."
+        },
         "Rasterform": {
             "title": "Visualization Form (eodash:rasterform)",
             "description": "Interactive form configuration for visualization parameters (sliders, dropdowns). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
@@ -1151,6 +1158,9 @@
                             "description": "WMS tile size to use",
                             "default": 512
                         },
+                        "AvailableStyles": {
+                            "$ref": "#/definitions/AvailableStyles"
+                        },
                         "Dimensions": {
                             "$ref": "#/definitions/Dimensions"
                         },
@@ -1673,6 +1683,9 @@
                         },
                         "Query": {
                             "$ref": "#/definitions/StacAPIQuery"
+                        },
+                        "AvailableStyles": {
+                            "$ref": "#/definitions/AvailableStyles"
                         },
                         "Rasterform": {
                             "$ref": "#/definitions/Rasterform"
