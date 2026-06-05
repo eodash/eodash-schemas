@@ -137,14 +137,25 @@
     },
     "required": ["Name", "Title", "Description"],
     "definitions": {
-        "Resources": {
-            "type": "array",
-            "maxItems": 1,
-            "items": {
-                "$ref": "#/definitions/Resource"
-            },
-            "description": "<b>Required</b>: List of <b>resources</b> (interfaces to data) provided by the collection (usually one entry)"
+        "Rasterform": {
+            "title": "Visualization Form (eodash:rasterform)",
+            "description": "Interactive form configuration for visualization parameters (sliders, dropdowns). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "string",
+                    "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a eox-jsonform schema"
+                },
+                {
+                    "type": "object",
+                    "description": "Embedded JSON form schema"
+                }
+            ],
+            "default": true
         },
+        "Resources": {
         "Description": {
             "type": "string",
             "format": "markdown",
@@ -1142,6 +1153,9 @@
                         },
                         "Dimensions": {
                             "$ref": "#/definitions/Dimensions"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
                         }
                     },
                     "required": ["Name", "EndPoint", "LayerId"]
@@ -1386,6 +1400,9 @@
                         "Nodata": {
                             "description": "specify raster value as nodata to make it transparent in the rendering",
                             "type": "number"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
                         }
                     },
                     "required": ["Name", "EndPoint", "Type", "CollectionId"]
@@ -1606,6 +1623,9 @@
                         },
                         "Query": {
                             "$ref": "#/definitions/StacAPIQuery"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
                         }
                     },
                     "required": [
@@ -1653,6 +1673,9 @@
                         },
                         "Query": {
                             "$ref": "#/definitions/StacAPIQuery"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
                         }
                     },
                     "required": [
