@@ -363,6 +363,9 @@
                                 }
                             }
                         },
+                        "AvailableStyles": {
+                            "$ref": "#/definitions/AvailableStyles"
+                        },
                         "dimensions": {
                             "$ref": "#/definitions/Dimensions"
                         },
