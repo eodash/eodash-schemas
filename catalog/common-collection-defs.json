@@ -158,18 +158,18 @@
         },
         "Rasterform": {
             "title": "Visualization Form (eodash:rasterform)",
-            "description": "Interactive form configuration for visualization parameters (sliders, dropdowns). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
+            "description": "Interactive form configuration for visualization parameters (sliders, dropdowns, legends). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
             "anyOf": [
                 {
                     "type": "boolean"
                 },
                 {
                     "type": "string",
-                    "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a eox-jsonform schema"
+                    "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a eodash:rasterform schema"
                 },
                 {
                     "type": "object",
-                    "description": "Embedded JSON form schema"
+                    "description": "Embedded eodash:rasterform schema"
                 }
             ],
             "default": true
@@ -342,6 +342,9 @@
                         },
                         "Rasterform": {
                             "$ref": "#/definitions/Rasterform"
+                        },
+                        "Unit": {
+                            "$ref": "#/definitions/Unit"
                         }
                     },
                     "required": ["protocol"]
