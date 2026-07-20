@@ -1122,6 +1122,11 @@
                         },
                         "Dimensions": {
                             "$ref": "#/definitions/Dimensions"
+                        },
+                        "TileSize": {
+                            "type": "number",
+                            "description": "WMS tile size to use",
+                            "default": 512
                         }
                     },
                     "required": ["Name", "EndPoint", "LayerId"]
@@ -1177,7 +1182,7 @@
                             "default": false
                         },
                         "DateTimeInterval": {
-                            "$ref": "#/definitions/DateTimeInterval"
+                            "$ref": "#/definitions/DafteTimeInterval"
                         },
                         "Times": {
                             "$ref": "#/definitions/Times"
