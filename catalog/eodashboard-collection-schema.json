@@ -606,13 +606,6 @@
                   }
                 }
               },
-              "AvailableStyles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "Optional list of style identifiers to be used for interactive dropdown generation. If omitted for WMS/WMTS, they are automatically fetched from GetCapabilities."
-              },
               "dimensions": {
                 "description": "key/value pairs of parameters to add to the request",
                 "type": "object",
@@ -1388,13 +1381,6 @@
                     "type": "string"
                   }
                 }
-              },
-              "AvailableStyles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "Optional list of style identifiers to be used for interactive dropdown generation. If omitted for WMS/WMTS, they are automatically fetched from GetCapabilities."
               },
               "dimensions": {
                 "description": "key/value pairs of parameters to add to the request",
@@ -2514,13 +2500,6 @@
                 "type": "number",
                 "description": "WMS tile size to use",
                 "default": 512
-              },
-              "AvailableStyles": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                },
-                "description": "Optional list of style identifiers to be used for interactive dropdown generation. If omitted for WMS/WMTS, they are automatically fetched from GetCapabilities."
               },
               "Dimensions": {
                 "description": "key/value pairs of parameters to add to the request",
