@@ -548,6 +548,11 @@
                 }
             ]
         },
+        "RemoveWebMapLinks": {
+            "type": "boolean",
+            "description": "If true, removes any existing web-map-links from the source items.",
+            "default": true
+        },
         "defaultLayerProperties": {
             "type": "object",
             "properties": {
@@ -2164,10 +2169,5 @@
             "type": "string",
             "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
         }
-    },
-     "RemoveWebMapLinks": {
-        "type": "boolean",
-        "description": "If true, removes any existing web-map-links from the source items.",
-        "default": true
     }
 }
