@@ -1062,6 +1062,9 @@
                         "InstanceId": {
                             "type": "string",
                             "description": "Optional. Can be used for setting SH WMS INSTANCE_ID on a per collection basis if more than 1 SH account is used in the dashboard."
+                        },
+                        "RemoveWebMapLinks": {
+                            "$ref": "#/definitions/RemoveWebMapLinks"
                         }
                     },
                     "required": [
@@ -1438,6 +1441,9 @@
                         },
                         "Unit": {
                             "$ref": "#/definitions/Unit"
+                        },
+                        "RemoveWebMapLinks": {
+                            "$ref": "#/definitions/RemoveWebMapLinks"
                         }
                     },
                     "required": ["Name", "EndPoint", "Type", "CollectionId"]
@@ -2158,5 +2164,10 @@
             "type": "string",
             "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
         }
+    },
+     "RemoveWebMapLinks": {
+        "type": "boolean",
+        "description": "If true, removes any existing web-map-links from the source items.",
+        "default": true
     }
 }
