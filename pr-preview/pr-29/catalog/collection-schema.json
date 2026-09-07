@@ -2189,6 +2189,24 @@
                 "type": "boolean",
                 "description": "If true, removes any existing web-map-links from the source items.",
                 "default": true
+              },
+              "Rasterform": {
+                "title": "Visualization Form (eodash:rasterform)",
+                "description": "Interactive form configuration for visualization parameters (sliders, dropdowns, legends). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "string",
+                    "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a eodash:rasterform schema"
+                  },
+                  {
+                    "type": "object",
+                    "description": "Embedded eodash:rasterform schema"
+                  }
+                ],
+                "default": true
               }
             },
             "required": [
@@ -2329,6 +2347,41 @@
                     "number"
                   ]
                 }
+              },
+              "Rasterform": {
+                "title": "Visualization Form (eodash:rasterform)",
+                "description": "Interactive form configuration for visualization parameters (sliders, dropdowns, legends). Set to <b>false</b> to disable completely, or provide a URL/Object to override the auto-generated form.",
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "string",
+                    "description": "Either absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to a eodash:rasterform schema"
+                  },
+                  {
+                    "type": "object",
+                    "description": "Embedded eodash:rasterform schema"
+                  }
+                ],
+                "default": true
+              },
+              "OverwriteBBox": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "format": "bounding-box"
+                  },
+                  {
+                    "type": "array",
+                    "minItems": 4,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "number"
+                    }
+                  }
+                ],
+                "description": "Bounding box of the collection [minX, minY, maxX, maxY] based on the World Geodetic System (WGS84) format"
               }
             },
             "required": [
