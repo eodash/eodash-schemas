@@ -1070,6 +1070,9 @@
                         },
                         "RemoveWebMapLinks": {
                             "$ref": "#/definitions/RemoveWebMapLinks"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
                         }
                     },
                     "required": [
@@ -1120,6 +1123,12 @@
                         },
                         "Dimensions": {
                             "$ref": "#/definitions/Dimensions"
+                        },
+                        "Rasterform": {
+                            "$ref": "#/definitions/Rasterform"
+                        },
+                        "OverwriteBBox": {
+                            "$ref": "#/definitions/Bbox"
                         }
                     },
                     "required": ["Name", "EndPoint", "LayerId"]

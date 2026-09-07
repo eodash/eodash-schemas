@@ -11,12 +11,6 @@
         {
             "type": "object",
             "properties": {
-                "EodashIdentifier": {
-                    "type": "string",
-                    "minLength": 1,
-                    "pattern": "^[a-zA-Z0-9_-]+$",
-                    "description": "Identifier that will be used in eodashboard or RACE instance"
-                },
                 "Resources": {
                     "maxItems": 1,
                     "type": "array",
