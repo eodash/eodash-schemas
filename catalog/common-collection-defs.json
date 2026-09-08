@@ -1182,7 +1182,7 @@
                             "default": false
                         },
                         "DateTimeInterval": {
-                            "$ref": "#/definitions/DafteTimeInterval"
+                            "$ref": "#/definitions/DateTimeInterval"
                         },
                         "Times": {
                             "$ref": "#/definitions/Times"
