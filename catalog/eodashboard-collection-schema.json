@@ -2330,6 +2330,11 @@
                     "number"
                   ]
                 }
+              },
+              "TileSize": {
+                "type": "number",
+                "description": "WMS tile size to use",
+                "default": 512
               }
             },
             "required": [
