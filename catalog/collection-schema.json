@@ -334,6 +334,11 @@
                 "type": "string",
                 "description": "Processing endpoint"
               },
+              "Title": {
+                "type": "string",
+                "description": "Optional override of name of processing results layer.",
+                "default": "Results <endpoint-identifier>"
+              },
               "Type": {
                 "type": "string",
                 "enum": [
