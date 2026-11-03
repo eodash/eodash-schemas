@@ -58,6 +58,9 @@
                             },
                             {
                                 "$ref": "./common-collection-defs.json#/definitions/GeoDBFeaturesResource"
+                            },
+                            {
+                                "$ref": "./common-collection-defs.json#/definitions/TipgResource"
                             }
                         ]
                     }
