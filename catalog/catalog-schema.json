@@ -14,9 +14,7 @@
             "description": "Title added to catalog file, shown by STAC clients"
         },
         "description": {
-            "type": "string",
-            "format": "markdown",
-            "description": "Description added to catalog file. Markdown may be used for rich text representation."
+            "$ref": "./common-collection-defs.json#/definitions/Description"
         },
         "endpoint": {
             "type": "string",
@@ -59,6 +57,26 @@
         "default_overlay_layers": {
             "type": "string",
             "description": "Optional relative path to overlay definition file. Example: layers/overlays.json"
+        },
+        "geodb_default_form": {
+            "type": "string",
+            "description": "Optional URL or relative path to default JSONForm schema used for location-based collections (attaches eox-drawtools to 'geodb-collection' layer). If omitted, eodash_catalog defaults to the canonical eodash geodb_form.json."
+        },
+        "geodb_default_vega": {
+            "type": "string",
+            "description": "Optional URL or relative path to default Vega-Lite specification used for GeoDB collections without an explicit VegaDefinition."
+        },
+        "geodb_empty_form": {
+            "type": "string",
+            "description": "Optional URL or relative path to an empty JSONForm schema used when overriding child location collection forms."
+        },
+        "default_xcube_process": {
+            "$ref": "./common-collection-defs.json#/definitions/Process",
+            "description": "Optional default OGC API process configuration for xcube server resources."
+        },
+        "MapProjection": {
+            "$ref": "./common-collection-defs.json#/definitions/MapProjection",
+            "description": "Optional default map projection for the catalog."
         }
     },
     "required": [

@@ -707,37 +707,44 @@
             }
         },
         "Location": {
-            "type": "object",
-            "properties": {
-                "Identifier": {
-                    "type": "string",
-                    "description": "Collection identifier for location"
-                },
-                "Name": {
-                    "type": "string",
-                    "description": "Collection title for location"
-                },
-                "Times": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Optional list of time strings to pass to WMS handler for location"
-                },
-                "Country": {
-                    "type": ["string", "array"],
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "Either a single country where location is or a list of them"
-                },
-                "Point": {
-                    "$ref": "#/definitions/Point"
-                },
-                "Bbox": {
-                    "$ref": "#/definitions/Bbox"
+            "allOf": [
+                { "$ref": "#/definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultRawResourceParameters" },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Identifier": {
+                            "type": "string",
+                            "description": "Collection identifier for location"
+                        },
+                        "Name": {
+                            "type": "string",
+                            "description": "Collection title for location"
+                        },
+                        "Description": {
+                            "$ref": "#/definitions/Description",
+                            "description": "Optional description override for location"
+                        },
+                        "Times": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "Optional list of time strings to pass to WMS handler for location"
+                        },
+                        "Country": {
+                            "type": ["string", "array"],
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "Either a single country where location is or a list of them"
+                        },
+                        "Point": {
+                            "$ref": "#/definitions/Point"
+                        }
+                    }
                 }
-            }
+            ]
         },
         "Subcollection": {
             "type": "object",
@@ -1796,8 +1803,7 @@
                 "TimeEntries": {
                     "$ref": "#/definitions/TimeEntries"
                 }
-            },
-            "required": ["Style", "TimeEntries"]
+            }
         },
         "RawSourceResourceCOG": {
             "title": "Cloud Optimized Geotiff (COG) Source",
