@@ -44,7 +44,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -147,7 +147,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -281,7 +281,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -395,7 +395,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -488,7 +488,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -569,7 +569,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -650,7 +650,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",
@@ -731,7 +731,7 @@
                     "properties": {
                       "name": {
                         "type": "string",
-                        "description": "Name of the projection, e.g. \"EPSG\"4326"
+                        "description": "Name of the projection, e.g. EPSG:4326"
                       },
                       "def": {
                         "type": "string",

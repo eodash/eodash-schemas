@@ -16,7 +16,16 @@
     "description": {
       "type": "string",
       "format": "markdown",
-      "description": "Description added to catalog file. Markdown may be used for rich text representation."
+      "options": {
+        "resolver": "ace",
+        "markdownToolbar": true,
+        "ace": {
+          "highlightActiveLine": true,
+          "fontSize": 14,
+          "maxLines": 50,
+          "minLines": 10
+        }
+      }
     },
     "endpoint": {
       "type": "string",
@@ -62,6 +71,171 @@
     "default_overlay_layers": {
       "type": "string",
       "description": "Optional relative path to overlay definition file. Example: layers/overlays.json"
+    },
+    "geodb_default_form": {
+      "type": "string",
+      "description": "Optional URL or relative path to default JSONForm schema used for location-based collections (attaches eox-drawtools to 'geodb-collection' layer). If omitted, eodash_catalog defaults to the canonical eodash geodb_form.json."
+    },
+    "geodb_default_vega": {
+      "type": "string",
+      "description": "Optional URL or relative path to default Vega-Lite specification used for GeoDB collections without an explicit VegaDefinition."
+    },
+    "geodb_empty_form": {
+      "type": "string",
+      "description": "Optional URL or relative path to an empty JSONForm schema used when overriding child location collection forms."
+    },
+    "default_xcube_process": {
+      "description": "Optional default OGC API process configuration for xcube server resources.",
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "Name of the process"
+        },
+        "JsonForm": {
+          "type": "string",
+          "description": "URL to the JSONform of the process"
+        },
+        "VegaDefinition": {
+          "type": "string",
+          "description": "URL to the Vega definition of the process"
+        },
+        "EndPoints": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "description": "Defines handling of a single process endpoint.",
+            "type": "object",
+            "properties": {
+              "Identifier": {
+                "type": "string",
+                "description": "Identifier of the endpoint"
+              },
+              "Url": {
+                "type": "string",
+                "description": "Processing endpoint"
+              },
+              "Title": {
+                "type": "string",
+                "description": "Optional override of name of processing results layer.",
+                "default": "Results <endpoint-identifier>"
+              },
+              "Type": {
+                "type": "string",
+                "enum": [
+                  "application/geo+json",
+                  "application/json",
+                  "application/vnd.flatgeobuf",
+                  "text/csv",
+                  "image/png",
+                  "image/tiff",
+                  "text/plain"
+                ],
+                "description": "MIME type of the returned data"
+              },
+              "EndPoint": {
+                "type": "string",
+                "description": "The type of custom endpoint e.g `eoxhub_workspaces`, `sentinelhub`, `veda` ..."
+              },
+              "Method": {
+                "type": "string",
+                "description": "HTTP method of the endpoint",
+                "enum": [
+                  "GET",
+                  "POST",
+                  "PUT",
+                  "DELETE",
+                  "PATCH",
+                  "OPTIONS"
+                ]
+              },
+              "Body": {
+                "type": "string",
+                "description": "URL to the body of the endpoint"
+              },
+              "Flatstyle": {
+                "description": "Flatstyle definition for a process.",
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "description": "Single URL of the flatstyle applied to all resources of the process."
+                  },
+                  {
+                    "type": "array",
+                    "description": "Mappings of output type to flatstyle url",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "Identifier": {
+                          "type": "string",
+                          "description": "Identifier of output of the process to match with flatstyle."
+                        },
+                        "Url": {
+                          "type": "string",
+                          "description": "Absolute URL of the flatstyle."
+                        }
+                      },
+                      "required": [
+                        "Identifier",
+                        "Url"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "Identifier",
+              "Url",
+              "Type"
+            ]
+          },
+          "description": "List of endpoints that are used in the process"
+        }
+      },
+      "required": [
+        "JsonForm",
+        "EndPoints"
+      ]
+    },
+    "MapProjection": {
+      "description": "Optional default map projection for the catalog.",
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Name of the projection, e.g. EPSG:4326"
+            },
+            "def": {
+              "type": "string",
+              "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+            },
+            "extent": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4,
+              "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "description": "Full proj4js definition of projection with optional extent"
+        },
+        {
+          "type": "string",
+          "description": "String input in format EPSG:4326"
+        },
+        {
+          "type": "number",
+          "description": "Numerical input, such as 4326"
+        }
+      ]
     }
   },
   "required": [
