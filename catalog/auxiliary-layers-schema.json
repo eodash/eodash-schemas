@@ -777,6 +777,94 @@
               "url",
               "protocol"
             ]
+          },
+          {
+            "title": "GeoZarr Layer",
+            "properties": {
+              "id": {
+                "type": "string",
+                "description": "Unique identifier of layer"
+              },
+              "name": {
+                "type": "string",
+                "description": "recommended: Descriptive name to be shown on user interface"
+              },
+              "url": {
+                "type": "string",
+                "description": "URL of service endpoint of data or URL to a data file"
+              },
+              "visible": {
+                "type": "boolean",
+                "description": "defaults to true: for baselayers only one should be set to true, rest to false"
+              },
+              "Attribution": {
+                "type": "string",
+                "description": "Text to be shown as attribution information for the layer, can include HTML elements",
+                "media": {
+                  "type": "html"
+                }
+              },
+              "DataProjection": {
+                "description": "Projection in which the data is stored",
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "Name of the projection, e.g. EPSG:4326"
+                      },
+                      "def": {
+                        "type": "string",
+                        "description": "Definition of the projection using proj4 format, e.g. \"+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs\""
+                      },
+                      "extent": {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        },
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "description": "Bounding box of the projection in projected coordinates [minX, minY, maxX, maxY]"
+                      }
+                    },
+                    "required": [
+                      "name"
+                    ],
+                    "description": "Full proj4js definition of projection with optional extent"
+                  },
+                  {
+                    "type": "string",
+                    "description": "String input in format EPSG:4326"
+                  },
+                  {
+                    "type": "number",
+                    "description": "Numerical input, such as 4326"
+                  }
+                ]
+              },
+              "protocol": {
+                "readOnly": true,
+                "type": "string",
+                "const": "GeoZarr source"
+              },
+              "Style": {
+                "type": "string",
+                "description": "Absolute URL or relative path (which root is taken from the <b>assets_endpoint</b> configured for the catalog) to openlayers flat style file used for rendering"
+              },
+              "Bands": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Optional list of variable/band names to expose from the GeoZarr store."
+              }
+            },
+            "required": [
+              "id",
+              "url",
+              "protocol"
+            ]
           }
         ]
       },
