@@ -51,6 +51,9 @@
                                 "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceFlatGeobuf"
                             },
                             {
+                                "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceGeoZarr"
+                            },
+                            {
                                 "$ref": "./common-collection-defs.json#/definitions/RawSourceResourceVectorTile"
                             },
                             {

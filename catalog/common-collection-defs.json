@@ -488,6 +488,31 @@
                 }
             ]
         },
+        "RawGeoZarrLayer": {
+            "title": "GeoZarr Layer",
+            "allOf": [
+                {
+                    "$ref": "#/definitions/defaultLayerProperties"
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "protocol": {
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "GeoZarr source"
+                        },
+                        "Style": {
+                            "$ref": "#/definitions/Style"
+                        },
+                        "Bands": {
+                            "$ref": "#/definitions/Bands"
+                        }
+                    },
+                    "required": ["protocol"]
+                }
+            ]
+        },
         "RawCOGLayer": {
             "title": "COG Layer",
             "allOf": [
@@ -611,7 +636,8 @@
                 { "$ref": "#/definitions/MapboxStyleDocumentLayer" },
                 { "$ref": "#/definitions/RawCOGLayer" },
                 { "$ref": "#/definitions/RawGeoJSONLayer" },
-                { "$ref": "#/definitions/RawFlatGeobufLayer" }
+                { "$ref": "#/definitions/RawFlatGeobufLayer" },
+                { "$ref": "#/definitions/RawGeoZarrLayer" }
             ]
         },
         "License": {
@@ -1862,6 +1888,28 @@
                 }
             ]
         },
+        "RawSourceResourceGeoZarr": {
+            "title": "GeoZarr Source",
+            "allOf": [
+                { "$ref": "#/definitions/defaultResourceParameters" },
+                { "$ref": "#/definitions/defaultRawResourceParameters" },
+                {
+                    "type": "object",
+                    "properties": {
+                        "Name": {
+                            "title": "Resource Identifier",
+                            "readOnly": true,
+                            "type": "string",
+                            "const": "GeoZarr source"
+                        },
+                        "Bands": {
+                            "$ref": "#/definitions/Bands"
+                        }
+                    },
+                    "required": ["Name"]
+                }
+            ]
+        },
         "RawSourceResourceVectorTile": {
             "title": "Vector Tile Source",
             "allOf": [
@@ -2205,6 +2253,9 @@
                                 "Title": {
                                     "type": "string",
                                     "description": "Asset title. Will show as a layer name in eodash."
+                                },
+                                "Bands": {
+                                    "$ref": "#/definitions/Bands"
                                 }
                             },
                             "required": ["Identifier", "File"]
@@ -2213,6 +2264,13 @@
                 },
                 "required": ["Time", "Assets"]
             }
+        },
+        "Bands": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "Optional list of variable/band names to expose from the GeoZarr store."
         },
         "Flatstyle": {
             "anyOf": [
@@ -2253,6 +2311,7 @@
                 { "$ref": "#/definitions/RawSourceResourceCOG" },
                 { "$ref": "#/definitions/RawSourceResourceGeoJSON" },
                 { "$ref": "#/definitions/RawSourceResourceFlatGeobuf" },
+                { "$ref": "#/definitions/RawSourceResourceGeoZarr" },
                 { "$ref": "#/definitions/RawSourceResourceVectorTile" },
                 {
                     "$ref": "#/definitions/RawSourceResourceMapboxStyleDocument"
